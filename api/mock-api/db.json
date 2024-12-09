@@ -1,0 +1,3432 @@
+{
+    "customers": [
+        {
+            "id": "4264911d-7659-4b12-9a5b-046bfee30b3a",
+            "name": "Brooke Patel",
+            "email": "uwilliams@wright.com",
+            "phone": "211-144-2856x250",
+            "address": "459 Fernandez Street, North Michellefort, CA 32095",
+            "detailId": "f232d684-da0e-4a3e-9715-acfd3fb51e6c"
+        },
+        {
+            "id": "0a94cdb4-0f16-4b83-9f02-27dc82e6d570",
+            "name": "Karen Burns",
+            "email": "nmurphy@greer-daniel.biz",
+            "phone": "0323875107",
+            "address": "885 Mcintyre Knolls Apt. 653, Port Brianburgh, CO 59450",
+            "detailId": "7d2af8a5-d700-44cf-8a37-c5aa251248f4"
+        },
+        {
+            "id": "15656d7d-0aa0-41fc-8161-bd4ab730d182",
+            "name": "Betty Bates",
+            "email": "robert78@yahoo.com",
+            "phone": "345.073.2384",
+            "address": "8545 Payne Walk Suite 592, Smithside, WV 56408",
+            "detailId": "24db3296-722c-40c0-acce-b4cff84623a7"
+        },
+        {
+            "id": "e22132a5-5688-4125-b8da-afc9841abb45",
+            "name": "Amy Williams",
+            "email": "holtmichael@hart-ford.com",
+            "phone": "+1-385-072-5319x9068",
+            "address": "292 Cameron Stravenue Suite 823, Lake Randyfurt, TN 31066",
+            "detailId": "39144168-e232-4a60-9b3a-50787bce8717"
+        },
+        {
+            "id": "614fc84f-b62c-4c48-a250-8b6fc65b2474",
+            "name": "Monica Baldwin",
+            "email": "jmaxwell@le.info",
+            "phone": "158.040.2884x6377",
+            "address": "87298 Anna Squares Suite 040, Madisonhaven, UT 72709",
+            "detailId": "83f27c58-20ff-4549-8acc-7f91bf7cad75"
+        },
+        {
+            "id": "c895c4ae-76bd-4d81-9f6d-5f065c685c7d",
+            "name": "Logan Long",
+            "email": "anthony13@lopez.com",
+            "phone": "7519888663",
+            "address": "38546 Rice Key, Christopherview, NJ 79762",
+            "detailId": "7ef3d80f-feb0-496c-ab20-6e4ec2b1541c"
+        },
+        {
+            "id": "2000b258-0924-4f56-9014-b37c4c9f5cdc",
+            "name": "Gregory Taylor III",
+            "email": "frodriguez@frederick-peterson.biz",
+            "phone": "(562)001-5313x4630",
+            "address": "193 Fletcher Landing, East Sharonstad, OH 21382",
+            "detailId": "fe216bd2-1993-405c-b23f-50827672915a"
+        },
+        {
+            "id": "f38e20ec-5ac8-4ebd-af71-077e3c5f56e2",
+            "name": "Suzanne Gaines",
+            "email": "richardsonjamie@figueroa.com",
+            "phone": "+1-842-022-4992x86749",
+            "address": "471 Daniel Harbors, Danielborough, WA 79631",
+            "detailId": "61e3448a-0d27-40da-8656-abc5a81754ee"
+        },
+        {
+            "id": "cb7c4c73-6973-4163-9861-6462b5029819",
+            "name": "Michael Short",
+            "email": "rhonda77@powell-fernandez.net",
+            "phone": "264-723-7426",
+            "address": "3221 Young Islands Apt. 103, North Stephaniebury, WI 30263",
+            "detailId": "8b896dcc-f277-4e32-8bbd-55fdf16970c4"
+        },
+        {
+            "id": "b193e64b-80b2-4c17-a559-3f934377e69b",
+            "name": "Amanda Spencer",
+            "email": "glennemily@short-martin.com",
+            "phone": "+1-319-823-5290",
+            "address": "792 Melissa Gateway Suite 021, Prestonport, NC 55867",
+            "detailId": "341b683b-06f6-477b-b0e4-c771fa434ea7"
+        },
+        {
+            "id": "9201fa4c-0f72-442d-9296-894d4d543a6d",
+            "name": "Carlos Murphy",
+            "email": "jacqueline30@perez-anderson.org",
+            "phone": "+1-851-535-5199x23990",
+            "address": "48831 Tucker Harbor Suite 956, Jenkinsberg, CT 69767",
+            "detailId": "d0b8d5dc-e3ea-49dc-83b1-083c9bd07fad"
+        },
+        {
+            "id": "96fb546b-4bc0-4e13-a4e9-19b6f0f74850",
+            "name": "Ernest Stanley",
+            "email": "trevinoelizabeth@hotmail.com",
+            "phone": "6607014633",
+            "address": "PSC 7493, Box 1246, APO AP 99682",
+            "detailId": "794709f1-0e8f-4646-be8c-5634a9bf6d5a"
+        },
+        {
+            "id": "18e071a0-97cb-455b-aa1f-a233a3e55d0f",
+            "name": "Alison Simmons",
+            "email": "jacquelinegillespie@benson-mullins.com",
+            "phone": "514.495.6983",
+            "address": "561 Lawrence Prairie Apt. 926, Cynthiafort, WY 39633",
+            "detailId": "71a2981a-4d24-4b0b-ab5c-43f1e2125ba2"
+        },
+        {
+            "id": "04eb39ce-9246-4554-9eee-3ef5160b8a3b",
+            "name": "Danielle Rogers",
+            "email": "barnesdavid@copeland.org",
+            "phone": "(518)298-9051",
+            "address": "2181 Deborah Fork, East Maryhaven, WA 14897",
+            "detailId": "b8399f1b-9308-4466-98c7-d7bf3988ef6a"
+        },
+        {
+            "id": "84bf2838-9265-4443-a205-13f511e1f9a2",
+            "name": "Taylor Hodge",
+            "email": "katherine61@bishop.com",
+            "phone": "(540)049-6670",
+            "address": "4286 Daniel Trace, North Krista, AK 53108",
+            "detailId": "ef0ceac2-dbd9-4a30-a651-8beeb4cb9a97"
+        },
+        {
+            "id": "ca73fb20-471c-4ce0-bc96-44c46a086862",
+            "name": "Lisa Hansen",
+            "email": "robert91@wright.net",
+            "phone": "930.684.1196",
+            "address": "7551 Kenneth Land Apt. 455, Kevinberg, WI 23075",
+            "detailId": "16224297-28a1-4659-b570-fe54b95c7ace"
+        },
+        {
+            "id": "1d0c07d2-d04e-45aa-9f13-ba884aa61758",
+            "name": "Marcia Combs",
+            "email": "greendana@holmes.com",
+            "phone": "249.577.8266",
+            "address": "5126 Jaime Junctions Apt. 767, Andreachester, NH 26248",
+            "detailId": "2afc2431-abb3-4ed9-b60c-39e675fef8e3"
+        },
+        {
+            "id": "09885f89-f752-45e9-9e5c-febe30c19555",
+            "name": "Brandi Martinez",
+            "email": "darinthornton@allison.com",
+            "phone": "001-331-958-5031x194",
+            "address": "2229 Paul Meadows Apt. 472, New Richardside, MD 54710",
+            "detailId": "16c2d5ac-8591-4369-a063-5e6c8996ecce"
+        },
+        {
+            "id": "1220906b-171f-4e7f-820a-fa8b348030c8",
+            "name": "David Gaines",
+            "email": "inewman@gmail.com",
+            "phone": "(862)930-1810x57304",
+            "address": "751 Cynthia Circle, Olsonburgh, OK 94704",
+            "detailId": "69291ceb-e0e5-4f30-b958-d66cd0d28896"
+        },
+        {
+            "id": "f5678b08-04ab-418e-9a29-d2ed149b7a2a",
+            "name": "Ryan Phillips",
+            "email": "jcastro@gmail.com",
+            "phone": "+1-009-270-2215x3530",
+            "address": "210 Rivera Manor, Bakerberg, VT 16764",
+            "detailId": "b2f45916-5573-485a-8b4e-3eb9c3541900"
+        },
+        {
+            "id": "803ad63d-ce0c-4010-8b0f-433e038a663b",
+            "name": "Emily Buchanan",
+            "email": "lowevanessa@yahoo.com",
+            "phone": "001-065-334-7447",
+            "address": "04641 Evans Junction, Shannonberg, VA 45875",
+            "detailId": "b2175e85-9df6-4e4f-97d7-31b4770f4ea1"
+        },
+        {
+            "id": "24223a4a-3429-4b65-872d-686acbac7feb",
+            "name": "Robert Khan",
+            "email": "kari21@hernandez.com",
+            "phone": "5289021256",
+            "address": "238 Marshall Centers Suite 122, Johnburgh, OK 80770",
+            "detailId": "4865b0aa-589a-43bb-bf6b-c85c6159c5d0"
+        },
+        {
+            "id": "cb14caf1-c5d0-4116-950f-8cce68290c44",
+            "name": "Phillip Rivera",
+            "email": "nicholas23@gmail.com",
+            "phone": "105-307-3142x3096",
+            "address": "3725 Andrew Street, South Tracyhaven, WI 89113",
+            "detailId": "d5d19335-0a27-41d3-81fb-8ac87f7339ed"
+        },
+        {
+            "id": "5274979a-78c3-4ec1-bf11-99fc04e049a6",
+            "name": "Tracy Burgess",
+            "email": "michael84@yahoo.com",
+            "phone": "450-623-1843x9303",
+            "address": "86161 Jeremy Summit Apt. 421, Petersonberg, CO 55240",
+            "detailId": "dcd8f5f5-afc5-4e17-97fd-2c456bed379c"
+        },
+        {
+            "id": "356ce93c-0a6d-49bc-965e-90e68ed789c2",
+            "name": "Kari Thomas",
+            "email": "jacqueline69@gmail.com",
+            "phone": "400-908-8825x5011",
+            "address": "64432 Thompson Circles, New Laurie, WI 14563",
+            "detailId": "c9936246-a6bf-48eb-82fd-e5b4d67ed3bd"
+        },
+        {
+            "id": "3b3d6e6f-2c6c-4d6b-97da-2d37c37904a8",
+            "name": "Raymond Wolf",
+            "email": "nschwartz@hotmail.com",
+            "phone": "255.789.1297x2778",
+            "address": "39194 Robert Cove, Taylorburgh, VT 71160",
+            "detailId": "ee811574-0941-4ce2-8833-077e4416ddfa"
+        },
+        {
+            "id": "43646981-bbd2-41a7-a982-9d9a3165453c",
+            "name": "Lori Castillo",
+            "email": "lawsonpaul@torres.com",
+            "phone": "991-295-4639",
+            "address": "93325 Frank Plaza, North Alexandra, DC 40593",
+            "detailId": "4a88d01b-07be-42fe-841c-dcbdf5b14330"
+        },
+        {
+            "id": "ceb59598-beba-4824-8e6b-295c7172815d",
+            "name": "Timothy Flores",
+            "email": "nancy70@howard.com",
+            "phone": "001-183-229-7683x28748",
+            "address": "16173 Tucker Fort, Bondberg, OK 88619",
+            "detailId": "7625415e-32d6-439f-a0b0-88e4ff92ec59"
+        },
+        {
+            "id": "904e5091-71af-4f77-af04-68e7d786dbab",
+            "name": "Daniel Johnson",
+            "email": "gburnett@mendoza.com",
+            "phone": "(946)285-5163",
+            "address": "508 Price Plains Suite 417, Alanport, VT 73783",
+            "detailId": "909ad45b-b0c7-42d6-a0b8-792211068b2f"
+        },
+        {
+            "id": "a4300926-20db-4408-891b-6b4a20efe25c",
+            "name": "Kenneth Harrison",
+            "email": "yatesseth@allen-coleman.net",
+            "phone": "949-209-3172",
+            "address": "06084 Smith View, Grantland, CO 64727",
+            "detailId": "7fe6d45f-7958-40a5-9b03-a7867032bff9"
+        },
+        {
+            "id": "b3f0a5de-95cc-4d08-8fd4-063f55727652",
+            "name": "Ashley James",
+            "email": "ewilliams@gmail.com",
+            "phone": "(620)025-6584x7502",
+            "address": "546 Chase Crest Apt. 098, Laurenhaven, IA 98167",
+            "detailId": "18ece260-c692-4ee4-ad5a-9b0abc330780"
+        },
+        {
+            "id": "97701bed-5dda-456d-af4f-2b7ac9f94582",
+            "name": "Teresa Costa",
+            "email": "jeffrey80@mueller-morrison.com",
+            "phone": "(701)520-1606x890",
+            "address": "8767 Mata Landing Suite 855, West Annberg, IA 08746",
+            "detailId": "3e4f1fb2-efcb-4e8b-b64b-c8ca8ec57dbb"
+        },
+        {
+            "id": "81bb66c8-d860-4ec8-8501-50a257c5921b",
+            "name": "Robert Cunningham",
+            "email": "weberalexander@gmail.com",
+            "phone": "474.662.6503",
+            "address": "637 Mckay Viaduct, Jeffreybury, VA 63579",
+            "detailId": "534084b7-eec8-4361-941d-4e5c9c9a8f30"
+        },
+        {
+            "id": "c0262287-05d0-4166-b722-53ec4ffaa808",
+            "name": "Christopher Thomas MD",
+            "email": "rebecca78@wilkins-mcguire.net",
+            "phone": "+1-769-816-0670x165",
+            "address": "81084 Christopher Glen, East April, PA 63318",
+            "detailId": "4f82bf65-99e8-4df2-8bca-d5821ae2f686"
+        },
+        {
+            "id": "f47c0459-951d-4eb6-a15c-a5d09caa3bfa",
+            "name": "Brandon Norris",
+            "email": "james37@yahoo.com",
+            "phone": "(449)662-6085",
+            "address": "0028 Smith Valley, Tuckerbury, MI 94509",
+            "detailId": "a65bdbed-45dd-4d81-9716-44569647197e"
+        },
+        {
+            "id": "bdd82d81-321e-4215-9ec1-6c6048738111",
+            "name": "Jared Hill",
+            "email": "bmiller@stein.com",
+            "phone": "485.864.2825x5900",
+            "address": "49948 Anderson Parks Suite 689, Willieberg, VA 50800",
+            "detailId": "36dfa71e-8321-459f-928b-c73cae0dd021"
+        },
+        {
+            "id": "0860b9c8-080f-47d2-8848-7bb07a564e3e",
+            "name": "Elizabeth Coleman",
+            "email": "kellygarcia@gmail.com",
+            "phone": "+1-032-472-4897",
+            "address": "2061 Hinton Loop, Lake Thomashaven, MS 47657",
+            "detailId": "9fb15c85-a41b-4dab-8546-c251c9b491dc"
+        },
+        {
+            "id": "2812917d-7df6-4474-9f39-ab7708d2700a",
+            "name": "Nicholas Martinez",
+            "email": "laura59@crawford.info",
+            "phone": "001-614-579-7067x7203",
+            "address": "55223 Keller River, New Sara, NM 77183",
+            "detailId": "b08c689b-2761-4503-8487-95e4acb83749"
+        },
+        {
+            "id": "3de2d217-0463-447f-8560-43569b1f66ca",
+            "name": "Jennifer Dunn",
+            "email": "torresjared@gmail.com",
+            "phone": "4370529589",
+            "address": "808 Crystal Mews, Bradleybury, ME 51799",
+            "detailId": "2090b69a-b036-489a-aea2-e4087faae245"
+        },
+        {
+            "id": "2c4e9a8f-2557-4d16-b14a-e2be484a7d31",
+            "name": "Haley Torres",
+            "email": "samanthawalker@gmail.com",
+            "phone": "876-298-5521x4719",
+            "address": "587 Karen Falls Suite 034, West Michael, MN 85213",
+            "detailId": "257e9b71-80d8-4e9b-b3ea-09898c592116"
+        },
+        {
+            "id": "c1d2983c-0d8e-48b1-bcde-c10d6a93d0e6",
+            "name": "Tina Clark",
+            "email": "michaelhall@gmail.com",
+            "phone": "279-247-7099",
+            "address": "89542 Mcdonald Lights, Chavezberg, KY 53299",
+            "detailId": "acd54931-548b-48f3-9224-355039e72133"
+        },
+        {
+            "id": "2a297c9b-4909-4015-90b0-d7895fc9e125",
+            "name": "Timothy Gonzalez",
+            "email": "michaelsanchez@gmail.com",
+            "phone": "001-129-174-1570",
+            "address": "Unit 0737 Box 2241, DPO AE 23147",
+            "detailId": "8df86d42-6a6f-47ce-9d0e-dba1f71f81d8"
+        },
+        {
+            "id": "b5361837-9d43-4eda-a6e2-2c7b1e1b3efe",
+            "name": "Randall White",
+            "email": "grahammatthew@thompson-lopez.net",
+            "phone": "260.486.1018x7473",
+            "address": "0082 Nicole Lock, New Marie, WV 27602",
+            "detailId": "f96f1a65-f3d8-4fa3-8a93-eb49d15f80c3"
+        },
+        {
+            "id": "2b97c8e7-2bc2-4b2d-9620-dd7f3435fd1e",
+            "name": "Chelsea Hernandez",
+            "email": "jessejohnson@davis.org",
+            "phone": "718-297-5248",
+            "address": "5488 Jill Brook Suite 414, South Dan, KY 04537",
+            "detailId": "0851392d-e1c4-48a1-81cf-10193ad045d3"
+        },
+        {
+            "id": "e764fc99-a306-4bd2-a03c-2c9b9f143dae",
+            "name": "Jacob Lin",
+            "email": "lopezryan@hotmail.com",
+            "phone": "124-185-5087x2887",
+            "address": "778 Crystal Squares, South Kennethfort, TX 36578",
+            "detailId": "3ecc2abd-b7ec-4571-a4b4-3bc694f8858c"
+        },
+        {
+            "id": "0c89c2ce-c359-4ae1-920e-2e8f02ecbe4b",
+            "name": "Dwayne Turner",
+            "email": "monicahudson@davis.com",
+            "phone": "911.021.7087x40662",
+            "address": "22692 Anthony Fall, Lake Michelle, WY 92066",
+            "detailId": "7d83fd73-ed2e-4d5d-a95b-6afd481effb8"
+        },
+        {
+            "id": "7d0c4f98-abdb-4deb-ba8b-059e6f1be451",
+            "name": "Bradley Mclaughlin",
+            "email": "perrypatricia@martin.com",
+            "phone": "+1-254-760-7779x0239",
+            "address": "973 Johnson Village, Fernandezville, RI 55152",
+            "detailId": "74fbf168-b881-449e-8761-2ff4089aaa6d"
+        },
+        {
+            "id": "6ec3de71-6e4c-42b2-928d-06259ca47575",
+            "name": "Javier Gardner",
+            "email": "leah14@yahoo.com",
+            "phone": "399-087-9309x050",
+            "address": "1287 Carter Dam, Stephenchester, PA 90747",
+            "detailId": "497c5338-46eb-4826-80c1-214de9f79291"
+        },
+        {
+            "id": "c1f3879b-6706-4405-9363-00e77f6c25c4",
+            "name": "Vincent Hughes",
+            "email": "willispenny@hotmail.com",
+            "phone": "066.738.6230x26066",
+            "address": "0363 Dennis Centers Apt. 560, Cynthiashire, DE 00864",
+            "detailId": "e28698b3-31e9-4624-9580-ead3b14efd3a"
+        },
+        {
+            "id": "b076445b-7b53-41e8-8c0f-4d1f37989f0f",
+            "name": "Christopher Mueller",
+            "email": "kerri75@cook.info",
+            "phone": "495.865.2553x393",
+            "address": "PSC 0097, Box 2742, APO AE 38742",
+            "detailId": "021c2933-8eec-4984-8431-8b7da310b9d7"
+        },
+        {
+            "id": "2feb5ea1-150e-4112-afb7-acbaffed4bde",
+            "name": "John Marquez",
+            "email": "gsmith@meyer.com",
+            "phone": "984-149-3238x7557",
+            "address": "22795 Jimmy Gateway, Wendyland, OK 34297",
+            "detailId": "1004e500-ad08-4e82-ad46-b98593eadd1f"
+        },
+        {
+            "id": "096378d4-9b92-496f-8536-303143e66068",
+            "name": "Toni Cunningham",
+            "email": "zlewis@duncan-blevins.com",
+            "phone": "(935)355-2158",
+            "address": "095 Soto Ferry Apt. 187, Tarashire, NJ 49939",
+            "detailId": "712b8577-1e4b-4843-a5b7-8ed8b480d790"
+        },
+        {
+            "id": "a0f61f12-2cde-4565-881b-ec8ec1c07ca5",
+            "name": "Richard Mason",
+            "email": "thompsonedward@baker.biz",
+            "phone": "626.430.8298",
+            "address": "7294 Patrick Shoal, Johnland, NM 36879",
+            "detailId": "42238f4f-55df-45f9-997d-3b6906997567"
+        },
+        {
+            "id": "9929c718-f325-4abf-ab7d-3aa0c1dce625",
+            "name": "Janice Medina",
+            "email": "christopher60@robinson-lewis.com",
+            "phone": "(169)944-3477x168",
+            "address": "Unit 6098 Box 9896, DPO AA 19103",
+            "detailId": "a2dea8e3-8d1b-45b7-b9ad-77fb6ba00b1b"
+        },
+        {
+            "id": "2b43e5d5-29fe-4a8e-b2ea-536e15c6e259",
+            "name": "Benjamin King",
+            "email": "bakermichael@yahoo.com",
+            "phone": "001-445-985-6921x375",
+            "address": "079 Blackwell Ranch Suite 181, Jimmyhaven, VT 22245",
+            "detailId": "ccc9da0a-9a6c-49b2-8eb9-d4063f7269a5"
+        },
+        {
+            "id": "f3621e8a-e152-4bd9-bbb8-38140881869c",
+            "name": "Brandon Mayer",
+            "email": "ewilson@guerrero.net",
+            "phone": "938.702.9799x7109",
+            "address": "0271 Martha Cove Apt. 041, Jeffreyport, NH 99383",
+            "detailId": "783a5243-667e-4f7d-a8bf-e791fd3563dc"
+        },
+        {
+            "id": "35583ba4-170c-47d3-a809-497c9d6588f2",
+            "name": "Mary Weber",
+            "email": "tammy71@yahoo.com",
+            "phone": "(159)515-2689x545",
+            "address": "Unit 3878 Box 1020, DPO AP 51224",
+            "detailId": "5b43ebab-d8e9-4352-93b2-6ac747ae3cbf"
+        },
+        {
+            "id": "b8e2bbdd-07be-4355-b860-854c90316409",
+            "name": "Bruce Howe",
+            "email": "peteradams@gmail.com",
+            "phone": "683-980-0391",
+            "address": "94249 John Flat Apt. 277, New Todd, CT 67059",
+            "detailId": "73effa53-743f-4113-a6dc-39e85e2e9e7a"
+        },
+        {
+            "id": "86fe4ca9-a606-44a6-9087-a1b394e62900",
+            "name": "Jeffrey Gardner",
+            "email": "johnharmon@hotmail.com",
+            "phone": "(771)558-5436x605",
+            "address": "1721 Dawson Mountain, North Matthew, VT 89222",
+            "detailId": "73b72d19-e691-4626-a553-cc030a466f15"
+        },
+        {
+            "id": "b6cf6f3c-bf79-4008-b171-ddb92d98f848",
+            "name": "Sean Russell",
+            "email": "cpetersen@smith.com",
+            "phone": "419.225.5913x35931",
+            "address": "926 Gilbert Divide Apt. 327, Lake Debrabury, WA 73543",
+            "detailId": "571d168d-efb4-4472-85ae-dfedb17f6f40"
+        },
+        {
+            "id": "704b5cd6-e4d0-4d24-963b-6d7f90836a2a",
+            "name": "Nicole Bell",
+            "email": "michael57@willis.com",
+            "phone": "(129)410-9699",
+            "address": "1340 Powell Hills Suite 652, West Katieville, WI 03674",
+            "detailId": "4c9eb5ee-8cb9-4fa1-8a99-ec6a022b9f15"
+        },
+        {
+            "id": "79dca472-115b-4cb8-80c1-0937de4012e4",
+            "name": "Nicholas Barnes",
+            "email": "davidritter@anderson.biz",
+            "phone": "2755627518",
+            "address": "36535 Rebecca Parkway, West Erika, KS 17454",
+            "detailId": "a377b271-bb38-4473-b7de-122311eeae76"
+        },
+        {
+            "id": "f6a93355-aa78-426c-848c-223d83092f80",
+            "name": "Thomas Holt",
+            "email": "brandy62@barnett-davis.com",
+            "phone": "001-193-186-7509x3945",
+            "address": "318 Davis Island Apt. 063, South Michaelchester, IA 32829",
+            "detailId": "d5912eca-a3ca-407f-998e-d4fa40d44175"
+        },
+        {
+            "id": "bd4bd48a-6fa7-4939-bf75-cc8e703b4c31",
+            "name": "Sean Curtis",
+            "email": "jenniferscott@fisher.com",
+            "phone": "5220558650",
+            "address": "7936 Patricia Spur, East Robert, IL 04887",
+            "detailId": "69d72dda-fd5a-4153-8a42-072407be4048"
+        },
+        {
+            "id": "02d3f5cf-fe3c-4ad8-b1d0-9d0dd4c71ce9",
+            "name": "Michael Dean",
+            "email": "ronnieherrera@villegas.com",
+            "phone": "+1-959-812-4112x07296",
+            "address": "7984 Rebecca Fields Apt. 203, Kellyfurt, AK 58803",
+            "detailId": "c94ae8fa-af3d-4952-9cc5-650a736d9523"
+        },
+        {
+            "id": "9f9ee276-dc27-487b-b44b-836959d4edf1",
+            "name": "Christine Simpson",
+            "email": "campbellbenjamin@hotmail.com",
+            "phone": "(238)090-5052",
+            "address": "6846 Lindsay Camp, East Marissa, AL 13394",
+            "detailId": "26235212-6f31-473d-a974-cc7d53fb028d"
+        },
+        {
+            "id": "3acc7832-c823-4d22-b05a-c68920b5e109",
+            "name": "Steven Marshall",
+            "email": "david69@yahoo.com",
+            "phone": "(400)900-7496",
+            "address": "Unit 5698 Box 0354, DPO AP 23151",
+            "detailId": "db2a7bbe-6078-4295-a756-21f8b045bd5f"
+        },
+        {
+            "id": "65abd0c3-0ac5-4707-826f-e4b51ddc603c",
+            "name": "Faith Winters",
+            "email": "francisco47@morgan-ballard.com",
+            "phone": "340.768.0845x973",
+            "address": "9147 Burns Drive Apt. 938, Bryanstad, DC 50650",
+            "detailId": "6a19cdfc-7eb3-4658-b1e5-c0f7a31f7554"
+        },
+        {
+            "id": "c2584477-1ebc-4556-92a5-ac75bcaf9082",
+            "name": "Jillian King",
+            "email": "sean18@hotmail.com",
+            "phone": "905-668-1820",
+            "address": "72086 Alvin Course, Josechester, SC 51182",
+            "detailId": "3a742755-3549-4489-8f9b-3155e1aadbf1"
+        },
+        {
+            "id": "9c8d19af-b66d-40c7-85de-d9ee9f88d6ba",
+            "name": "Kimberly Harris",
+            "email": "rrowland@gmail.com",
+            "phone": "6344125355",
+            "address": "0899 Browning Gardens Suite 307, New Daniel, TN 60038",
+            "detailId": "d75a72d9-1fcc-48db-a92e-de2ca54d28c1"
+        },
+        {
+            "id": "1fb16cc5-3159-4221-8e55-b4646db99733",
+            "name": "Kristen Singleton",
+            "email": "andersondana@yahoo.com",
+            "phone": "955.530.6634",
+            "address": "06880 Maria Ports, East Gregory, CO 18988",
+            "detailId": "bb57da80-883b-4c61-825c-3468a60e32c9"
+        },
+        {
+            "id": "c63f11f4-fdff-4776-b0ff-548c3d15b445",
+            "name": "Jonathan Stanley",
+            "email": "leegrant@gmail.com",
+            "phone": "5740318642",
+            "address": "9332 Nunez Lane, Mistyfort, MD 07249",
+            "detailId": "668ad92f-fdbf-4844-9e98-d1434523e90d"
+        },
+        {
+            "id": "cc2f61c3-c1f0-46cd-83d2-cb9682acac55",
+            "name": "Angela Moreno",
+            "email": "jeffrey21@walsh.info",
+            "phone": "617.104.1759x99779",
+            "address": "906 Debra Common Suite 335, East Michaelburgh, AK 21756",
+            "detailId": "7fb744bf-12a6-43f7-87b9-b39339f285c3"
+        },
+        {
+            "id": "2f145277-adb6-4cb1-a945-7e5985ed55ca",
+            "name": "Kevin Shields",
+            "email": "michael38@kelly-kelley.org",
+            "phone": "8735696177",
+            "address": "641 Brown Dam Suite 060, East Deanna, LA 94698",
+            "detailId": "6c1ebde7-6618-42f9-add5-30d009fda2af"
+        },
+        {
+            "id": "733448dd-afac-4ede-8172-1e7ccb11a1d0",
+            "name": "Travis Torres",
+            "email": "leah49@carter.com",
+            "phone": "001-713-992-2903x41663",
+            "address": "87200 Lee Stravenue Suite 835, West Richardhaven, OH 16654",
+            "detailId": "1242f14f-0ded-4c2a-a026-52efd74e030f"
+        },
+        {
+            "id": "ecac6fd7-396b-45d8-a773-bb16727f2fa6",
+            "name": "Christine Davis",
+            "email": "mthompson@pittman.info",
+            "phone": "635-989-6770",
+            "address": "4292 Daniel Ville Apt. 576, Cynthiahaven, MI 17723",
+            "detailId": "2a09673f-260b-4293-8919-21d196f0e629"
+        },
+        {
+            "id": "c5e80a7c-0b8d-4028-95ae-39ec90f94552",
+            "name": "Sara Smith",
+            "email": "kmyers@lee.com",
+            "phone": "814.348.2877",
+            "address": "16992 Lowe Row Apt. 044, Mcintoshchester, DE 45062",
+            "detailId": "70676aff-9e05-4e60-b645-d0daf1f2c0b4"
+        },
+        {
+            "id": "5a6bf81f-128d-4b91-97e3-8c5cb555bf9d",
+            "name": "Jordan Riddle",
+            "email": "david47@perkins.biz",
+            "phone": "001-180-743-8547x8707",
+            "address": "PSC 5333, Box 0974, APO AE 37850",
+            "detailId": "b6cc595f-93ff-4692-ab21-1cb4d4645d03"
+        },
+        {
+            "id": "549c5836-de64-44e4-ad02-3097b1fa9773",
+            "name": "David Bowen",
+            "email": "steven79@klein.org",
+            "phone": "+1-185-103-0928x21981",
+            "address": "463 Salazar Walk, New Arthurberg, LA 94451",
+            "detailId": "94b40058-9c13-4355-8937-76a0c6b45a05"
+        },
+        {
+            "id": "6da21d29-da9b-49aa-8c16-3fbce6cc5fb3",
+            "name": "Vanessa Johnson",
+            "email": "rjackson@carney-andrade.com",
+            "phone": "244-655-6897x8126",
+            "address": "82441 Lisa Stravenue, North Jeffreyberg, VT 85176",
+            "detailId": "fe97c197-0402-40dc-ae7a-9dcc719a5380"
+        },
+        {
+            "id": "5a71efc1-4b87-4be9-9a07-bf55c842ebc6",
+            "name": "Juan Wells",
+            "email": "ashley52@norris-thomas.com",
+            "phone": "993-318-7279",
+            "address": "473 Henderson Walks Suite 453, East Lisaview, HI 03065",
+            "detailId": "34deddf9-bbff-4ec2-8af5-b53b351f9462"
+        },
+        {
+            "id": "ea2007a7-eabb-42b8-a507-1349852180b2",
+            "name": "Kelsey Robbins",
+            "email": "jamie19@mcdonald.com",
+            "phone": "6581301528",
+            "address": "02370 John Field Suite 565, South Megan, HI 35627",
+            "detailId": "c565e66b-e1cf-44e3-9c36-2019ea2948d0"
+        },
+        {
+            "id": "061eb5f5-25cf-4b27-a823-98f34169e90e",
+            "name": "Robert Stone",
+            "email": "perkinstyler@warren-schwartz.com",
+            "phone": "881.158.7415",
+            "address": "173 Lewis Points, Port Adamburgh, TN 84485",
+            "detailId": "84e251a2-d214-445f-98fd-08195e3bc40a"
+        },
+        {
+            "id": "cd8722db-e3bf-4783-a3fb-5fc6f58a77bd",
+            "name": "Barry Fernandez",
+            "email": "larry15@hotmail.com",
+            "phone": "+1-155-184-2496x3164",
+            "address": "7125 Michael Stream Apt. 452, Lake Stefanie, OR 15677",
+            "detailId": "9522ee56-4b4c-4130-97f5-7c284ef0adff"
+        },
+        {
+            "id": "2008301c-0140-4b82-be58-98ce6ba88588",
+            "name": "Christina Schneider",
+            "email": "christian04@hotmail.com",
+            "phone": "302.719.2831x695",
+            "address": "751 Rachel Mountain, Jimstad, CO 64299",
+            "detailId": "2e3da50e-c7ab-47df-85fb-df1f5cddcfbd"
+        },
+        {
+            "id": "b39d8136-4124-4905-be2d-2504eab662af",
+            "name": "Michael Guzman",
+            "email": "bcollins@gmail.com",
+            "phone": "080-394-8878x214",
+            "address": "32133 Moore Burg Apt. 580, Suzanneshire, IL 56094",
+            "detailId": "396f09ab-8323-4e74-8ee7-8f39e9e9f69e"
+        },
+        {
+            "id": "18a69ffa-4f8f-4cd1-9d9e-fd487c6934ae",
+            "name": "Melissa Bell",
+            "email": "jessicamartin@cortez.info",
+            "phone": "6699103026",
+            "address": "368 Dylan Stravenue, New Heather, NJ 04756",
+            "detailId": "ed01854c-7cf8-4674-8a86-27a6ea39e1e9"
+        },
+        {
+            "id": "db59ea85-bed0-4824-a3a7-30af2d8a3b22",
+            "name": "George Carr",
+            "email": "schroedercharles@garcia.com",
+            "phone": "5635348190",
+            "address": "3645 Jennifer Burgs, West Amandashire, NC 18679",
+            "detailId": "9bcc6c21-d58b-4124-9a57-834d10ab5300"
+        },
+        {
+            "id": "adf25d68-33a6-4bc8-86e9-622f4f4c9c90",
+            "name": "Theresa Woods",
+            "email": "vpowell@walton.com",
+            "phone": "(626)849-7130x1821",
+            "address": "34393 Lisa Ports Suite 240, Aprilport, NM 35595",
+            "detailId": "573c5af3-8d86-475c-8efc-498ebc53a4d7"
+        },
+        {
+            "id": "07a21e48-4f96-4cdc-ad0c-0e7c64c2cf6c",
+            "name": "Raymond Williams",
+            "email": "smueller@alvarez.com",
+            "phone": "001-047-911-1180x56428",
+            "address": "556 John Unions, Port Susan, IA 97504",
+            "detailId": "f47bec25-c6b1-4388-8a41-418d3d54faa4"
+        },
+        {
+            "id": "1da98c44-1164-49e6-b76f-5d83e0a2b669",
+            "name": "Shelley Johnson",
+            "email": "sanchezhayden@gmail.com",
+            "phone": "781-931-3631x687",
+            "address": "08482 Meza Pine, Herreramouth, AK 32822",
+            "detailId": "a4c75257-6efb-433d-8613-cbd9e5e20dcd"
+        },
+        {
+            "id": "5db6f586-243b-47ef-a16c-3861e9ec0a45",
+            "name": "Kevin Davis",
+            "email": "hendersonshelby@mendoza.com",
+            "phone": "144.985.0063",
+            "address": "5159 Norma Mountains Suite 663, North Jessicamouth, CA 14949",
+            "detailId": "314a77f7-e089-431e-809e-e0e0e24e53ee"
+        },
+        {
+            "id": "11735bfa-37fb-4ddc-945c-abf24d3464f4",
+            "name": "Anne Green",
+            "email": "charlesray@reynolds.com",
+            "phone": "001-184-500-2333x351",
+            "address": "8891 Margaret Course Suite 208, Powellfort, MI 52624",
+            "detailId": "29b513ec-c360-4353-aaf7-bbd7bd03400b"
+        },
+        {
+            "id": "b9eaeb6b-89ba-46b3-b73f-8b08f2795284",
+            "name": "Michele Green",
+            "email": "watsonbarbara@holloway-sanders.com",
+            "phone": "(533)861-3567x874",
+            "address": "4735 Martha Alley Suite 991, North Jacqueline, KS 69086",
+            "detailId": "c4fdb947-ee52-48b8-bf64-8a9a851c77dc"
+        },
+        {
+            "id": "3001d636-944a-4bd7-baec-b17db09e665f",
+            "name": "Kayla Carlson",
+            "email": "vsmith@williams.com",
+            "phone": "666-822-2021",
+            "address": "9339 Rose Turnpike Apt. 134, New Robertshire, UT 95988",
+            "detailId": "4cc94340-4cc1-4b8f-a734-1a1c8b9edcf6"
+        },
+        {
+            "id": "2d30b7cb-b3a1-451e-9160-92871cea53c3",
+            "name": "Holly Johnson",
+            "email": "maureen82@gmail.com",
+            "phone": "007.582.1873x8191",
+            "address": "0146 Kendra Centers Apt. 246, New Andrew, PA 91672",
+            "detailId": "e2889e4e-44de-40dc-aed6-40f0d2cfb3e4"
+        },
+        {
+            "id": "f2c763dc-846c-473f-867c-3476ec453e41",
+            "name": "Barbara Flores",
+            "email": "jasonvalencia@arnold-johnson.com",
+            "phone": "432-515-3527",
+            "address": "94029 Pamela Passage, Murraymouth, LA 92251",
+            "detailId": "51ea3cc3-8ba2-4e8e-9c5e-b41e4a4582ad"
+        },
+        {
+            "id": "300a0687-6df3-44bc-bcfc-cd6d2f29f88a",
+            "name": "Carla Henderson",
+            "email": "williamsonchristine@gibson-brown.com",
+            "phone": "(462)830-8792x15958",
+            "address": "99981 Krueger Port, West Robertfurt, FL 53545",
+            "detailId": "010f4e45-b2f3-4f3e-b2e3-b8420dd84964"
+        },
+        {
+            "id": "e93fc912-62a8-4d6c-bf70-f4fcc1ea8f8b",
+            "name": "Dr. Scott Young DVM",
+            "email": "payala@price-rosales.com",
+            "phone": "001-858-154-8759x7380",
+            "address": "291 Adam Forks Apt. 605, East Michele, NH 95749",
+            "detailId": "c6d5189e-6a56-4261-af4f-385ed6f77e2b"
+        },
+        {
+            "id": "d9adef6f-151c-45bd-a34f-6d9f688a5923",
+            "name": "Barbara Garner",
+            "email": "lewisallison@hotmail.com",
+            "phone": "(579)376-1662x2382",
+            "address": "91308 Spencer Extension, New Edward, ME 50212",
+            "detailId": "6b1bd29a-105a-4720-a490-077784b63f00"
+        }
+    ],
+    "customerDetails": [
+        {
+            "id": "f232d684-da0e-4a3e-9715-acfd3fb51e6c",
+            "customerType": "Business",
+            "companyName": "Anderson LLC",
+            "taxNumber": null,
+            "totalOrders": 25,
+            "totalSpent": 189.76,
+            "averageOrderValue": 12.22,
+            "loyaltyPoints": 997,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-448",
+                "prod-942",
+                "prod-483",
+                "prod-968"
+            ],
+            "recentOrderDate": "2024-07-23",
+            "registeredAt": "2022-11-06",
+            "lastLoginAt": "2024-11-04",
+            "address": {
+                "street": "206 Micheal Bridge",
+                "city": "Lake Joshua",
+                "postalCode": "44416",
+                "country": "French Guiana"
+            },
+            "notes": null
+        },
+        {
+            "id": "7d2af8a5-d700-44cf-8a37-c5aa251248f4",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 540671789,
+            "totalOrders": 100,
+            "totalSpent": 489.04,
+            "averageOrderValue": 39.22,
+            "loyaltyPoints": 165,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-686",
+                "prod-945",
+                "prod-782",
+                "prod-922",
+                "prod-770"
+            ],
+            "recentOrderDate": "2024-10-04",
+            "registeredAt": "2023-04-25",
+            "lastLoginAt": "2024-10-08",
+            "address": {
+                "street": "02655 Robert Isle",
+                "city": "South Nicholasburgh",
+                "postalCode": "65587",
+                "country": "Sao Tome and Principe"
+            },
+            "notes": "Rather seem enjoy camera develop Republican. Skill available use treatment."
+        },
+        {
+            "id": "24db3296-722c-40c0-acce-b4cff84623a7",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 340870103,
+            "totalOrders": 41,
+            "totalSpent": 320.02,
+            "averageOrderValue": 49.1,
+            "loyaltyPoints": 618,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-84"
+            ],
+            "recentOrderDate": "2024-01-23",
+            "registeredAt": "2023-10-01",
+            "lastLoginAt": "2024-02-25",
+            "address": {
+                "street": "450 White Flat",
+                "city": "Smithfort",
+                "postalCode": "40550",
+                "country": "Algeria"
+            },
+            "notes": null
+        },
+        {
+            "id": "39144168-e232-4a60-9b3a-50787bce8717",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 30,
+            "totalSpent": 594.39,
+            "averageOrderValue": 40.11,
+            "loyaltyPoints": 805,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-928",
+                "prod-913",
+                "prod-80",
+                "prod-247"
+            ],
+            "recentOrderDate": "2024-08-21",
+            "registeredAt": "2020-05-09",
+            "lastLoginAt": "2024-06-04",
+            "address": {
+                "street": "062 Gomez Point",
+                "city": "Lake Kellyfurt",
+                "postalCode": "80219",
+                "country": "Sri Lanka"
+            },
+            "notes": null
+        },
+        {
+            "id": "83f27c58-20ff-4549-8acc-7f91bf7cad75",
+            "customerType": "Individual",
+            "companyName": "Thomas and Sons",
+            "taxNumber": null,
+            "totalOrders": 2,
+            "totalSpent": 405.91,
+            "averageOrderValue": 17.67,
+            "loyaltyPoints": 920,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-363",
+                "prod-501",
+                "prod-186"
+            ],
+            "recentOrderDate": "2024-06-26",
+            "registeredAt": "2023-12-16",
+            "lastLoginAt": "2024-07-18",
+            "address": {
+                "street": "35262 Danny Trace",
+                "city": "East Crystal",
+                "postalCode": "72175",
+                "country": "British Virgin Islands"
+            },
+            "notes": "Cut focus design by since. Customer area include year. She start either one party free I."
+        },
+        {
+            "id": "7ef3d80f-feb0-496c-ab20-6e4ec2b1541c",
+            "customerType": "Business",
+            "companyName": "Dixon Group",
+            "taxNumber": 376462848,
+            "totalOrders": 70,
+            "totalSpent": 992.91,
+            "averageOrderValue": 41.42,
+            "loyaltyPoints": 614,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-04-07",
+            "registeredAt": "2023-04-09",
+            "lastLoginAt": "2024-01-08",
+            "address": {
+                "street": "44526 Justin Forest Apt. 587",
+                "city": "Lake Alexander",
+                "postalCode": "97482",
+                "country": "Reunion"
+            },
+            "notes": "Bed break expert. Tell food knowledge drive camera."
+        },
+        {
+            "id": "fe216bd2-1993-405c-b23f-50827672915a",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 583064859,
+            "totalOrders": 3,
+            "totalSpent": 644.73,
+            "averageOrderValue": 17.08,
+            "loyaltyPoints": 361,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-82",
+                "prod-679"
+            ],
+            "recentOrderDate": "2024-03-05",
+            "registeredAt": "2020-05-17",
+            "lastLoginAt": "2024-03-03",
+            "address": {
+                "street": "519 Sanchez Light Suite 459",
+                "city": "Julieville",
+                "postalCode": "19235",
+                "country": "Nigeria"
+            },
+            "notes": "Decision born support none interview. Forget officer heavy newspaper military front admit."
+        },
+        {
+            "id": "61e3448a-0d27-40da-8656-abc5a81754ee",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 17,
+            "totalSpent": 97.27,
+            "averageOrderValue": 15.64,
+            "loyaltyPoints": 695,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-185",
+                "prod-637",
+                "prod-897",
+                "prod-315",
+                "prod-827"
+            ],
+            "recentOrderDate": "2024-05-10",
+            "registeredAt": "2022-03-01",
+            "lastLoginAt": "2024-01-20",
+            "address": {
+                "street": "9534 Andrew Fort",
+                "city": "New Jeremy",
+                "postalCode": "57908",
+                "country": "Congo"
+            },
+            "notes": "Somebody radio relate win sell."
+        },
+        {
+            "id": "8b896dcc-f277-4e32-8bbd-55fdf16970c4",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 155963151,
+            "totalOrders": 71,
+            "totalSpent": 950.23,
+            "averageOrderValue": 27.31,
+            "loyaltyPoints": 952,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-07-24",
+            "registeredAt": "2022-04-11",
+            "lastLoginAt": "2024-01-21",
+            "address": {
+                "street": "629 Willis Fall Suite 593",
+                "city": "Michaelfurt",
+                "postalCode": "54389",
+                "country": "Yemen"
+            },
+            "notes": "These because rich network cup various agreement."
+        },
+        {
+            "id": "341b683b-06f6-477b-b0e4-c771fa434ea7",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 193726108,
+            "totalOrders": 72,
+            "totalSpent": 104.19,
+            "averageOrderValue": 39.93,
+            "loyaltyPoints": 716,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-266",
+                "prod-181"
+            ],
+            "recentOrderDate": "2024-03-04",
+            "registeredAt": "2021-03-16",
+            "lastLoginAt": "2024-08-16",
+            "address": {
+                "street": "9339 Riley Lane Suite 459",
+                "city": "Hawkinsmouth",
+                "postalCode": "55830",
+                "country": "Lithuania"
+            },
+            "notes": null
+        },
+        {
+            "id": "d0b8d5dc-e3ea-49dc-83b1-083c9bd07fad",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 153447225,
+            "totalOrders": 29,
+            "totalSpent": 75.43,
+            "averageOrderValue": 23.03,
+            "loyaltyPoints": 574,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-279",
+                "prod-484"
+            ],
+            "recentOrderDate": "2024-07-18",
+            "registeredAt": "2023-09-03",
+            "lastLoginAt": "2024-07-31",
+            "address": {
+                "street": "373 Rita Vista",
+                "city": "Kingborough",
+                "postalCode": "85172",
+                "country": "Bolivia"
+            },
+            "notes": "Action town maybe. Run class begin much. Agree environmental collection man."
+        },
+        {
+            "id": "794709f1-0e8f-4646-be8c-5634a9bf6d5a",
+            "customerType": "Business",
+            "companyName": "Wright-Campbell",
+            "taxNumber": 899194283,
+            "totalOrders": 95,
+            "totalSpent": 503.89,
+            "averageOrderValue": 28.37,
+            "loyaltyPoints": 472,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-394",
+                "prod-909"
+            ],
+            "recentOrderDate": "2024-10-13",
+            "registeredAt": "2022-02-20",
+            "lastLoginAt": "2024-09-05",
+            "address": {
+                "street": "3048 Taylor Crossroad Suite 826",
+                "city": "Shannontown",
+                "postalCode": "68670",
+                "country": "Maldives"
+            },
+            "notes": "People brother after. Blue suffer information between social summer establish western."
+        },
+        {
+            "id": "71a2981a-4d24-4b0b-ab5c-43f1e2125ba2",
+            "customerType": "Individual",
+            "companyName": "Bowman-Ross",
+            "taxNumber": 440951855,
+            "totalOrders": 15,
+            "totalSpent": 328.62,
+            "averageOrderValue": 36.05,
+            "loyaltyPoints": 838,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-803"
+            ],
+            "recentOrderDate": "2024-08-03",
+            "registeredAt": "2023-10-02",
+            "lastLoginAt": "2024-01-11",
+            "address": {
+                "street": "449 Weaver Ville",
+                "city": "Boydberg",
+                "postalCode": "07875",
+                "country": "Malawi"
+            },
+            "notes": null
+        },
+        {
+            "id": "b8399f1b-9308-4466-98c7-d7bf3988ef6a",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 71,
+            "totalSpent": 391.29,
+            "averageOrderValue": 27.24,
+            "loyaltyPoints": 666,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-991",
+                "prod-346",
+                "prod-941"
+            ],
+            "recentOrderDate": "2024-09-20",
+            "registeredAt": "2021-09-14",
+            "lastLoginAt": "2024-02-10",
+            "address": {
+                "street": "65714 Justin Crossing",
+                "city": "New Natasha",
+                "postalCode": "48237",
+                "country": "Bahrain"
+            },
+            "notes": null
+        },
+        {
+            "id": "ef0ceac2-dbd9-4a30-a651-8beeb4cb9a97",
+            "customerType": "Individual",
+            "companyName": "Graham, Lindsey and Moore",
+            "taxNumber": null,
+            "totalOrders": 57,
+            "totalSpent": 90.11,
+            "averageOrderValue": 40.89,
+            "loyaltyPoints": 191,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-12-01",
+            "registeredAt": "2024-06-19",
+            "lastLoginAt": "2024-04-08",
+            "address": {
+                "street": "59474 Lauren Throughway",
+                "city": "Lake Michellemouth",
+                "postalCode": "09931",
+                "country": "Western Sahara"
+            },
+            "notes": "Same someone set probably. Environment year answer they."
+        },
+        {
+            "id": "16224297-28a1-4659-b570-fe54b95c7ace",
+            "customerType": "Business",
+            "companyName": "Turner, Sanchez and Hughes",
+            "taxNumber": null,
+            "totalOrders": 42,
+            "totalSpent": 157.82,
+            "averageOrderValue": 40.43,
+            "loyaltyPoints": 829,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-766",
+                "prod-238",
+                "prod-753",
+                "prod-160",
+                "prod-257"
+            ],
+            "recentOrderDate": "2024-02-22",
+            "registeredAt": "2021-05-08",
+            "lastLoginAt": "2024-12-06",
+            "address": {
+                "street": "805 Adrian Mission",
+                "city": "North Angela",
+                "postalCode": "25882",
+                "country": "Bosnia and Herzegovina"
+            },
+            "notes": null
+        },
+        {
+            "id": "2afc2431-abb3-4ed9-b60c-39e675fef8e3",
+            "customerType": "Individual",
+            "companyName": "Romero PLC",
+            "taxNumber": 730624070,
+            "totalOrders": 67,
+            "totalSpent": 915.82,
+            "averageOrderValue": 27.5,
+            "loyaltyPoints": 647,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-06-16",
+            "registeredAt": "2021-08-12",
+            "lastLoginAt": "2024-03-27",
+            "address": {
+                "street": "679 Jackson Village Suite 800",
+                "city": "Jamesborough",
+                "postalCode": "41570",
+                "country": "Bangladesh"
+            },
+            "notes": "East message coach never.\nRock work eat week down citizen my high. She arm product think."
+        },
+        {
+            "id": "16c2d5ac-8591-4369-a063-5e6c8996ecce",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 11,
+            "totalSpent": 254.85,
+            "averageOrderValue": 35.23,
+            "loyaltyPoints": 426,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-857",
+                "prod-171",
+                "prod-683",
+                "prod-179"
+            ],
+            "recentOrderDate": "2024-11-20",
+            "registeredAt": "2022-01-20",
+            "lastLoginAt": "2024-07-06",
+            "address": {
+                "street": "354 Harmon Station Suite 286",
+                "city": "Martinezbury",
+                "postalCode": "79026",
+                "country": "Monaco"
+            },
+            "notes": "Hotel end outside organization. Own role article wall while."
+        },
+        {
+            "id": "69291ceb-e0e5-4f30-b958-d66cd0d28896",
+            "customerType": "Individual",
+            "companyName": "Reyes, Barnes and Jordan",
+            "taxNumber": null,
+            "totalOrders": 37,
+            "totalSpent": 730.61,
+            "averageOrderValue": 3.8,
+            "loyaltyPoints": 309,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-982",
+                "prod-354",
+                "prod-994",
+                "prod-699"
+            ],
+            "recentOrderDate": "2024-03-21",
+            "registeredAt": "2023-01-21",
+            "lastLoginAt": "2024-02-22",
+            "address": {
+                "street": "42658 Travis Dale",
+                "city": "Floresside",
+                "postalCode": "80082",
+                "country": "France"
+            },
+            "notes": null
+        },
+        {
+            "id": "b2f45916-5573-485a-8b4e-3eb9c3541900",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 23,
+            "totalSpent": 550.99,
+            "averageOrderValue": 30.84,
+            "loyaltyPoints": 998,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-375",
+                "prod-23",
+                "prod-570",
+                "prod-938"
+            ],
+            "recentOrderDate": "2024-10-06",
+            "registeredAt": "2022-10-25",
+            "lastLoginAt": "2024-05-13",
+            "address": {
+                "street": "7000 Veronica Rapids Suite 321",
+                "city": "Cherylview",
+                "postalCode": "46001",
+                "country": "Brunei Darussalam"
+            },
+            "notes": null
+        },
+        {
+            "id": "b2175e85-9df6-4e4f-97d7-31b4770f4ea1",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 95,
+            "totalSpent": 505.76,
+            "averageOrderValue": 49.04,
+            "loyaltyPoints": 995,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-281",
+                "prod-628"
+            ],
+            "recentOrderDate": "2024-01-03",
+            "registeredAt": "2022-11-06",
+            "lastLoginAt": "2024-10-20",
+            "address": {
+                "street": "07454 Chelsea Dam Suite 481",
+                "city": "Tylerbury",
+                "postalCode": "02533",
+                "country": "Israel"
+            },
+            "notes": "Health note buy sport station must source."
+        },
+        {
+            "id": "4865b0aa-589a-43bb-bf6b-c85c6159c5d0",
+            "customerType": "Business",
+            "companyName": "Washington Ltd",
+            "taxNumber": 970678542,
+            "totalOrders": 31,
+            "totalSpent": 490.96,
+            "averageOrderValue": 7.55,
+            "loyaltyPoints": 173,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-705",
+                "prod-906",
+                "prod-904"
+            ],
+            "recentOrderDate": "2024-02-04",
+            "registeredAt": "2021-03-04",
+            "lastLoginAt": "2024-10-17",
+            "address": {
+                "street": "0584 Carpenter Radial",
+                "city": "North Marcus",
+                "postalCode": "99772",
+                "country": "Japan"
+            },
+            "notes": "Evidence the girl policy its many contain. Assume heavy laugh always must."
+        },
+        {
+            "id": "d5d19335-0a27-41d3-81fb-8ac87f7339ed",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 13,
+            "totalSpent": 520.01,
+            "averageOrderValue": 22.27,
+            "loyaltyPoints": 95,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-384",
+                "prod-512",
+                "prod-141",
+                "prod-914",
+                "prod-545"
+            ],
+            "recentOrderDate": "2024-01-08",
+            "registeredAt": "2022-09-16",
+            "lastLoginAt": "2024-02-04",
+            "address": {
+                "street": "18804 Johnson Mountains",
+                "city": "Christopherland",
+                "postalCode": "70994",
+                "country": "Lesotho"
+            },
+            "notes": "Indeed alone like. Boy Democrat point eat."
+        },
+        {
+            "id": "dcd8f5f5-afc5-4e17-97fd-2c456bed379c",
+            "customerType": "Individual",
+            "companyName": "Walker, Chung and Leblanc",
+            "taxNumber": null,
+            "totalOrders": 88,
+            "totalSpent": 947.09,
+            "averageOrderValue": 32.85,
+            "loyaltyPoints": 801,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-05-11",
+            "registeredAt": "2022-01-18",
+            "lastLoginAt": "2024-04-04",
+            "address": {
+                "street": "608 William Gateway",
+                "city": "Lisaborough",
+                "postalCode": "22733",
+                "country": "Faroe Islands"
+            },
+            "notes": null
+        },
+        {
+            "id": "c9936246-a6bf-48eb-82fd-e5b4d67ed3bd",
+            "customerType": "Individual",
+            "companyName": "Swanson-Wells",
+            "taxNumber": null,
+            "totalOrders": 87,
+            "totalSpent": 878.53,
+            "averageOrderValue": 35.73,
+            "loyaltyPoints": 707,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-709",
+                "prod-502",
+                "prod-124",
+                "prod-813",
+                "prod-970"
+            ],
+            "recentOrderDate": "2024-05-15",
+            "registeredAt": "2023-05-27",
+            "lastLoginAt": "2024-03-01",
+            "address": {
+                "street": "263 Heather Camp Apt. 488",
+                "city": "Lisamouth",
+                "postalCode": "66281",
+                "country": "Nicaragua"
+            },
+            "notes": "Eat hundred while visit heavy forget. Produce here one. Dinner art theory find wonder meet several."
+        },
+        {
+            "id": "ee811574-0941-4ce2-8833-077e4416ddfa",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 548244977,
+            "totalOrders": 27,
+            "totalSpent": 361.26,
+            "averageOrderValue": 21.27,
+            "loyaltyPoints": 120,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-499",
+                "prod-446",
+                "prod-907",
+                "prod-949"
+            ],
+            "recentOrderDate": "2024-09-15",
+            "registeredAt": "2023-06-01",
+            "lastLoginAt": "2024-05-17",
+            "address": {
+                "street": "1480 Geoffrey Curve Suite 154",
+                "city": "Schroederton",
+                "postalCode": "28421",
+                "country": "Bangladesh"
+            },
+            "notes": null
+        },
+        {
+            "id": "4a88d01b-07be-42fe-841c-dcbdf5b14330",
+            "customerType": "Business",
+            "companyName": "Murphy, Young and Frazier",
+            "taxNumber": null,
+            "totalOrders": 48,
+            "totalSpent": 185.8,
+            "averageOrderValue": 9.19,
+            "loyaltyPoints": 844,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-949",
+                "prod-837",
+                "prod-705"
+            ],
+            "recentOrderDate": "2024-02-23",
+            "registeredAt": "2023-03-16",
+            "lastLoginAt": "2024-01-28",
+            "address": {
+                "street": "42148 Gonzalez Rapid",
+                "city": "Morristown",
+                "postalCode": "53588",
+                "country": "Andorra"
+            },
+            "notes": "Even send executive dark easy.\nChance cover inside. Let without impact high. Hit positive low me."
+        },
+        {
+            "id": "7625415e-32d6-439f-a0b0-88e4ff92ec59",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 233442715,
+            "totalOrders": 83,
+            "totalSpent": 78.07,
+            "averageOrderValue": 20.43,
+            "loyaltyPoints": 295,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-189",
+                "prod-582",
+                "prod-669",
+                "prod-580"
+            ],
+            "recentOrderDate": "2024-08-14",
+            "registeredAt": "2021-11-08",
+            "lastLoginAt": "2024-03-20",
+            "address": {
+                "street": "1735 Sandra Path Apt. 349",
+                "city": "Port Davidtown",
+                "postalCode": "02477",
+                "country": "Germany"
+            },
+            "notes": null
+        },
+        {
+            "id": "909ad45b-b0c7-42d6-a0b8-792211068b2f",
+            "customerType": "Individual",
+            "companyName": "Macdonald, Sanchez and Barnes",
+            "taxNumber": 492412905,
+            "totalOrders": 91,
+            "totalSpent": 980.58,
+            "averageOrderValue": 37.21,
+            "loyaltyPoints": 596,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-691",
+                "prod-575",
+                "prod-560",
+                "prod-667"
+            ],
+            "recentOrderDate": "2024-05-24",
+            "registeredAt": "2022-09-11",
+            "lastLoginAt": "2024-01-13",
+            "address": {
+                "street": "713 Dale Knoll Suite 229",
+                "city": "New Janetmouth",
+                "postalCode": "53861",
+                "country": "Armenia"
+            },
+            "notes": "Go relationship through significant."
+        },
+        {
+            "id": "7fe6d45f-7958-40a5-9b03-a7867032bff9",
+            "customerType": "Business",
+            "companyName": "Peterson, Herrera and Tucker",
+            "taxNumber": 156055779,
+            "totalOrders": 14,
+            "totalSpent": 324.65,
+            "averageOrderValue": 19.07,
+            "loyaltyPoints": 896,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-348"
+            ],
+            "recentOrderDate": "2024-11-23",
+            "registeredAt": "2020-06-21",
+            "lastLoginAt": "2024-07-26",
+            "address": {
+                "street": "67534 Ian Brook Apt. 721",
+                "city": "Matthewshire",
+                "postalCode": "15320",
+                "country": "Palau"
+            },
+            "notes": "Brother listen ever plant old price wrong. Run task own report their boy easy."
+        },
+        {
+            "id": "18ece260-c692-4ee4-ad5a-9b0abc330780",
+            "customerType": "Individual",
+            "companyName": "Miller-Smith",
+            "taxNumber": 574835979,
+            "totalOrders": 1,
+            "totalSpent": 646.11,
+            "averageOrderValue": 29.05,
+            "loyaltyPoints": 595,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-410",
+                "prod-606",
+                "prod-837",
+                "prod-317",
+                "prod-590"
+            ],
+            "recentOrderDate": "2024-05-13",
+            "registeredAt": "2024-07-24",
+            "lastLoginAt": "2024-03-10",
+            "address": {
+                "street": "905 April Divide",
+                "city": "Lorraineburgh",
+                "postalCode": "87129",
+                "country": "Brunei Darussalam"
+            },
+            "notes": null
+        },
+        {
+            "id": "3e4f1fb2-efcb-4e8b-b64b-c8ca8ec57dbb",
+            "customerType": "Individual",
+            "companyName": "Reynolds, Reed and Page",
+            "taxNumber": null,
+            "totalOrders": 87,
+            "totalSpent": 503.12,
+            "averageOrderValue": 29.24,
+            "loyaltyPoints": 240,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-536",
+                "prod-612",
+                "prod-816"
+            ],
+            "recentOrderDate": "2024-11-12",
+            "registeredAt": "2020-10-02",
+            "lastLoginAt": "2024-06-10",
+            "address": {
+                "street": "40221 Kimberly Plains",
+                "city": "Hodgebury",
+                "postalCode": "19837",
+                "country": "Dominica"
+            },
+            "notes": null
+        },
+        {
+            "id": "534084b7-eec8-4361-941d-4e5c9c9a8f30",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 802172425,
+            "totalOrders": 62,
+            "totalSpent": 659.12,
+            "averageOrderValue": 49.08,
+            "loyaltyPoints": 980,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-09-21",
+            "registeredAt": "2023-12-20",
+            "lastLoginAt": "2024-01-17",
+            "address": {
+                "street": "30875 Johnson Course Suite 008",
+                "city": "Peggyborough",
+                "postalCode": "43437",
+                "country": "Puerto Rico"
+            },
+            "notes": "Year case both above discussion."
+        },
+        {
+            "id": "4f82bf65-99e8-4df2-8bca-d5821ae2f686",
+            "customerType": "Business",
+            "companyName": "White-Carter",
+            "taxNumber": 376284207,
+            "totalOrders": 28,
+            "totalSpent": 790.26,
+            "averageOrderValue": 37.94,
+            "loyaltyPoints": 857,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-09-17",
+            "registeredAt": "2020-07-05",
+            "lastLoginAt": "2024-10-16",
+            "address": {
+                "street": "936 Fritz Keys Apt. 509",
+                "city": "West Megan",
+                "postalCode": "32629",
+                "country": "Uganda"
+            },
+            "notes": "With crime also check. Wish hold role."
+        },
+        {
+            "id": "a65bdbed-45dd-4d81-9716-44569647197e",
+            "customerType": "Business",
+            "companyName": "Murphy-Webb",
+            "taxNumber": 330807432,
+            "totalOrders": 40,
+            "totalSpent": 520.59,
+            "averageOrderValue": 4.59,
+            "loyaltyPoints": 958,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-10-27",
+            "registeredAt": "2024-01-21",
+            "lastLoginAt": "2024-10-16",
+            "address": {
+                "street": "7148 Moore Spring Suite 393",
+                "city": "Lake Ashleyview",
+                "postalCode": "20026",
+                "country": "Kyrgyz Republic"
+            },
+            "notes": null
+        },
+        {
+            "id": "36dfa71e-8321-459f-928b-c73cae0dd021",
+            "customerType": "Individual",
+            "companyName": "Pena-Jones",
+            "taxNumber": 414536955,
+            "totalOrders": 58,
+            "totalSpent": 250.47,
+            "averageOrderValue": 39.67,
+            "loyaltyPoints": 553,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-161"
+            ],
+            "recentOrderDate": "2024-09-01",
+            "registeredAt": "2022-06-21",
+            "lastLoginAt": "2024-10-11",
+            "address": {
+                "street": "262 Wayne Mall",
+                "city": "Davischester",
+                "postalCode": "88719",
+                "country": "Bouvet Island (Bouvetoya)"
+            },
+            "notes": null
+        },
+        {
+            "id": "9fb15c85-a41b-4dab-8546-c251c9b491dc",
+            "customerType": "Individual",
+            "companyName": "Nguyen Group",
+            "taxNumber": 348269972,
+            "totalOrders": 10,
+            "totalSpent": 118.65,
+            "averageOrderValue": 8.88,
+            "loyaltyPoints": 793,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-883",
+                "prod-741",
+                "prod-216"
+            ],
+            "recentOrderDate": "2024-11-11",
+            "registeredAt": "2021-09-02",
+            "lastLoginAt": "2024-01-02",
+            "address": {
+                "street": "20386 Doyle Green",
+                "city": "Lake Robert",
+                "postalCode": "47107",
+                "country": "Rwanda"
+            },
+            "notes": null
+        },
+        {
+            "id": "b08c689b-2761-4503-8487-95e4acb83749",
+            "customerType": "Individual",
+            "companyName": "Griffin, Thompson and Smith",
+            "taxNumber": 961142619,
+            "totalOrders": 31,
+            "totalSpent": 440.82,
+            "averageOrderValue": 3.73,
+            "loyaltyPoints": 380,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-882",
+                "prod-565"
+            ],
+            "recentOrderDate": "2024-03-13",
+            "registeredAt": "2023-11-02",
+            "lastLoginAt": "2024-10-02",
+            "address": {
+                "street": "39788 Rodriguez Circle Apt. 451",
+                "city": "Morrisonmouth",
+                "postalCode": "90511",
+                "country": "Nepal"
+            },
+            "notes": "Spring easy short apply program assume."
+        },
+        {
+            "id": "2090b69a-b036-489a-aea2-e4087faae245",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 7,
+            "totalSpent": 486.2,
+            "averageOrderValue": 38.23,
+            "loyaltyPoints": 170,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-08-01",
+            "registeredAt": "2023-03-03",
+            "lastLoginAt": "2024-10-30",
+            "address": {
+                "street": "27766 Jose Motorway",
+                "city": "Greeneton",
+                "postalCode": "42458",
+                "country": "Switzerland"
+            },
+            "notes": "Participant marriage food event collection. Often plan lawyer interview other field oil floor."
+        },
+        {
+            "id": "257e9b71-80d8-4e9b-b3ea-09898c592116",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 184325269,
+            "totalOrders": 26,
+            "totalSpent": 198.45,
+            "averageOrderValue": 23.38,
+            "loyaltyPoints": 614,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-725"
+            ],
+            "recentOrderDate": "2024-02-24",
+            "registeredAt": "2024-05-16",
+            "lastLoginAt": "2024-11-17",
+            "address": {
+                "street": "0052 Reginald Bridge Apt. 057",
+                "city": "Melaniemouth",
+                "postalCode": "62893",
+                "country": "Sweden"
+            },
+            "notes": "Performance yourself watch left cover current. Sing itself produce right three design."
+        },
+        {
+            "id": "acd54931-548b-48f3-9224-355039e72133",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 659781586,
+            "totalOrders": 78,
+            "totalSpent": 223.09,
+            "averageOrderValue": 18.12,
+            "loyaltyPoints": 268,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-04-25",
+            "registeredAt": "2024-01-06",
+            "lastLoginAt": "2024-10-21",
+            "address": {
+                "street": "4776 Caroline Drive",
+                "city": "East Marie",
+                "postalCode": "96580",
+                "country": "Liechtenstein"
+            },
+            "notes": "Role audience because ability sure. Notice item your service happen go capital example."
+        },
+        {
+            "id": "8df86d42-6a6f-47ce-9d0e-dba1f71f81d8",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 69,
+            "totalSpent": 249.16,
+            "averageOrderValue": 43.2,
+            "loyaltyPoints": 724,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-644",
+                "prod-275"
+            ],
+            "recentOrderDate": "2024-11-15",
+            "registeredAt": "2024-04-10",
+            "lastLoginAt": "2024-04-20",
+            "address": {
+                "street": "1156 Hamilton Circle",
+                "city": "Gregtown",
+                "postalCode": "60907",
+                "country": "Finland"
+            },
+            "notes": null
+        },
+        {
+            "id": "f96f1a65-f3d8-4fa3-8a93-eb49d15f80c3",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 15,
+            "totalSpent": 471.9,
+            "averageOrderValue": 34.61,
+            "loyaltyPoints": 685,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-942",
+                "prod-418",
+                "prod-818",
+                "prod-495"
+            ],
+            "recentOrderDate": "2024-09-25",
+            "registeredAt": "2024-12-04",
+            "lastLoginAt": "2024-06-16",
+            "address": {
+                "street": "566 Joseph Hill",
+                "city": "Port Raymondstad",
+                "postalCode": "66290",
+                "country": "Taiwan"
+            },
+            "notes": "Big effect outside. Ready in fine young area never security."
+        },
+        {
+            "id": "0851392d-e1c4-48a1-81cf-10193ad045d3",
+            "customerType": "Business",
+            "companyName": "Scott Group",
+            "taxNumber": 996970317,
+            "totalOrders": 87,
+            "totalSpent": 295.96,
+            "averageOrderValue": 20.68,
+            "loyaltyPoints": 782,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-119",
+                "prod-463",
+                "prod-99",
+                "prod-97",
+                "prod-522"
+            ],
+            "recentOrderDate": "2024-05-02",
+            "registeredAt": "2021-09-01",
+            "lastLoginAt": "2024-05-25",
+            "address": {
+                "street": "44073 Melissa Burg",
+                "city": "West Sharon",
+                "postalCode": "92160",
+                "country": "Thailand"
+            },
+            "notes": "Blue start control when. Through plan never together interview manager."
+        },
+        {
+            "id": "3ecc2abd-b7ec-4571-a4b4-3bc694f8858c",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 54,
+            "totalSpent": 740.79,
+            "averageOrderValue": 20.69,
+            "loyaltyPoints": 297,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-972",
+                "prod-969",
+                "prod-861"
+            ],
+            "recentOrderDate": "2024-12-01",
+            "registeredAt": "2022-04-17",
+            "lastLoginAt": "2024-02-16",
+            "address": {
+                "street": "8362 George Springs",
+                "city": "South Justinburgh",
+                "postalCode": "67745",
+                "country": "Aruba"
+            },
+            "notes": null
+        },
+        {
+            "id": "7d83fd73-ed2e-4d5d-a95b-6afd481effb8",
+            "customerType": "Business",
+            "companyName": "Miranda, Rocha and Lee",
+            "taxNumber": null,
+            "totalOrders": 42,
+            "totalSpent": 884.28,
+            "averageOrderValue": 43.42,
+            "loyaltyPoints": 251,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-397"
+            ],
+            "recentOrderDate": "2024-06-17",
+            "registeredAt": "2020-07-06",
+            "lastLoginAt": "2024-06-07",
+            "address": {
+                "street": "0496 Leon Estate Suite 717",
+                "city": "Bennettmouth",
+                "postalCode": "83746",
+                "country": "Andorra"
+            },
+            "notes": "How new attorney town difficult. Medical such phone say these."
+        },
+        {
+            "id": "74fbf168-b881-449e-8761-2ff4089aaa6d",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 352689855,
+            "totalOrders": 80,
+            "totalSpent": 820.29,
+            "averageOrderValue": 36.4,
+            "loyaltyPoints": 950,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-884"
+            ],
+            "recentOrderDate": "2024-05-01",
+            "registeredAt": "2024-06-24",
+            "lastLoginAt": "2024-03-08",
+            "address": {
+                "street": "787 David Haven",
+                "city": "Lake Vanessaberg",
+                "postalCode": "76065",
+                "country": "Malawi"
+            },
+            "notes": "Piece free senior letter. Image beautiful notice test."
+        },
+        {
+            "id": "497c5338-46eb-4826-80c1-214de9f79291",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 45,
+            "totalSpent": 79.0,
+            "averageOrderValue": 32.38,
+            "loyaltyPoints": 307,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-716",
+                "prod-200",
+                "prod-983",
+                "prod-535"
+            ],
+            "recentOrderDate": "2024-01-16",
+            "registeredAt": "2023-02-26",
+            "lastLoginAt": "2024-08-18",
+            "address": {
+                "street": "27055 Patrick Mews Suite 014",
+                "city": "Nobleborough",
+                "postalCode": "61505",
+                "country": "Uruguay"
+            },
+            "notes": "Realize best little painting. Difference arm ahead explain idea."
+        },
+        {
+            "id": "e28698b3-31e9-4624-9580-ead3b14efd3a",
+            "customerType": "Individual",
+            "companyName": "Sims, Mitchell and Miller",
+            "taxNumber": 361585504,
+            "totalOrders": 82,
+            "totalSpent": 588.45,
+            "averageOrderValue": 4.03,
+            "loyaltyPoints": 636,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-159",
+                "prod-122",
+                "prod-700",
+                "prod-463",
+                "prod-147"
+            ],
+            "recentOrderDate": "2024-07-08",
+            "registeredAt": "2020-02-23",
+            "lastLoginAt": "2024-06-04",
+            "address": {
+                "street": "81218 Murphy Mill Apt. 501",
+                "city": "West Candace",
+                "postalCode": "34906",
+                "country": "Algeria"
+            },
+            "notes": "Say benefit wish discover. Card increase tell ask."
+        },
+        {
+            "id": "021c2933-8eec-4984-8431-8b7da310b9d7",
+            "customerType": "Individual",
+            "companyName": "Jordan-King",
+            "taxNumber": 485784136,
+            "totalOrders": 31,
+            "totalSpent": 763.02,
+            "averageOrderValue": 32.64,
+            "loyaltyPoints": 373,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-737",
+                "prod-638",
+                "prod-600",
+                "prod-711",
+                "prod-768"
+            ],
+            "recentOrderDate": "2024-09-03",
+            "registeredAt": "2021-08-30",
+            "lastLoginAt": "2024-07-27",
+            "address": {
+                "street": "3945 Johnston Mountain Suite 688",
+                "city": "Davidfurt",
+                "postalCode": "62181",
+                "country": "Morocco"
+            },
+            "notes": null
+        },
+        {
+            "id": "1004e500-ad08-4e82-ad46-b98593eadd1f",
+            "customerType": "Individual",
+            "companyName": "Meyer-Smith",
+            "taxNumber": 679930930,
+            "totalOrders": 4,
+            "totalSpent": 492.75,
+            "averageOrderValue": 40.91,
+            "loyaltyPoints": 396,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-225",
+                "prod-250",
+                "prod-392",
+                "prod-896"
+            ],
+            "recentOrderDate": "2024-03-20",
+            "registeredAt": "2024-10-01",
+            "lastLoginAt": "2024-10-18",
+            "address": {
+                "street": "265 Jeremy Glen",
+                "city": "Rebeccaside",
+                "postalCode": "85051",
+                "country": "Zimbabwe"
+            },
+            "notes": null
+        },
+        {
+            "id": "712b8577-1e4b-4843-a5b7-8ed8b480d790",
+            "customerType": "Individual",
+            "companyName": "Richard, Raymond and Stafford",
+            "taxNumber": null,
+            "totalOrders": 28,
+            "totalSpent": 690.14,
+            "averageOrderValue": 6.98,
+            "loyaltyPoints": 76,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-245"
+            ],
+            "recentOrderDate": "2024-08-07",
+            "registeredAt": "2021-09-21",
+            "lastLoginAt": "2024-10-11",
+            "address": {
+                "street": "02096 Williamson Courts Apt. 502",
+                "city": "Kathleenbury",
+                "postalCode": "87518",
+                "country": "Cuba"
+            },
+            "notes": "Magazine than peace. Home win history produce. Order leg find cold still cut."
+        },
+        {
+            "id": "42238f4f-55df-45f9-997d-3b6906997567",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 422059975,
+            "totalOrders": 67,
+            "totalSpent": 363.88,
+            "averageOrderValue": 31.67,
+            "loyaltyPoints": 712,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-03-09",
+            "registeredAt": "2020-02-03",
+            "lastLoginAt": "2024-05-18",
+            "address": {
+                "street": "6219 Ochoa Villages",
+                "city": "Sharonhaven",
+                "postalCode": "67569",
+                "country": "Slovakia (Slovak Republic)"
+            },
+            "notes": null
+        },
+        {
+            "id": "a2dea8e3-8d1b-45b7-b9ad-77fb6ba00b1b",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 839004629,
+            "totalOrders": 84,
+            "totalSpent": 72.4,
+            "averageOrderValue": 27.59,
+            "loyaltyPoints": 784,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-955"
+            ],
+            "recentOrderDate": "2024-08-10",
+            "registeredAt": "2022-10-09",
+            "lastLoginAt": "2024-10-14",
+            "address": {
+                "street": "1235 Santos Tunnel Suite 764",
+                "city": "Davidton",
+                "postalCode": "12003",
+                "country": "Turks and Caicos Islands"
+            },
+            "notes": null
+        },
+        {
+            "id": "ccc9da0a-9a6c-49b2-8eb9-d4063f7269a5",
+            "customerType": "Individual",
+            "companyName": "Ward-Cardenas",
+            "taxNumber": null,
+            "totalOrders": 96,
+            "totalSpent": 436.02,
+            "averageOrderValue": 32.85,
+            "loyaltyPoints": 731,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-171"
+            ],
+            "recentOrderDate": "2024-08-24",
+            "registeredAt": "2022-08-29",
+            "lastLoginAt": "2024-10-18",
+            "address": {
+                "street": "4749 Brooke Run Suite 479",
+                "city": "South Mauricemouth",
+                "postalCode": "97301",
+                "country": "Kuwait"
+            },
+            "notes": null
+        },
+        {
+            "id": "783a5243-667e-4f7d-a8bf-e791fd3563dc",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 368881205,
+            "totalOrders": 46,
+            "totalSpent": 512.18,
+            "averageOrderValue": 22.44,
+            "loyaltyPoints": 195,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-644",
+                "prod-429",
+                "prod-556",
+                "prod-77"
+            ],
+            "recentOrderDate": "2024-02-19",
+            "registeredAt": "2021-05-07",
+            "lastLoginAt": "2024-08-19",
+            "address": {
+                "street": "8046 Warren River Apt. 766",
+                "city": "Frazierstad",
+                "postalCode": "77424",
+                "country": "Swaziland"
+            },
+            "notes": null
+        },
+        {
+            "id": "5b43ebab-d8e9-4352-93b2-6ac747ae3cbf",
+            "customerType": "Individual",
+            "companyName": "Johnson, Robinson and Drake",
+            "taxNumber": 775719553,
+            "totalOrders": 43,
+            "totalSpent": 615.96,
+            "averageOrderValue": 18.2,
+            "loyaltyPoints": 752,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-729",
+                "prod-887"
+            ],
+            "recentOrderDate": "2024-05-27",
+            "registeredAt": "2024-08-26",
+            "lastLoginAt": "2024-03-13",
+            "address": {
+                "street": "2594 Bryan Neck",
+                "city": "East Rickymouth",
+                "postalCode": "30394",
+                "country": "Korea"
+            },
+            "notes": null
+        },
+        {
+            "id": "73effa53-743f-4113-a6dc-39e85e2e9e7a",
+            "customerType": "Individual",
+            "companyName": "Howard-Campos",
+            "taxNumber": null,
+            "totalOrders": 85,
+            "totalSpent": 932.17,
+            "averageOrderValue": 10.25,
+            "loyaltyPoints": 222,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-906",
+                "prod-211",
+                "prod-887"
+            ],
+            "recentOrderDate": "2024-07-20",
+            "registeredAt": "2024-02-25",
+            "lastLoginAt": "2024-04-21",
+            "address": {
+                "street": "1761 Barnes Dam",
+                "city": "Lake Laurie",
+                "postalCode": "15193",
+                "country": "Uzbekistan"
+            },
+            "notes": "Explain here possible because. Information town him modern fill finish."
+        },
+        {
+            "id": "73b72d19-e691-4626-a553-cc030a466f15",
+            "customerType": "Business",
+            "companyName": "Oconnell, Nixon and Holland",
+            "taxNumber": null,
+            "totalOrders": 13,
+            "totalSpent": 695.36,
+            "averageOrderValue": 29.35,
+            "loyaltyPoints": 782,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-741",
+                "prod-671",
+                "prod-941"
+            ],
+            "recentOrderDate": "2024-03-01",
+            "registeredAt": "2020-08-09",
+            "lastLoginAt": "2024-11-29",
+            "address": {
+                "street": "902 John Trail Suite 578",
+                "city": "Hernandezberg",
+                "postalCode": "62840",
+                "country": "Greenland"
+            },
+            "notes": "Activity argue more authority dinner big. End stock catch act mean."
+        },
+        {
+            "id": "571d168d-efb4-4472-85ae-dfedb17f6f40",
+            "customerType": "Individual",
+            "companyName": "Nelson, Miles and Cuevas",
+            "taxNumber": 633750930,
+            "totalOrders": 93,
+            "totalSpent": 811.09,
+            "averageOrderValue": 29.39,
+            "loyaltyPoints": 214,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-522",
+                "prod-550",
+                "prod-205",
+                "prod-352",
+                "prod-1000"
+            ],
+            "recentOrderDate": "2024-04-17",
+            "registeredAt": "2021-12-31",
+            "lastLoginAt": "2024-09-27",
+            "address": {
+                "street": "3313 Edwards Loaf",
+                "city": "Teresahaven",
+                "postalCode": "53116",
+                "country": "Somalia"
+            },
+            "notes": null
+        },
+        {
+            "id": "4c9eb5ee-8cb9-4fa1-8a99-ec6a022b9f15",
+            "customerType": "Individual",
+            "companyName": "Lopez, Simmons and Berry",
+            "taxNumber": 268398299,
+            "totalOrders": 61,
+            "totalSpent": 547.15,
+            "averageOrderValue": 7.32,
+            "loyaltyPoints": 515,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-04-30",
+            "registeredAt": "2024-08-29",
+            "lastLoginAt": "2024-01-15",
+            "address": {
+                "street": "92742 Martinez Viaduct Apt. 982",
+                "city": "Port Karenport",
+                "postalCode": "61995",
+                "country": "Timor-Leste"
+            },
+            "notes": null
+        },
+        {
+            "id": "a377b271-bb38-4473-b7de-122311eeae76",
+            "customerType": "Individual",
+            "companyName": "Mitchell-Patton",
+            "taxNumber": 907238571,
+            "totalOrders": 48,
+            "totalSpent": 276.82,
+            "averageOrderValue": 38.62,
+            "loyaltyPoints": 65,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-160",
+                "prod-40",
+                "prod-433",
+                "prod-346",
+                "prod-342"
+            ],
+            "recentOrderDate": "2024-07-18",
+            "registeredAt": "2020-11-10",
+            "lastLoginAt": "2024-12-06",
+            "address": {
+                "street": "3667 Larry Glens Apt. 109",
+                "city": "Butlerport",
+                "postalCode": "24941",
+                "country": "Lithuania"
+            },
+            "notes": null
+        },
+        {
+            "id": "d5912eca-a3ca-407f-998e-d4fa40d44175",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 34,
+            "totalSpent": 638.17,
+            "averageOrderValue": 10.62,
+            "loyaltyPoints": 133,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-10-10",
+            "registeredAt": "2023-08-12",
+            "lastLoginAt": "2024-05-21",
+            "address": {
+                "street": "735 Monica Lodge Suite 497",
+                "city": "Ballardview",
+                "postalCode": "42836",
+                "country": "Nauru"
+            },
+            "notes": "Require out identify down we. Still trouble fear begin."
+        },
+        {
+            "id": "69d72dda-fd5a-4153-8a42-072407be4048",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 49,
+            "totalSpent": 256.04,
+            "averageOrderValue": 22.34,
+            "loyaltyPoints": 51,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-222",
+                "prod-777",
+                "prod-551",
+                "prod-274"
+            ],
+            "recentOrderDate": "2024-09-15",
+            "registeredAt": "2020-09-15",
+            "lastLoginAt": "2024-04-21",
+            "address": {
+                "street": "7261 Jennifer Port",
+                "city": "Marcusstad",
+                "postalCode": "08330",
+                "country": "Iraq"
+            },
+            "notes": null
+        },
+        {
+            "id": "c94ae8fa-af3d-4952-9cc5-650a736d9523",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 477863975,
+            "totalOrders": 47,
+            "totalSpent": 393.82,
+            "averageOrderValue": 19.65,
+            "loyaltyPoints": 386,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-173",
+                "prod-988",
+                "prod-673",
+                "prod-471",
+                "prod-737"
+            ],
+            "recentOrderDate": "2024-06-25",
+            "registeredAt": "2023-04-08",
+            "lastLoginAt": "2024-10-23",
+            "address": {
+                "street": "4127 Padilla Lodge",
+                "city": "Suzannefurt",
+                "postalCode": "86865",
+                "country": "New Caledonia"
+            },
+            "notes": "Box do create fish. Bed nearly type even. Mrs day him history teach state."
+        },
+        {
+            "id": "26235212-6f31-473d-a974-cc7d53fb028d",
+            "customerType": "Business",
+            "companyName": "Gray Inc",
+            "taxNumber": 318904944,
+            "totalOrders": 92,
+            "totalSpent": 56.71,
+            "averageOrderValue": 32.8,
+            "loyaltyPoints": 119,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-61",
+                "prod-25",
+                "prod-428"
+            ],
+            "recentOrderDate": "2024-05-24",
+            "registeredAt": "2024-09-15",
+            "lastLoginAt": "2024-10-04",
+            "address": {
+                "street": "230 Alexis Crescent",
+                "city": "Owensborough",
+                "postalCode": "44530",
+                "country": "Denmark"
+            },
+            "notes": null
+        },
+        {
+            "id": "db2a7bbe-6078-4295-a756-21f8b045bd5f",
+            "customerType": "Individual",
+            "companyName": "Hernandez-Lee",
+            "taxNumber": 608536544,
+            "totalOrders": 99,
+            "totalSpent": 302.15,
+            "averageOrderValue": 8.73,
+            "loyaltyPoints": 794,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-795"
+            ],
+            "recentOrderDate": "2024-07-04",
+            "registeredAt": "2023-07-09",
+            "lastLoginAt": "2024-05-28",
+            "address": {
+                "street": "62565 Meza Land",
+                "city": "North Robertchester",
+                "postalCode": "73052",
+                "country": "Niger"
+            },
+            "notes": "Wonder soon race wear discuss. Camera figure employee throughout."
+        },
+        {
+            "id": "6a19cdfc-7eb3-4658-b1e5-c0f7a31f7554",
+            "customerType": "Business",
+            "companyName": "Berry, Dalton and Martinez",
+            "taxNumber": 267970476,
+            "totalOrders": 59,
+            "totalSpent": 526.37,
+            "averageOrderValue": 1.78,
+            "loyaltyPoints": 976,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-05-21",
+            "registeredAt": "2023-08-20",
+            "lastLoginAt": "2024-10-11",
+            "address": {
+                "street": "63224 Oliver Row",
+                "city": "East Tannerfurt",
+                "postalCode": "12484",
+                "country": "Denmark"
+            },
+            "notes": "True building the record receive. Reach account like police. Drop quite material wait nature."
+        },
+        {
+            "id": "3a742755-3549-4489-8f9b-3155e1aadbf1",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 11,
+            "totalSpent": 674.91,
+            "averageOrderValue": 38.66,
+            "loyaltyPoints": 478,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-11-29",
+            "registeredAt": "2024-05-13",
+            "lastLoginAt": "2024-08-20",
+            "address": {
+                "street": "68452 Caldwell Squares Apt. 987",
+                "city": "Riverashire",
+                "postalCode": "22111",
+                "country": "Malawi"
+            },
+            "notes": "Go event need create good national couple."
+        },
+        {
+            "id": "d75a72d9-1fcc-48db-a92e-de2ca54d28c1",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 493055651,
+            "totalOrders": 62,
+            "totalSpent": 364.62,
+            "averageOrderValue": 22.64,
+            "loyaltyPoints": 183,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-906"
+            ],
+            "recentOrderDate": "2024-05-11",
+            "registeredAt": "2024-03-26",
+            "lastLoginAt": "2024-02-27",
+            "address": {
+                "street": "4362 Todd Rapid",
+                "city": "North Dorothyfurt",
+                "postalCode": "95975",
+                "country": "Palau"
+            },
+            "notes": "Simple probably sense see defense concern. Alone war west. Glass think agent police thank."
+        },
+        {
+            "id": "bb57da80-883b-4c61-825c-3468a60e32c9",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 364277872,
+            "totalOrders": 41,
+            "totalSpent": 457.4,
+            "averageOrderValue": 11.79,
+            "loyaltyPoints": 337,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-524",
+                "prod-179"
+            ],
+            "recentOrderDate": "2024-03-02",
+            "registeredAt": "2020-05-19",
+            "lastLoginAt": "2024-03-14",
+            "address": {
+                "street": "1002 Jeremy Centers",
+                "city": "Wendymouth",
+                "postalCode": "43699",
+                "country": "Slovenia"
+            },
+            "notes": "Exactly plant teacher performance discover coach news."
+        },
+        {
+            "id": "668ad92f-fdbf-4844-9e98-d1434523e90d",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 74,
+            "totalSpent": 318.38,
+            "averageOrderValue": 1.05,
+            "loyaltyPoints": 361,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-142",
+                "prod-490",
+                "prod-617"
+            ],
+            "recentOrderDate": "2024-07-23",
+            "registeredAt": "2021-02-28",
+            "lastLoginAt": "2024-08-05",
+            "address": {
+                "street": "92236 Kaitlyn Isle Suite 152",
+                "city": "West Amberfort",
+                "postalCode": "73517",
+                "country": "Albania"
+            },
+            "notes": "Every inside both bad control. Policy key own ten true. Bed approach government security."
+        },
+        {
+            "id": "7fb744bf-12a6-43f7-87b9-b39339f285c3",
+            "customerType": "Individual",
+            "companyName": "Horne and Sons",
+            "taxNumber": null,
+            "totalOrders": 71,
+            "totalSpent": 53.73,
+            "averageOrderValue": 35.83,
+            "loyaltyPoints": 98,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-11-15",
+            "registeredAt": "2022-11-11",
+            "lastLoginAt": "2024-04-10",
+            "address": {
+                "street": "9582 Zuniga Trail Apt. 133",
+                "city": "North Theresaside",
+                "postalCode": "48832",
+                "country": "Greece"
+            },
+            "notes": "Wife still subject include. Might plan may woman seem individual."
+        },
+        {
+            "id": "6c1ebde7-6618-42f9-add5-30d009fda2af",
+            "customerType": "Individual",
+            "companyName": "Solis, Sullivan and Barnes",
+            "taxNumber": null,
+            "totalOrders": 18,
+            "totalSpent": 229.39,
+            "averageOrderValue": 9.5,
+            "loyaltyPoints": 505,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-453",
+                "prod-725",
+                "prod-89"
+            ],
+            "recentOrderDate": "2024-02-16",
+            "registeredAt": "2021-09-13",
+            "lastLoginAt": "2024-09-06",
+            "address": {
+                "street": "28076 Brittany Hills Apt. 493",
+                "city": "Donaldstad",
+                "postalCode": "94751",
+                "country": "Korea"
+            },
+            "notes": null
+        },
+        {
+            "id": "1242f14f-0ded-4c2a-a026-52efd74e030f",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 756088000,
+            "totalOrders": 8,
+            "totalSpent": 234.9,
+            "averageOrderValue": 26.65,
+            "loyaltyPoints": 588,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-952",
+                "prod-478",
+                "prod-401",
+                "prod-156"
+            ],
+            "recentOrderDate": "2024-10-07",
+            "registeredAt": "2022-05-25",
+            "lastLoginAt": "2024-05-01",
+            "address": {
+                "street": "78648 Shelton Locks",
+                "city": "Thomasfurt",
+                "postalCode": "72265",
+                "country": "French Polynesia"
+            },
+            "notes": null
+        },
+        {
+            "id": "2a09673f-260b-4293-8919-21d196f0e629",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 681553079,
+            "totalOrders": 18,
+            "totalSpent": 815.19,
+            "averageOrderValue": 33.21,
+            "loyaltyPoints": 87,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-834",
+                "prod-76"
+            ],
+            "recentOrderDate": "2024-09-05",
+            "registeredAt": "2023-06-07",
+            "lastLoginAt": "2024-09-14",
+            "address": {
+                "street": "5784 Adams Field",
+                "city": "Williamtown",
+                "postalCode": "64910",
+                "country": "Malawi"
+            },
+            "notes": null
+        },
+        {
+            "id": "70676aff-9e05-4e60-b645-d0daf1f2c0b4",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 345821034,
+            "totalOrders": 94,
+            "totalSpent": 439.79,
+            "averageOrderValue": 25.1,
+            "loyaltyPoints": 616,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-63"
+            ],
+            "recentOrderDate": "2024-09-27",
+            "registeredAt": "2023-04-27",
+            "lastLoginAt": "2024-04-10",
+            "address": {
+                "street": "393 Mack Valleys Suite 524",
+                "city": "Lake Brookeshire",
+                "postalCode": "64442",
+                "country": "Jordan"
+            },
+            "notes": "Bad force scene left ago mind. Among compare book learn morning especially."
+        },
+        {
+            "id": "b6cc595f-93ff-4692-ab21-1cb4d4645d03",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 305882896,
+            "totalOrders": 61,
+            "totalSpent": 220.81,
+            "averageOrderValue": 25.72,
+            "loyaltyPoints": 240,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-659",
+                "prod-851",
+                "prod-340",
+                "prod-235",
+                "prod-274"
+            ],
+            "recentOrderDate": "2024-03-27",
+            "registeredAt": "2024-10-31",
+            "lastLoginAt": "2024-05-03",
+            "address": {
+                "street": "75375 Mercer Squares Apt. 794",
+                "city": "Jenniferstad",
+                "postalCode": "65400",
+                "country": "Angola"
+            },
+            "notes": "Teach stop lawyer. Citizen dog administration for imagine center least."
+        },
+        {
+            "id": "94b40058-9c13-4355-8937-76a0c6b45a05",
+            "customerType": "Business",
+            "companyName": "Rodriguez, Patel and Caldwell",
+            "taxNumber": null,
+            "totalOrders": 69,
+            "totalSpent": 368.26,
+            "averageOrderValue": 16.5,
+            "loyaltyPoints": 59,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-64",
+                "prod-785",
+                "prod-360"
+            ],
+            "recentOrderDate": "2024-08-25",
+            "registeredAt": "2022-03-26",
+            "lastLoginAt": "2024-11-15",
+            "address": {
+                "street": "8544 Guzman Knolls",
+                "city": "Maryshire",
+                "postalCode": "39070",
+                "country": "Vanuatu"
+            },
+            "notes": null
+        },
+        {
+            "id": "fe97c197-0402-40dc-ae7a-9dcc719a5380",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 360488443,
+            "totalOrders": 5,
+            "totalSpent": 207.79,
+            "averageOrderValue": 5.6,
+            "loyaltyPoints": 186,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-732",
+                "prod-860"
+            ],
+            "recentOrderDate": "2024-02-25",
+            "registeredAt": "2020-05-05",
+            "lastLoginAt": "2024-05-27",
+            "address": {
+                "street": "023 Melissa Crossing",
+                "city": "Lake Saraport",
+                "postalCode": "06872",
+                "country": "Vietnam"
+            },
+            "notes": "Shake particularly ago stand hit though such."
+        },
+        {
+            "id": "34deddf9-bbff-4ec2-8af5-b53b351f9462",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 466943897,
+            "totalOrders": 7,
+            "totalSpent": 505.83,
+            "averageOrderValue": 34.51,
+            "loyaltyPoints": 261,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-166",
+                "prod-864",
+                "prod-789",
+                "prod-920"
+            ],
+            "recentOrderDate": "2024-04-09",
+            "registeredAt": "2022-09-20",
+            "lastLoginAt": "2024-01-23",
+            "address": {
+                "street": "041 Ellis Forges Suite 492",
+                "city": "Zacharychester",
+                "postalCode": "27434",
+                "country": "Morocco"
+            },
+            "notes": "How dog effect study after site. Term trip hand build together common tax."
+        },
+        {
+            "id": "c565e66b-e1cf-44e3-9c36-2019ea2948d0",
+            "customerType": "Individual",
+            "companyName": "Carney, Marshall and Young",
+            "taxNumber": 196279586,
+            "totalOrders": 91,
+            "totalSpent": 738.96,
+            "averageOrderValue": 12.51,
+            "loyaltyPoints": 686,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-07-11",
+            "registeredAt": "2020-12-16",
+            "lastLoginAt": "2024-07-25",
+            "address": {
+                "street": "214 Thompson Way Apt. 535",
+                "city": "Robertsonberg",
+                "postalCode": "64445",
+                "country": "Bouvet Island (Bouvetoya)"
+            },
+            "notes": "Size she military hope. Together walk message. Continue section upon into."
+        },
+        {
+            "id": "84e251a2-d214-445f-98fd-08195e3bc40a",
+            "customerType": "Business",
+            "companyName": "Jackson-Weeks",
+            "taxNumber": null,
+            "totalOrders": 11,
+            "totalSpent": 651.49,
+            "averageOrderValue": 29.42,
+            "loyaltyPoints": 190,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-10-27",
+            "registeredAt": "2022-07-26",
+            "lastLoginAt": "2024-05-23",
+            "address": {
+                "street": "0421 John Key",
+                "city": "West Janetshire",
+                "postalCode": "30816",
+                "country": "Belize"
+            },
+            "notes": "Throughout yet my cold. Team form loss pattern throughout."
+        },
+        {
+            "id": "9522ee56-4b4c-4130-97f5-7c284ef0adff",
+            "customerType": "Individual",
+            "companyName": "Wilcox, Shepherd and Ball",
+            "taxNumber": 602516897,
+            "totalOrders": 84,
+            "totalSpent": 273.58,
+            "averageOrderValue": 29.46,
+            "loyaltyPoints": 636,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-813",
+                "prod-622",
+                "prod-869",
+                "prod-297",
+                "prod-200"
+            ],
+            "recentOrderDate": "2024-01-21",
+            "registeredAt": "2023-03-12",
+            "lastLoginAt": "2024-02-29",
+            "address": {
+                "street": "758 Young Rapid",
+                "city": "South Ashleyfurt",
+                "postalCode": "74758",
+                "country": "Faroe Islands"
+            },
+            "notes": null
+        },
+        {
+            "id": "2e3da50e-c7ab-47df-85fb-df1f5cddcfbd",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 92,
+            "totalSpent": 684.92,
+            "averageOrderValue": 18.68,
+            "loyaltyPoints": 762,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-08-03",
+            "registeredAt": "2022-12-11",
+            "lastLoginAt": "2024-04-16",
+            "address": {
+                "street": "60580 Hoffman Inlet Suite 572",
+                "city": "New Valerieville",
+                "postalCode": "67283",
+                "country": "Peru"
+            },
+            "notes": "Close represent thus anything carry analysis dinner former. Point seven message attorney."
+        },
+        {
+            "id": "396f09ab-8323-4e74-8ee7-8f39e9e9f69e",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 18,
+            "totalSpent": 259.57,
+            "averageOrderValue": 9.57,
+            "loyaltyPoints": 779,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-314",
+                "prod-531",
+                "prod-205"
+            ],
+            "recentOrderDate": "2024-06-15",
+            "registeredAt": "2020-02-08",
+            "lastLoginAt": "2024-03-28",
+            "address": {
+                "street": "4676 Linda Trace",
+                "city": "East Andrew",
+                "postalCode": "61472",
+                "country": "Bahrain"
+            },
+            "notes": "Institution phone leg risk. Use treatment raise. Issue meeting card stage clearly soon black pay."
+        },
+        {
+            "id": "ed01854c-7cf8-4674-8a86-27a6ea39e1e9",
+            "customerType": "Business",
+            "companyName": "Perez Ltd",
+            "taxNumber": null,
+            "totalOrders": 82,
+            "totalSpent": 600.44,
+            "averageOrderValue": 40.91,
+            "loyaltyPoints": 527,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-934",
+                "prod-127",
+                "prod-969",
+                "prod-610"
+            ],
+            "recentOrderDate": "2024-07-06",
+            "registeredAt": "2023-06-13",
+            "lastLoginAt": "2024-08-26",
+            "address": {
+                "street": "58512 Ellison Way Apt. 115",
+                "city": "Johntown",
+                "postalCode": "79475",
+                "country": "Panama"
+            },
+            "notes": "Single behind yes outside. Shoulder industry three ok. Room present feel election."
+        },
+        {
+            "id": "9bcc6c21-d58b-4124-9a57-834d10ab5300",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 72,
+            "totalSpent": 656.75,
+            "averageOrderValue": 12.11,
+            "loyaltyPoints": 888,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-123"
+            ],
+            "recentOrderDate": "2024-07-26",
+            "registeredAt": "2021-07-14",
+            "lastLoginAt": "2024-04-08",
+            "address": {
+                "street": "39513 Hernandez Stream",
+                "city": "Christopherborough",
+                "postalCode": "08235",
+                "country": "Zambia"
+            },
+            "notes": "Change laugh Democrat central. Less meet yard feeling several start."
+        },
+        {
+            "id": "573c5af3-8d86-475c-8efc-498ebc53a4d7",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 64,
+            "totalSpent": 165.66,
+            "averageOrderValue": 40.02,
+            "loyaltyPoints": 649,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-36",
+                "prod-686",
+                "prod-584"
+            ],
+            "recentOrderDate": "2024-03-25",
+            "registeredAt": "2022-05-25",
+            "lastLoginAt": "2024-03-21",
+            "address": {
+                "street": "16878 Baker Court Apt. 347",
+                "city": "New William",
+                "postalCode": "32666",
+                "country": "Angola"
+            },
+            "notes": "Them score and. Service across such across."
+        },
+        {
+            "id": "f47bec25-c6b1-4388-8a41-418d3d54faa4",
+            "customerType": "Business",
+            "companyName": "West PLC",
+            "taxNumber": null,
+            "totalOrders": 7,
+            "totalSpent": 180.96,
+            "averageOrderValue": 16.0,
+            "loyaltyPoints": 165,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [
+                "prod-722",
+                "prod-721"
+            ],
+            "recentOrderDate": "2024-08-23",
+            "registeredAt": "2024-04-27",
+            "lastLoginAt": "2024-07-25",
+            "address": {
+                "street": "12764 Valdez Mount",
+                "city": "Andersontown",
+                "postalCode": "55414",
+                "country": "Hong Kong"
+            },
+            "notes": "Fact choice effect hotel feeling. Song information new subject professor cell lead total."
+        },
+        {
+            "id": "a4c75257-6efb-433d-8613-cbd9e5e20dcd",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 6,
+            "totalSpent": 360.25,
+            "averageOrderValue": 44.05,
+            "loyaltyPoints": 258,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-852",
+                "prod-971",
+                "prod-846",
+                "prod-978",
+                "prod-850"
+            ],
+            "recentOrderDate": "2024-05-29",
+            "registeredAt": "2021-08-18",
+            "lastLoginAt": "2024-07-20",
+            "address": {
+                "street": "618 Schneider Cliffs Apt. 912",
+                "city": "Boydbury",
+                "postalCode": "73278",
+                "country": "Guernsey"
+            },
+            "notes": "Skin short something. Let more beautiful lose face task."
+        },
+        {
+            "id": "314a77f7-e089-431e-809e-e0e0e24e53ee",
+            "customerType": "Individual",
+            "companyName": "Mcdonald Group",
+            "taxNumber": 757357600,
+            "totalOrders": 1,
+            "totalSpent": 921.69,
+            "averageOrderValue": 22.24,
+            "loyaltyPoints": 493,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-259",
+                "prod-387",
+                "prod-423",
+                "prod-590"
+            ],
+            "recentOrderDate": "2024-01-21",
+            "registeredAt": "2023-06-30",
+            "lastLoginAt": "2024-02-27",
+            "address": {
+                "street": "99710 Mitchell Parkways Suite 902",
+                "city": "Zacharyfort",
+                "postalCode": "48416",
+                "country": "Iraq"
+            },
+            "notes": "Use enjoy age born level. Protect road wrong but book hot."
+        },
+        {
+            "id": "29b513ec-c360-4353-aaf7-bbd7bd03400b",
+            "customerType": "Individual",
+            "companyName": "Brown and Sons",
+            "taxNumber": 435343687,
+            "totalOrders": 21,
+            "totalSpent": 702.1,
+            "averageOrderValue": 37.74,
+            "loyaltyPoints": 271,
+            "preferredPaymentMethod": "Bank Transfer",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-08-21",
+            "registeredAt": "2020-04-20",
+            "lastLoginAt": "2024-08-12",
+            "address": {
+                "street": "0451 David Passage",
+                "city": "Guerraburgh",
+                "postalCode": "25087",
+                "country": "Norfolk Island"
+            },
+            "notes": "Hard beat stay animal institution. Officer artist seven father point interest toward."
+        },
+        {
+            "id": "c4fdb947-ee52-48b8-bf64-8a9a851c77dc",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 51,
+            "totalSpent": 465.99,
+            "averageOrderValue": 18.61,
+            "loyaltyPoints": 773,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Pickup",
+            "wishlistItems": [],
+            "recentOrderDate": "2024-08-04",
+            "registeredAt": "2020-11-27",
+            "lastLoginAt": "2024-04-14",
+            "address": {
+                "street": "00004 Kim Fields",
+                "city": "Lake Carrie",
+                "postalCode": "85807",
+                "country": "Ukraine"
+            },
+            "notes": "Could father friend official fall surface."
+        },
+        {
+            "id": "4cc94340-4cc1-4b8f-a734-1a1c8b9edcf6",
+            "customerType": "Business",
+            "companyName": null,
+            "taxNumber": 400453626,
+            "totalOrders": 88,
+            "totalSpent": 387.56,
+            "averageOrderValue": 23.7,
+            "loyaltyPoints": 389,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-939",
+                "prod-820",
+                "prod-971",
+                "prod-420",
+                "prod-90"
+            ],
+            "recentOrderDate": "2024-10-15",
+            "registeredAt": "2022-12-14",
+            "lastLoginAt": "2024-03-16",
+            "address": {
+                "street": "8485 Johnson Lodge",
+                "city": "Michaelchester",
+                "postalCode": "02646",
+                "country": "South Africa"
+            },
+            "notes": "Meet important customer bed or perform fall. Born single become peace may change only sign."
+        },
+        {
+            "id": "e2889e4e-44de-40dc-aed6-40f0d2cfb3e4",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": 806272444,
+            "totalOrders": 24,
+            "totalSpent": 168.07,
+            "averageOrderValue": 37.61,
+            "loyaltyPoints": 320,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-849",
+                "prod-648"
+            ],
+            "recentOrderDate": "2024-03-08",
+            "registeredAt": "2020-10-12",
+            "lastLoginAt": "2024-05-31",
+            "address": {
+                "street": "558 Young Harbor Suite 227",
+                "city": "Ryanland",
+                "postalCode": "18266",
+                "country": "Kazakhstan"
+            },
+            "notes": "Bed set leave one class. Report president area later why."
+        },
+        {
+            "id": "51ea3cc3-8ba2-4e8e-9c5e-b41e4a4582ad",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 3,
+            "totalSpent": 369.87,
+            "averageOrderValue": 45.67,
+            "loyaltyPoints": 156,
+            "preferredPaymentMethod": "Cash on Delivery",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-462",
+                "prod-183",
+                "prod-723"
+            ],
+            "recentOrderDate": "2024-11-24",
+            "registeredAt": "2024-01-12",
+            "lastLoginAt": "2024-03-04",
+            "address": {
+                "street": "9767 Reilly Turnpike",
+                "city": "North Peggy",
+                "postalCode": "22517",
+                "country": "Pakistan"
+            },
+            "notes": null
+        },
+        {
+            "id": "010f4e45-b2f3-4f3e-b2e3-b8420dd84964",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 45,
+            "totalSpent": 142.24,
+            "averageOrderValue": 24.83,
+            "loyaltyPoints": 676,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-874",
+                "prod-939",
+                "prod-307"
+            ],
+            "recentOrderDate": "2024-02-27",
+            "registeredAt": "2023-11-07",
+            "lastLoginAt": "2024-08-19",
+            "address": {
+                "street": "66703 Ward Trace Apt. 340",
+                "city": "New Heather",
+                "postalCode": "29700",
+                "country": "Sao Tome and Principe"
+            },
+            "notes": "Explain analysis rich agreement. Create traditional number into imagine relate."
+        },
+        {
+            "id": "c6d5189e-6a56-4261-af4f-385ed6f77e2b",
+            "customerType": "Individual",
+            "companyName": "Horn Ltd",
+            "taxNumber": null,
+            "totalOrders": 33,
+            "totalSpent": 433.89,
+            "averageOrderValue": 8.32,
+            "loyaltyPoints": 465,
+            "preferredPaymentMethod": "PayPal",
+            "preferredShippingMethod": "Express",
+            "wishlistItems": [
+                "prod-827",
+                "prod-551",
+                "prod-7",
+                "prod-581"
+            ],
+            "recentOrderDate": "2024-02-20",
+            "registeredAt": "2020-05-13",
+            "lastLoginAt": "2024-09-28",
+            "address": {
+                "street": "852 Ferguson Courts Suite 612",
+                "city": "Weaverhaven",
+                "postalCode": "82498",
+                "country": "Saint Pierre and Miquelon"
+            },
+            "notes": "Bar card street whom where more. Exactly firm exactly trial song. Only others develop way."
+        },
+        {
+            "id": "6b1bd29a-105a-4720-a490-077784b63f00",
+            "customerType": "Individual",
+            "companyName": null,
+            "taxNumber": null,
+            "totalOrders": 60,
+            "totalSpent": 210.15,
+            "averageOrderValue": 9.57,
+            "loyaltyPoints": 367,
+            "preferredPaymentMethod": "Credit Card",
+            "preferredShippingMethod": "Standard",
+            "wishlistItems": [
+                "prod-238",
+                "prod-546",
+                "prod-810",
+                "prod-431"
+            ],
+            "recentOrderDate": "2024-02-06",
+            "registeredAt": "2022-05-23",
+            "lastLoginAt": "2024-03-09",
+            "address": {
+                "street": "91159 Trevino Circles",
+                "city": "Candiceborough",
+                "postalCode": "73777",
+                "country": "Jamaica"
+            },
+            "notes": "Bar bad test meet stay cause every. Factor bed tax attorney world little knowledge."
+        }
+    ]
+}

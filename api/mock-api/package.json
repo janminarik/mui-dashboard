@@ -1,0 +1,17 @@
+{
+  "name": "mock-api",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "mockApiServer.js",
+  "scripts": {
+    "mock-api-server": "node server.js",
+    "start": "npm run mock-api-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "json-server": "^0.17.2"
+  }
+}
