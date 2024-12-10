@@ -21,10 +21,13 @@ function CustomersPage() {
   };
 
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name" },
+    { field: "firstName", headerName: "First Name" },
+    { field: "lastName", headerName: "Last Name" },
     { field: "email", headerName: "Email" },
-    { field: "phone", headerName: "Phone" },
-    { field: "address", headerName: "Address" },
+    { field: "phoneNumber", headerName: "Phone Number" },
+    { field: "isVerified", headerName: "Is verified" },
+    { field: "createdAt", headerName: "Created At" },
+    { field: "updatedAt", headerName: "Updated At" },
   ];
 
   if (isError) {

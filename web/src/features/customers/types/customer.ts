@@ -1,53 +1,43 @@
 export interface Customer {
     id: string;
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
-    phone: string;
-    address: string;
-    detailId: string;
+    phoneNumber?: string;
+    isVerified: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+    // address?: Address;
 }
-
-export enum CustomerType {
-    Individual = "Individual",
-    Business = "Business",
-}
-
-export enum PreferredPaymentMethod {
-    CreditCard = "Credit Card",
-    PayPal = "PayPal",
-    BankTransfer = "Bank Transfer",
-    CashOnDelivery = "Cash on Delivery"
-}
-
-export enum PreferredShippingMethod {
-    Standard = "Standard",
-    Express = "Express",
-    Pickup = "Pickup"
-}
-
-export interface Address {
-    street: string;
-    city: string;
-    postalCode: string;
-    country: string;
-};
-
 
 export interface CustomerDetail {
-    id: string;
-    customerType: CustomerType,
-    companyName?: string;
-    taxNumber?: string;
-    totalOrders: number;
-    totalSpent: number;
-    averageOrderValue?: number;
-    loyaltyPoints: number;
-    preferredPaymentMethod: PreferredPaymentMethod;
-    preferredShippingMethod: PreferredShippingMethod
-    wishlistItems?: string[];
-    recentOrderDate?: string;
-    registeredAt: string;
-    lastLoginAt?: string;
-    address: Address;
-    notes?: string;
+    id: string,
+    customerId: string;
+    newsletterSubscribed: boolean;
+    preferredLanguage: string;
+    preferredCurrency: string;
+    // orderHistory?: OrderHistory[];
 }
+
+
+export interface Address {
+    id: string,
+    customerId: string,
+    street: string;
+    city: string;
+    state?: string;
+    zipCode: string;
+    country: string;
+}
+
+
+export interface OrderHistory {
+    id: string;
+    customerId: string;
+    orderId: string;
+    date: Date;
+    totalAmount: number;
+}
+
+
+
