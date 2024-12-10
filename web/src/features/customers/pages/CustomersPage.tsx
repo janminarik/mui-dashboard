@@ -10,6 +10,7 @@ import Grid from "@mui/material/Grid2";
 import EmptyContent from "../../../shared/components/EmptyContent";
 import { useEffect, useState } from "react";
 import { DataGridRequestParams } from "../../../shared/types/Api";
+import { useDebounce } from "react-use";
 
 function CustomersPage() {
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
@@ -19,14 +20,30 @@ function CustomersPage() {
   const [filterModel, setFilterModel] = useState<GridFilterModel>({
     items: [],
   });
-
+  const [debouncedFilterModel, setDebouncedFilterMode] =
+    useState<GridFilterModel>({
+      items: [],
+    });
   const [requestParams, setRequestParams] = useState<DataGridRequestParams>({});
 
-  const { data, isFetching, isError, error } =
-    useGetFiltredCustomersQuery(requestParams);
+  const [, cancel] = useDebounce(
+    () => {
+      setDebouncedFilterMode(filterModel);
+      console.log("Customer page set filter", filterModel);
+    },
+    3000,
+    [filterModel]
+  );
 
   useEffect(() => {
-    const filtredColumns = filterModel.items
+    return () => {
+      console.log("Customer page clean up");
+      cancel();
+    };
+  }, []);
+
+  useEffect(() => {
+    const filtredColumns = debouncedFilterModel.items
       .filter((filter) => filter.value != undefined)
       .map((item) => ({
         column: item.field,
@@ -41,7 +58,10 @@ function CustomersPage() {
       },
       columnFilters: filtredColumns,
     }));
-  }, [paginationModel, filterModel]);
+  }, [paginationModel, debouncedFilterModel]);
+
+  const { data, isFetching, isError, error } =
+    useGetFiltredCustomersQuery(requestParams);
 
   const handlePaginationChange = (newModel: GridPaginationModel) => {
     setPaginationModel(newModel);
@@ -68,8 +88,6 @@ function CustomersPage() {
   } else if (!data?.result) {
     return <EmptyContent message="No customers availabne" />;
   } else {
-    console.log(data.totalCount);
-
     return (
       <Grid container flexDirection="row" justifyContent="stretch">
         <Grid size={{ xs: 12 }}>
