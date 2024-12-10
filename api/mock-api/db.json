@@ -1,36 +1,6 @@
 {
     "customers": [
         {
-            "id": "1",
-            "firstName": "Nicholas",
-            "lastName": "Mcfarland",
-            "email": "jessica83@yahoo.com",
-            "phoneNumber": "969.865.9377x136",
-            "isVerified": false,
-            "createdAt": "2023-08-12T01:48:23",
-            "updatedAt": "2024-04-19T04:23:20"
-        },
-        {
-            "id": "2",
-            "firstName": "Kaitlin",
-            "lastName": "Garrett",
-            "email": "julian59@hotmail.com",
-            "phoneNumber": "001-027-578-0190x130",
-            "isVerified": false,
-            "createdAt": "2023-01-06T15:02:16",
-            "updatedAt": "2024-01-13T13:55:29"
-        },
-        {
-            "id": "3",
-            "firstName": "Brittany",
-            "lastName": "Moreno",
-            "email": "rhampton@harris-george.com",
-            "phoneNumber": "428.705.3564x538",
-            "isVerified": true,
-            "createdAt": "2023-03-26T23:39:00",
-            "updatedAt": "2024-03-09T14:48:47"
-        },
-        {
             "id": "4",
             "firstName": "Joshua",
             "lastName": "Sullivan",

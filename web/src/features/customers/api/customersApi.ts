@@ -1,17 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Customer } from '../types/customer';
-
-export interface PaginatedResponse<T> {
-    result: T[],
-    totalCount: number,
-}
+import { ApiPaginatedResponse, DataGridRequestParams as ApiRequestParams } from '../../../shared/types/Api';
+import { createFilterQuery } from '../../../shared/utils/apiUtil';
 
 export const apiCustomers = createApi({
     reducerPath: 'customers',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
     tagTypes: ['Customer'],
     endpoints: (builder) => ({
-        // Create
         createCustomer: builder.mutation<Customer, Customer>({
             query: (body) => ({
                 url: '/customers',
@@ -20,23 +16,41 @@ export const apiCustomers = createApi({
             }),
             invalidatesTags: ['Customer'],
         }),
-        // Read (Get All)
         getCustomers: builder.query<Customer[], void>({
             query: () => '/customers',
             providesTags: ['Customer'],
         }),
-        getPagedCustomers: builder.query<PaginatedResponse<Customer>, { page: number, limit: number }>({
-            query: ({ page, limit }) => `/customers?_page=${page}&_limit=${limit}`,
-            transformResponse: (response: Customer[], meta): PaginatedResponse<Customer> => ({
-                result: response,
-                totalCount: parseInt(meta?.response?.headers.get('X-Total-Count') || '0', 10)
-            })
+        getFiltredCustomers: builder.query<ApiPaginatedResponse<Customer>, ApiRequestParams>({
+            query: ({ pagination, columnFilters }) => {
+                let url = "/customers";
+
+                if (pagination) {
+                    url = url + `?_page=${pagination.page}&_limit=${pagination.limit}`;
+                }
+                if (columnFilters && columnFilters.length > 0) {
+                    const filterQuery = createFilterQuery(columnFilters);
+                    url = url + "&" + filterQuery;
+
+                }
+                return url;
+            },
+            transformResponse: (response: Customer[], meta): ApiPaginatedResponse<Customer> => {
+                const header = meta?.response?.headers.get('X-Total-Count');
+
+                let count = 0;
+                if (header) {
+                    count = parseInt(header);
+                }
+
+                return {
+                    result: response,
+                    totalCount: count
+                }
+            }
         }),
-        // Read (Get By ID)
         getCustomerById: builder.query<Customer, string>({
             query: (id) => `/customers/${id}`
         }),
-        // Update
         updateCustomer: builder.mutation<Customer, { id: string, body: Partial<Customer> }>({
             query: ({ id, body }) => ({
                 url: `/customers/${id}`,
@@ -45,7 +59,6 @@ export const apiCustomers = createApi({
             }),
             invalidatesTags: ['Customer'],
         }),
-        // Delete
         deleteCustomer: builder.mutation<void, string>({
             query: (id) => ({
                 url: `/customers/${id}`,
@@ -60,7 +73,7 @@ export const {
     useCreateCustomerMutation,
     useGetCustomersQuery,
     useGetCustomerByIdQuery,
+    useGetFiltredCustomersQuery,
     useUpdateCustomerMutation,
     useDeleteCustomerMutation,
-    useGetPagedCustomersQuery
 } = apiCustomers;

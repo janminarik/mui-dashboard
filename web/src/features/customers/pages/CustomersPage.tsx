@@ -1,23 +1,54 @@
-import { useGetPagedCustomersQuery } from "../api/customersApi";
+import { useGetFiltredCustomersQuery } from "../api/customersApi";
 import ErrorPage from "../../../shared/pages/ErrorPage";
-import { DataGrid, GridColDef, GridPaginationModel } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridColDef,
+  GridFilterModel,
+  GridPaginationModel,
+} from "@mui/x-data-grid";
 import Grid from "@mui/material/Grid2";
 import EmptyContent from "../../../shared/components/EmptyContent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { DataGridRequestParams } from "../../../shared/types/Api";
 
 function CustomersPage() {
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
     page: 0,
     pageSize: 10,
   });
-
-  const { data, isFetching, isError, error } = useGetPagedCustomersQuery({
-    page: paginationModel.page + 1,
-    limit: paginationModel.pageSize,
+  const [filterModel, setFilterModel] = useState<GridFilterModel>({
+    items: [],
   });
+
+  const [requestParams, setRequestParams] = useState<DataGridRequestParams>({});
+
+  const { data, isFetching, isError, error } =
+    useGetFiltredCustomersQuery(requestParams);
+
+  useEffect(() => {
+    const filtredColumns = filterModel.items
+      .filter((filter) => filter.value != undefined)
+      .map((item) => ({
+        column: item.field,
+        operator: item.operator,
+        value: item.value,
+      }));
+
+    setRequestParams((prev) => ({
+      pagination: {
+        page: paginationModel.page + 1,
+        limit: paginationModel.pageSize,
+      },
+      columnFilters: filtredColumns,
+    }));
+  }, [paginationModel, filterModel]);
 
   const handlePaginationChange = (newModel: GridPaginationModel) => {
     setPaginationModel(newModel);
+  };
+
+  const handleFilterChange = (newModel: GridFilterModel) => {
+    setFilterModel(newModel);
   };
 
   const columns: GridColDef[] = [
@@ -37,16 +68,21 @@ function CustomersPage() {
   } else if (!data?.result) {
     return <EmptyContent message="No customers availabne" />;
   } else {
+    console.log(data.totalCount);
+
     return (
       <Grid container flexDirection="row" justifyContent="stretch">
         <Grid size={{ xs: 12 }}>
           <DataGrid
             columns={columns}
-            rowCount={data?.totalCount || 0}
+            rowCount={data.result ? data.totalCount : 0}
             pageSizeOptions={[5, 10, 20]}
             rows={data?.result || []}
             paginationMode="server"
             paginationModel={paginationModel}
+            filterMode="server"
+            filterModel={filterModel}
+            onFilterModelChange={handleFilterChange}
             loading={isFetching}
             onPaginationModelChange={handlePaginationChange}
             sx={{ m: 4 }}

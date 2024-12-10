@@ -5,56 +5,62 @@ const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
+
+// Middleware na podporu filtrovania a stránkovania
 server.use((req, res, next) => {
-  if (req.method === "GET" && req.url.includes("_page")) {
-    const totalCount = router.db
-      .get(req.url.split("?")[0].slice(1))
-      .value().length;
-    res.header("X-Total-Count", totalCount);
-  }
-  next();
-});
+  if (req.method === "GET") {
+    const queryKeys = Object.keys(req.query);
+    const resource = req.path.slice(1);
+    const db = router.db.get(resource).value();
 
-// Middleware na rozšírené filtrovanie
-server.use((req, res, next) => {
-  const queryKeys = Object.keys(req.query);
+    if (db && queryKeys.length > 0) {
+      let filteredData = db;
 
-  // Získanie datasetu
-  const resource = req.path.slice(1);
-  const db = router.db.get(resource).value();
+      // Filtrovanie
+      queryKeys.forEach((key) => {
+        if (key.endsWith("_contains")) {
+          const field = key.replace("_contains", "");
+          const value = req.query[key]?.toString().toLowerCase();
+          filteredData = filteredData.filter((item) =>
+            item[field]?.toString().toLowerCase().includes(value)
+          );
+        } else if (key.endsWith("_startsWith")) {
+          const field = key.replace("_startsWith", "");
+          const value = req.query[key]?.toString().toLowerCase();
+          filteredData = filteredData.filter((item) =>
+            item[field]?.toString().toLowerCase().startsWith(value)
+          );
+        } else if (key.endsWith("_endsWith")) {
+          const field = key.replace("_endsWith", "");
+          const value = req.query[key]?.toString().toLowerCase();
+          filteredData = filteredData.filter((item) =>
+            item[field]?.toString().toLowerCase().endsWith(value)
+          );
+        } else if (key.endsWith("_equals")) {
+          const field = key.replace("_equals", "");
+          const value = req.query[key]?.toString().toLowerCase();
+          filteredData = filteredData.filter(
+            (item) => item[field]?.toString().toLowerCase() === value
+          );
+        }
+      });
 
-  if (db && queryKeys.length > 0) {
-    let filteredData = db;
+      // Stránkovanie
+      const page = parseInt(req.query["_page"]) || 1;
+      const limit = parseInt(req.query["_limit"]) || 10;
+      const start = (page - 1) * limit;
+      const end = start + limit;
 
-    queryKeys.forEach((key) => {
-      if (key.endsWith("_contains")) {
-        const field = key.replace("_contains", "");
-        const value = req.query[key].toLowerCase();
-        filteredData = filteredData.filter((item) =>
-          item[field]?.toString().toLowerCase().includes(value)
-        );
-      } else if (key.endsWith("_startsWith")) {
-        const field = key.replace("_startsWith", "");
-        const value = req.query[key].toLowerCase();
-        filteredData = filteredData.filter((item) =>
-          item[field]?.toString().toLowerCase().startsWith(value)
-        );
-      } else if (key.endsWith("_endsWith")) {
-        const field = key.replace("_endsWith", "");
-        const value = req.query[key].toLowerCase();
-        filteredData = filteredData.filter((item) =>
-          item[field]?.toString().toLowerCase().endsWith(value)
-        );
-      } else if (key.endsWith("_equals")) {
-        const field = key.replace("_equals", "");
-        const value = req.query[key].toLowerCase();
-        filteredData = filteredData.filter(
-          (item) => item[field]?.toString().toLowerCase() === value
-        );
-      }
-    });
+      const paginatedData = filteredData.slice(start, end);
 
-    res.json(filteredData);
+      // Hlavička X-Total-Count pre stránkovanie
+      res.header("X-Total-Count", filteredData.length.toString());
+      // **Pridanie hlavičky Access-Control-Expose-Headers**
+      res.header("Access-Control-Expose-Headers", "X-Total-Count");
+      res.json(paginatedData);
+    } else {
+      next();
+    }
   } else {
     next();
   }
