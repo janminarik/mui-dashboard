@@ -32,6 +32,9 @@ export const apiCustomers = createApi({
                     url = url + "&" + filterQuery;
 
                 }
+
+                console.log("-------------getFiltredCustomers api call", { pagination, columnFilters });
+
                 return url;
             },
             transformResponse: (response: Customer[], meta): ApiPaginatedResponse<Customer> => {
@@ -74,6 +77,7 @@ export const {
     useGetCustomersQuery,
     useGetCustomerByIdQuery,
     useGetFiltredCustomersQuery,
+    useLazyGetFiltredCustomersQuery,
     useUpdateCustomerMutation,
     useDeleteCustomerMutation,
 } = apiCustomers;

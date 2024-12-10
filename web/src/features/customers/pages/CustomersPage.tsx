@@ -1,4 +1,7 @@
-import { useGetFiltredCustomersQuery } from "../api/customersApi";
+import {
+  useGetFiltredCustomersQuery,
+  useLazyGetFiltredCustomersQuery,
+} from "../api/customersApi";
 import ErrorPage from "../../../shared/pages/ErrorPage";
 import {
   DataGrid,
@@ -11,8 +14,11 @@ import EmptyContent from "../../../shared/components/EmptyContent";
 import { useEffect, useState } from "react";
 import { DataGridRequestParams } from "../../../shared/types/Api";
 import { useDebounce } from "react-use";
+import { Button } from "@mui/material";
 
 function CustomersPage() {
+  const [count, setCount] = useState(0);
+
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
     page: 0,
     pageSize: 10,
@@ -31,9 +37,18 @@ function CustomersPage() {
       setDebouncedFilterMode(filterModel);
       console.log("Customer page set filter", filterModel);
     },
-    3000,
+    300,
     [filterModel]
   );
+
+  const skipQuery = requestParams.pagination === undefined;
+
+  const { data, isFetching, isError, error } = useGetFiltredCustomersQuery(
+    requestParams,
+    { skip: skipQuery }
+  );
+  // const [getCustomersQueryTrigger, { data, isFetching, isError, error }] =
+  //   useLazyGetFiltredCustomersQuery();
 
   useEffect(() => {
     return () => {
@@ -60,8 +75,7 @@ function CustomersPage() {
     }));
   }, [paginationModel, debouncedFilterModel]);
 
-  const { data, isFetching, isError, error } =
-    useGetFiltredCustomersQuery(requestParams);
+  useEffect(() => {}, [requestParams]);
 
   const handlePaginationChange = (newModel: GridPaginationModel) => {
     setPaginationModel(newModel);
@@ -91,6 +105,15 @@ function CustomersPage() {
     return (
       <Grid container flexDirection="row" justifyContent="stretch">
         <Grid size={{ xs: 12 }}>
+          <Button
+            onClick={() =>
+              setCount((prev) => {
+                return prev + 1;
+              })
+            }
+          >
+            Count {count}
+          </Button>
           <DataGrid
             columns={columns}
             rowCount={data.result ? data.totalCount : 0}
