@@ -1,5 +1,4 @@
 import { useGetFiltredCustomersQuery } from "../api/customersApi";
-import ErrorPage from "../../../shared/pages/ErrorPage";
 import {
   DataGrid,
   GridColDef,
@@ -10,18 +9,16 @@ import {
   GridToolbar,
 } from "@mui/x-data-grid";
 import Grid from "@mui/material/Grid2";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { DataGridRequestParams } from "../../../shared/types/Api";
 import { useDebounce } from "react-use";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { Customer } from "../types/customer";
 import { useNavigate } from "react-router-dom";
-import Loader from "../../../shared/components/Loader";
 import { ROUTES } from "../config/routes";
+import Loader from "../../../shared/components/Loader";
 
 function CustomersPage() {
-  console.log("Customer page re-render");
-
   const navigate = useNavigate();
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
     page: 0,
@@ -150,7 +147,20 @@ function CustomersPage() {
         </Grid>
       </Grid>
     );
-  else return <div>null</div>;
+  else
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          width: "100vw",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Loader message="Loading customers..." />
+      </Box>
+    );
 }
 
 export default CustomersPage;

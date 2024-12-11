@@ -6,7 +6,7 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
-const timeout = 1;
+const timeout = 3000;
 
 // Middleware na podporu filtrovania a stránkovania
 server.use((req, res, next) => {

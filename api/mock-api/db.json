@@ -2,13 +2,13 @@
   "customers": [
     {
       "id": "4",
-      "firstName": "Janicko",
+      "firstName": "Jano",
       "lastName": "Sullivan",
       "email": "lisajohnson@yahoo.com",
       "phoneNumber": "998-778-2784",
       "isVerified": false,
       "createdAt": "2023-11-21T09:06:13",
-      "updatedAt": "2024-12-11T06:58:27.887Z"
+      "updatedAt": "2024-12-11T07:02:23.552Z"
     },
     {
       "id": "5",
