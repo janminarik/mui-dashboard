@@ -1,3 +1,4 @@
+import { setLanguage } from "../features/settings/slices/uiSettingsSlice";
 import i18n from "../i18n/i18n";
 import { Language } from "../shared/types/Language";
 import { persistor, store } from "./store";
@@ -30,6 +31,6 @@ export const initializeApp = async () => {
 
         await i18n.changeLanguage(preferredLanguage);
 
-        store.dispatch({ type: "uiSettings/setLanguage", payload: preferredLanguage });
+        store.dispatch(setLanguage(preferredLanguage));
     }
 };
