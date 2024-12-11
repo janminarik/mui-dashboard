@@ -5,9 +5,11 @@ import {
   FormControl,
   FormGroup,
   FormLabel,
+  InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
+  Stack,
   styled,
 } from "@mui/material";
 import { Theme } from "@mui/material/styles";
@@ -61,46 +63,45 @@ function SettingsPanel(props: SidebarProps) {
       {...props}
       content={
         <StyledSettingsPanel>
-          <FormControl component="fieldset" sx={{ p: 1 }}>
-            <FormLabel sx={{ mb: 2, fontSize: (theme) => theme.typography.h5 }}>
-              {t("settings.title")}
-            </FormLabel>
-            <FormGroup sx={{ display: "flex", gap: 2 }}>
-              <FormControl>
-                <FormLabel>{t("settings.theme.label")}</FormLabel>
-                <Select
-                  labelId="theme-label"
-                  id="theme"
-                  size="small"
-                  value={theme}
-                  onChange={(event) => handleSelectedThemeChange(event)}
-                >
-                  {Object.values(ThemeName).map((item) => (
-                    <MenuItem key={item} value={item}>
-                      {t(`settings.theme.options.${item}`)}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+          <Stack spacing={2}>
+            <FormControl fullWidth size="small" variant="outlined">
+              <InputLabel id="theme-label">
+                {t("settings.theme.label")}
+              </InputLabel>
+              <Select
+                labelId="theme-label"
+                id="theme-select"
+                label="theme"
+                value={theme}
+                onChange={(event) => handleSelectedThemeChange(event)}
+              >
+                {Object.values(ThemeName).map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {t(`settings.theme.options.${item}`)}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
 
-              <FormControl>
-                <FormLabel>{t("settings.language.label")}</FormLabel>
-                <Select
-                  labelId="lang-label"
-                  id="lang"
-                  size="small"
-                  value={language}
-                  onChange={(event) => handleLanguageChange(event)}
-                >
-                  {Object.values(Language).map((lang) => (
-                    <MenuItem key={lang} value={lang}>
-                      {t(`settings.language.options.${lang}`)}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </FormGroup>
-          </FormControl>
+            <FormControl fullWidth size="small" variant="outlined">
+              <InputLabel id="lang-label">
+                {t("settings.language.label")}
+              </InputLabel>
+              <Select
+                labelId="lang-label"
+                id="lang-select"
+                label="lang"
+                value={language}
+                onChange={(event) => handleLanguageChange(event)}
+              >
+                {Object.values(Language).map((lang) => (
+                  <MenuItem key={lang} value={lang}>
+                    {t(`settings.language.options.${lang}`)}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Stack>
         </StyledSettingsPanel>
       }
     ></Sidebar>
