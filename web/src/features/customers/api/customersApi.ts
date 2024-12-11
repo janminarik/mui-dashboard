@@ -3,9 +3,12 @@ import { Customer } from '../types/customer';
 import { ApiPaginatedResponse, DataGridRequestParams as ApiRequestParams } from '../../../shared/types/Api';
 import { createFilterQuery } from '../../../shared/utils/apiUtil';
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
+
 export const apiCustomers = createApi({
     reducerPath: 'customers',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
+    baseQuery: fetchBaseQuery({ baseUrl: apiBaseUrl }),
     tagTypes: ['Customer'],
     endpoints: (builder) => ({
         createCustomer: builder.mutation<Customer, Customer>({
