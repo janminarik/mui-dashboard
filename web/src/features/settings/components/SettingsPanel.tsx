@@ -11,6 +11,7 @@ import {
   SelectChangeEvent,
   Stack,
   styled,
+  TextField,
 } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 
@@ -63,16 +64,13 @@ function SettingsPanel(props: SidebarProps) {
       {...props}
       content={
         <StyledSettingsPanel>
-          <Stack spacing={2}>
+          <Stack spacing={2} mt={2}>
             <FormControl fullWidth size="small" variant="outlined">
-              <InputLabel id="theme-label">
-                {t("settings.theme.label")}
-              </InputLabel>
-              <Select
-                labelId="theme-label"
-                id="theme-select"
-                label="theme"
+              <TextField
+                label={t("settings.theme.label")}
                 value={theme}
+                select
+                size="small"
                 onChange={(event) => handleSelectedThemeChange(event)}
               >
                 {Object.values(ThemeName).map((item) => (
@@ -80,17 +78,14 @@ function SettingsPanel(props: SidebarProps) {
                     {t(`settings.theme.options.${item}`)}
                   </MenuItem>
                 ))}
-              </Select>
+              </TextField>
             </FormControl>
 
             <FormControl fullWidth size="small" variant="outlined">
-              <InputLabel id="lang-label">
-                {t("settings.language.label")}
-              </InputLabel>
-              <Select
-                labelId="lang-label"
-                id="lang-select"
-                label="lang"
+              <TextField
+                select
+                size="small"
+                label={t("settings.language.label")}
                 value={language}
                 onChange={(event) => handleLanguageChange(event)}
               >
@@ -99,7 +94,7 @@ function SettingsPanel(props: SidebarProps) {
                     {t(`settings.language.options.${lang}`)}
                   </MenuItem>
                 ))}
-              </Select>
+              </TextField>
             </FormControl>
           </Stack>
         </StyledSettingsPanel>
