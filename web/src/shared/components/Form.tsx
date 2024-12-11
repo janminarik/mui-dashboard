@@ -44,7 +44,11 @@ function Form({
             <Loader message={isSaving ? "Saving data..." : undefined} />
           )}
           {isError && <ErrorBox />}
-          {!isLoading && !isError && <CardContent>{children}</CardContent>}
+          {!isLoading && !isError && (
+            <CardContent sx={{ paddingTop: 0, margin: 0 }}>
+              {children}
+            </CardContent>
+          )}
           <CardActions>
             {save && (
               <Button onClick={save} disabled={isSaving}>
