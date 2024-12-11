@@ -6,6 +6,8 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
+const timeout = 1;
+
 // Middleware na podporu filtrovania a stránkovania
 server.use((req, res, next) => {
   if (req.method === "GET") {
@@ -57,12 +59,20 @@ server.use((req, res, next) => {
       res.header("X-Total-Count", filteredData.length.toString());
       // **Pridanie hlavičky Access-Control-Expose-Headers**
       res.header("Access-Control-Expose-Headers", "X-Total-Count");
-      res.json(paginatedData);
+
+      //Oneskorenie pre test
+      setTimeout(() => {
+        res.json(paginatedData);
+      }, timeout);
     } else {
-      next();
+      setTimeout(() => {
+        next();
+      }, timeout);
     }
   } else {
-    next();
+    setTimeout(() => {
+      next();
+    }, timeout);
   }
 });
 

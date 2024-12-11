@@ -1,7 +1,7 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
 
 interface LoaderProps {
-  message: string;
+  message?: string;
 }
 
 function Loader({ message }: LoaderProps) {
@@ -11,12 +11,10 @@ function Loader({ message }: LoaderProps) {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      width="100vw"
-      height="100vh"
     >
       <CircularProgress />
-      <Typography variant="h5" pt={4}>
-        {message}
+      <Typography variant="h6" pt={4}>
+        {message ? message : "Defaul loading message"}
       </Typography>
     </Box>
   );

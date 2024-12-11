@@ -27,16 +27,16 @@ export const apiCustomers = createApi({
                 if (pagination) {
                     url = url + `?_page=${pagination.page}&_limit=${pagination.limit}`;
                 }
+
                 if (columnFilters && columnFilters.length > 0) {
                     const filterQuery = createFilterQuery(columnFilters);
                     url = url + "&" + filterQuery;
-
                 }
 
-                console.log("-------------getFiltredCustomers api call", { pagination, columnFilters });
-
+                console.log("-------------apiCustomers.getFiltredCustomers call", { pagination, columnFilters });
                 return url;
             },
+            providesTags: ['Customer'],
             transformResponse: (response: Customer[], meta): ApiPaginatedResponse<Customer> => {
                 const header = meta?.response?.headers.get('X-Total-Count');
 
