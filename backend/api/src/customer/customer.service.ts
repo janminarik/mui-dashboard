@@ -39,6 +39,8 @@ export class CustomerService {
   }
 
   async remove(id: string): Promise<Customer> {
+    throw new NotFoundException(`Zákazník s ID ${id} nebol nájdený.`)
+
     try {
       return await this.prisma.customer.delete({
         where: { id },

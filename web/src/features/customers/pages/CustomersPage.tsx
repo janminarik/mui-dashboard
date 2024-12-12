@@ -1,4 +1,7 @@
-import { useGetFiltredCustomersQuery } from "../api/customersApi";
+import {
+  useDeleteCustomerMutation,
+  useGetFiltredCustomersQuery,
+} from "../api/customersApi";
 import {
   DataGrid,
   GridColDef,
@@ -12,29 +15,44 @@ import Grid from "@mui/material/Grid2";
 import { useEffect, useState } from "react";
 import { DataGridRequestParams } from "../../../shared/types/Api";
 import { useDebounce } from "react-use";
-import { Box, Button } from "@mui/material";
+import { Box, Button, IconButton, Menu, MenuItem } from "@mui/material";
 import { Customer } from "../types/customer";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../config/routes";
 import Loader from "../../../shared/components/Loader";
 import ErrorBox from "../../../shared/components/ErrorBox";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { extractErrorDetails } from "../../../shared/utils/errorUtils";
 
 function CustomersPage() {
   const navigate = useNavigate();
+
+  const [customerCtxMenuEl, setCustomerCtxMenuEl] =
+    useState<HTMLButtonElement | null>(null);
+
+  const openCustomerCtxMenu = Boolean(customerCtxMenuEl);
+
+  const [selectedCustomer, setSelectedCustomer] =
+    useState<GridRowModel<Customer> | null>(null);
+
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
     page: 0,
     pageSize: 10,
   });
+
   const [filterModel, setFilterModel] = useState<GridFilterModel>({
     items: [],
   });
   const [rowSelectionModel, setRowSelectionModel] =
     useState<GridRowSelectionModel>([]);
+
   const [debouncedFilterModel, setDebouncedFilterMode] =
     useState<GridFilterModel>({
       items: [],
     });
+
   const [requestParams, setRequestParams] = useState<DataGridRequestParams>({});
+
   const [, cancel] = useDebounce(
     () => {
       setDebouncedFilterMode(filterModel);
@@ -43,10 +61,32 @@ function CustomersPage() {
     [filterModel]
   );
 
+  //RTK queries and mutations
   const skipQuery = requestParams.pagination === undefined;
-  const { data, isLoading, isFetching, isError, error } =
-    useGetFiltredCustomersQuery(requestParams, { skip: skipQuery });
-  const loading = isLoading || isFetching;
+
+  const {
+    data,
+    isLoading: isGetCustomersLoading,
+    isFetching: isGetCustomersFetching,
+    isError: isGetCustomersError,
+    error: getCustomersError,
+  } = useGetFiltredCustomersQuery(requestParams, { skip: skipQuery });
+
+  const [deleteCustomer, result] = useDeleteCustomerMutation();
+  const {
+    isLoading: isDeleteCustomerLoading,
+    isError: isDeleteCustomerError,
+    error: deleteCustomerError,
+  } = result;
+
+  const loading =
+    isGetCustomersLoading || isGetCustomersFetching || isDeleteCustomerLoading;
+  const isError = isGetCustomersError || isDeleteCustomerError;
+  const rtkError = getCustomersError || deleteCustomerError;
+  const error: ErrorMessage = extractErrorDetails(rtkError);
+
+  console.log("is error", isError);
+  console.log("error", rtkError);
 
   useEffect(() => {
     return () => {};
@@ -83,9 +123,20 @@ function CustomersPage() {
     setRowSelectionModel(newModel);
   };
 
-  const handleEdit = (customer: GridRowModel<Customer>) => {
-    console.log(customer);
-    navigate(ROUTES.CUSTOMERS + `/${customer.id}`);
+  const handleCustomerMenuOpen = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    row: GridRowModel<Customer>
+  ) => {
+    setCustomerCtxMenuEl(event.currentTarget);
+    setSelectedCustomer(row);
+  };
+
+  const handleCustomerEdit = () => {
+    navigate(ROUTES.CUSTOMERS + `/${selectedCustomer?.id}`);
+  };
+
+  const handleCustomerDelete = () => {
+    deleteCustomer(selectedCustomer?.id!);
   };
 
   const colDef = { flex: 1 };
@@ -104,18 +155,28 @@ function CustomersPage() {
       sortable: false,
       filterable: false,
       renderCell: (params) => (
-        <Button
-          onClick={() => {
-            handleEdit(params.row);
-          }}
-        >
-          Edit
-        </Button>
+        <>
+          <IconButton
+            onClick={(event) => {
+              handleCustomerMenuOpen(event, params.row);
+            }}
+          >
+            <MoreHorizIcon />
+          </IconButton>
+          <Menu
+            open={openCustomerCtxMenu}
+            anchorEl={customerCtxMenuEl}
+            onClose={() => setCustomerCtxMenuEl(null)}
+          >
+            <MenuItem onClick={handleCustomerEdit}>Edit</MenuItem>
+            <MenuItem onClick={handleCustomerDelete}>Delete</MenuItem>
+          </Menu>
+        </>
       ),
     },
   ];
 
-  if (data?.result)
+  if (!isError && data?.result) {
     return (
       <Grid container flexDirection="row" justifyContent="stretch">
         <Grid size={{ xs: 12 }}>
@@ -148,7 +209,7 @@ function CustomersPage() {
         </Grid>
       </Grid>
     );
-  else if (isError) {
+  } else if (isError) {
     return (
       <Box
         sx={{
@@ -159,10 +220,10 @@ function CustomersPage() {
           alignItems: "center",
         }}
       >
-        <ErrorBox message="Ooops..."></ErrorBox>
+        <ErrorBox message={error.errorMessage}></ErrorBox>
       </Box>
     );
-  } else if (loading) {
+  } else if (!isError && loading) {
     return (
       <Box
         sx={{
