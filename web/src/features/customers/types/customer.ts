@@ -7,7 +7,6 @@ export interface Customer {
     isVerified: boolean;
     createdAt: Date;
     updatedAt: Date;
-    // address?: Address;
 }
 
 export interface CustomerDetail {
