@@ -30,6 +30,8 @@ export class CustomerService {
 
   //vola sa po create a nenajde lebo id je null
   async findOne(id: string): Promise<Customer | null> {
+
+
     const customer = await this.prisma.customer.findUnique({ where: { id } });
     if (!customer) {
       throw new NotFoundException(`find one  - Zákazník s ID ${id} nebol nájdený.`);

@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import {
+  apiCustomers,
   useCreateCustomerMutation,
   useGetCustomerByIdQuery,
   useUpdateCustomerMutation,
@@ -38,13 +39,15 @@ function CustomerDetailPage() {
 
   //TODO refacktoring
 
+  const skipQuery = id === undefined;
+
   //GET
   const {
     data: customer,
     isFetching: isLoadingGetCustomer,
     isError: isErrorGetCustomer,
     error: errorGetCustomer,
-  } = useGetCustomerByIdQuery(id!);
+  } = useGetCustomerByIdQuery(id!, { skip: skipQuery });
 
   //PUT
   const [updateCustomer, updateResult] = useUpdateCustomerMutation();
@@ -102,7 +105,10 @@ function CustomerDetailPage() {
       await updateCustomer({ id: id!, body: customerToUpdate });
     } else {
       const newCustomer: CreateCustomer = { ...formValue, isVerified: false };
-      await createCustomer(newCustomer);
+      const createdCustomer = await createCustomer(newCustomer).unwrap();
+      if (createdCustomer) {
+        navigate(-1);
+      }
     }
   };
 

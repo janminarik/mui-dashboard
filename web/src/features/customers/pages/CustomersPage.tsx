@@ -1,5 +1,6 @@
 import {
   useDeleteCustomerMutation,
+  useGetCustomersQuery,
   useGetFiltredCustomersQuery,
 } from "../api/customersApi";
 import {
@@ -37,7 +38,7 @@ function CustomersPage() {
 
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
     page: 0,
-    pageSize: 10,
+    pageSize: 100,
   });
 
   const [filterModel, setFilterModel] = useState<GridFilterModel>({
@@ -70,7 +71,7 @@ function CustomersPage() {
     isFetching: isGetCustomersFetching,
     isError: isGetCustomersError,
     error: getCustomersError,
-  } = useGetFiltredCustomersQuery(requestParams, { skip: skipQuery });
+  } = useGetCustomersQuery(); //useGetFiltredCustomersQuery(requestParams, { skip: skipQuery });
 
   const [deleteCustomer, result] = useDeleteCustomerMutation();
   const {
@@ -182,7 +183,7 @@ function CustomersPage() {
     },
   ];
 
-  if (!isError && data?.result) {
+  if (!isError && data) {
     return (
       <Grid container flexDirection="row" justifyContent="stretch">
         <Grid>
@@ -202,9 +203,9 @@ function CustomersPage() {
               },
             }}
             columns={columns}
-            rowCount={data?.totalCount ? data.totalCount : 0}
-            pageSizeOptions={[5, 10, 20]}
-            rows={data?.result || []}
+            rowCount={data?.length ? data.length : 0}
+            pageSizeOptions={[5, 10, 20, 1000]}
+            rows={data || []}
             paginationMode="server"
             paginationModel={paginationModel}
             filterMode="server"

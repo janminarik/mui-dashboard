@@ -11,6 +11,7 @@ export interface Customer {
 
 
 export interface CreateCustomer {
+    id?: string,
     firstName: string;
     lastName: string;
     email: string;

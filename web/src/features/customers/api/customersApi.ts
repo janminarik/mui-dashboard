@@ -11,19 +11,46 @@ export const apiCustomers = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: apiBaseUrl }),
     tagTypes: ['Customer'],
     endpoints: (builder) => ({
-        createCustomer: builder.mutation<CreateCustomer, CreateCustomer>({
+        createCustomer: builder.mutation<Customer, CreateCustomer>({
             query: (body) => ({
                 url: '/customers',
                 method: 'POST',
                 body,
             }),
-            invalidatesTags: ['Customer'],
+            invalidatesTags: (result) => {
+                return result ? [{ type: 'Customer', id: result.id }] : ['Customer']
+            },
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                console.log("onQueryStarted invoked with arg:", arg);
+                try {
+                    const { data: createdCustomer } = await queryFulfilled;
+                    console.log("Customer created:", createdCustomer);
+                    if (createdCustomer.id) {
+                        dispatch(
+                            apiCustomers.util.updateQueryData(
+                                "getCustomers",
+                                undefined,
+                                (draft) => {
+                                    console.log("Updating cache with new customer");
+                                    if (draft && Array.isArray(draft)) {
+                                        draft.push(createdCustomer);
+                                    }
+                                }
+                            )
+                        );
+                    }
+                } catch (error) {
+                    console.error("Error in onQueryStarted:", error);
+                }
+            },
+
         }),
         getCustomers: builder.query<Customer[], void>({
             query: () => '/customers',
             providesTags: ['Customer'],
         }),
         getFiltredCustomers: builder.query<ApiPaginatedResponse<Customer>, ApiRequestParams>({
+            // query: ({ pagination, columnFilters }) => {
             query: ({ pagination, columnFilters }) => {
                 let url = "/customers";
 
@@ -64,7 +91,7 @@ export const apiCustomers = createApi({
                 method: 'PATCH',
                 body,
             }),
-            invalidatesTags: (result, error, { id }) => [{ type: "Customer", id }, "Customer"]
+            invalidatesTags: (result, error, { id }) => [{ type: "Customer", id }]
 
         }),
         deleteCustomer: builder.mutation<void, string>({
