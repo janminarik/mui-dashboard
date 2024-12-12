@@ -11,7 +11,7 @@ model Customer {
   id           String   @id @default(uuid())
   firstName    String
   lastName     String
-  email        String   @unique
+  email        String 
   phoneNumber  String?
   isVerified   Boolean
   createdAt    DateTime @default(now())

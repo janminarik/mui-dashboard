@@ -13,4 +13,8 @@ export const customersRoutes: RouteObject[] = [
     path: "customers/:id",
     element: <CustomerDetailPage />,
   },
+  {
+    path: ROUTES.CUSTOMER_CREATE,
+    element: <CustomerDetailPage />,
+  },
 ];

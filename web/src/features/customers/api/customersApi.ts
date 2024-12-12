@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Customer } from '../types/customer';
+import { CreateCustomer, Customer } from '../types/customer';
 import { ApiPaginatedResponse, DataGridRequestParams as ApiRequestParams } from '../../../shared/types/Api';
 import { createFilterQuery } from '../../../shared/utils/apiUtil';
 
@@ -11,7 +11,7 @@ export const apiCustomers = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: apiBaseUrl }),
     tagTypes: ['Customer'],
     endpoints: (builder) => ({
-        createCustomer: builder.mutation<Customer, Customer>({
+        createCustomer: builder.mutation<CreateCustomer, CreateCustomer>({
             query: (body) => ({
                 url: '/customers',
                 method: 'POST',

@@ -83,7 +83,7 @@ function CustomersPage() {
     isGetCustomersLoading || isGetCustomersFetching || isDeleteCustomerLoading;
   const isError = isGetCustomersError || isDeleteCustomerError;
   const rtkError = getCustomersError || deleteCustomerError;
-  const error: ErrorMessage = extractErrorDetails(rtkError);
+  const error = extractErrorDetails(rtkError);
 
   console.log("is error", isError);
   console.log("error", rtkError);
@@ -137,11 +137,17 @@ function CustomersPage() {
 
   const handleCustomerDelete = () => {
     deleteCustomer(selectedCustomer?.id!);
+    setCustomerCtxMenuEl(null);
+  };
+
+  const handleCreateCustomer = () => {
+    navigate(ROUTES.CUSTOMER_CREATE);
   };
 
   const colDef = { flex: 1 };
 
   const columns: GridColDef[] = [
+    { ...colDef, field: "id", headerName: "ID" },
     { ...colDef, field: "firstName", headerName: "First Name" },
     { ...colDef, field: "lastName", headerName: "Last Name" },
     { ...colDef, field: "email", headerName: "Email" },
@@ -179,6 +185,9 @@ function CustomersPage() {
   if (!isError && data?.result) {
     return (
       <Grid container flexDirection="row" justifyContent="stretch">
+        <Grid>
+          <Button onClick={handleCreateCustomer}>Create</Button>
+        </Grid>
         <Grid size={{ xs: 12 }}>
           <DataGrid
             loading={loading}

@@ -9,17 +9,30 @@ export class CustomerService {
   constructor(private prisma: PrismaService) { }
 
   async create(createCustomerDto: CreateCustomerDto): Promise<Customer> {
-    return this.prisma.customer.create({ data: createCustomerDto });
+    try {
+
+      return this.prisma.customer.create({ data: createCustomerDto });
+      // const newCustomer = await this.prisma.customer.create({ data: createCustomerDto });
+
+      // console.log(newCustomer);
+
+      // return newCustomer;
+
+    }
+    catch (error) {
+      throw error; // Prehoď iné chyby
+    }
   }
 
   async findAll(): Promise<Customer[]> {
     return this.prisma.customer.findMany();
   }
 
+  //vola sa po create a nenajde lebo id je null
   async findOne(id: string): Promise<Customer | null> {
     const customer = await this.prisma.customer.findUnique({ where: { id } });
     if (!customer) {
-      throw new NotFoundException(`Zákazník s ID ${id} nebol nájdený.`);
+      throw new NotFoundException(`find one  - Zákazník s ID ${id} nebol nájdený.`);
     }
     return customer;
   }
@@ -32,14 +45,14 @@ export class CustomerService {
       });
     } catch (error) {
       if (error.code === 'P2025') { // Kontrola chybového kódu Prisma pre "Record not found"
-        throw new NotFoundException(`Zákazník s ID ${id} nebol nájdený.`);
+        throw new NotFoundException(`update - Zákazník s ID ${id} nebol nájdený.`);
       }
       throw error; // Prehoď iné chyby
     }
   }
 
   async remove(id: string): Promise<Customer> {
-    throw new NotFoundException(`Zákazník s ID ${id} nebol nájdený.`)
+    ///throw new NotFoundException(`delete - Zákazník s ID ${id} nebol nájdený.`)
 
     try {
       return await this.prisma.customer.delete({

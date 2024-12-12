@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import {
+  useCreateCustomerMutation,
   useGetCustomerByIdQuery,
   useUpdateCustomerMutation,
 } from "../api/customersApi";
@@ -13,6 +14,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import Form from "../../../shared/components/Form";
+import { CreateCustomer, Customer } from "../types/customer";
 
 const textFieldSx: SxProps<Theme & TextFieldProps> = { mt: 3 };
 
@@ -25,6 +27,7 @@ interface CustomerForm {
 
 function CustomerDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const isEditMode = Boolean(id);
   const navigate = useNavigate();
   const [formValue, setFormValues] = useState<CustomerForm>({
     firstName: "",
@@ -32,6 +35,10 @@ function CustomerDetailPage() {
     email: "",
     phoneNumber: "",
   });
+
+  //TODO refacktoring
+
+  //GET
   const {
     data: customer,
     isFetching: isLoadingGetCustomer,
@@ -39,43 +46,64 @@ function CustomerDetailPage() {
     error: errorGetCustomer,
   } = useGetCustomerByIdQuery(id!);
 
-  const [updateCustomer, result] = useUpdateCustomerMutation();
+  //PUT
+  const [updateCustomer, updateResult] = useUpdateCustomerMutation();
   const {
     isLoading: isUpdatingCustomer,
     isError: isErrorUpdateCustomer,
     error: errorUpdateCustomer,
     isSuccess: isSucessUpdateCustomer,
-    data,
-  } = result;
+    data: updateCustomerData,
+  } = updateResult;
 
-  const isLoading = isLoadingGetCustomer || isUpdatingCustomer;
-  const isError = isErrorGetCustomer || isErrorUpdateCustomer;
-  const error = errorGetCustomer || errorUpdateCustomer;
+  //POST
+  const [createCustomer, createResult] = useCreateCustomerMutation();
+  const {
+    isLoading: isCreateCustomer,
+    isError: isErrorCreateCustomer,
+    error: errorCreateCustomer,
+    isSuccess: isSucessCreateCustomer,
+    data: createCustomerData,
+  } = updateResult;
+
+  //merge
+  const isLoading =
+    isLoadingGetCustomer || isUpdatingCustomer || isCreateCustomer;
+  const isError =
+    isErrorGetCustomer || isErrorUpdateCustomer || isErrorCreateCustomer;
+  const error = errorGetCustomer || errorUpdateCustomer || errorCreateCustomer;
 
   useEffect(() => {
-    setFormValues({
-      firstName: customer?.firstName || "",
-      lastName: customer?.lastName || "",
-      email: customer?.email || "",
-      phoneNumber: customer?.phoneNumber || "",
-    });
+    if (isEditMode) {
+      setFormValues({
+        firstName: customer?.firstName || "",
+        lastName: customer?.lastName || "",
+        email: customer?.email || "",
+        phoneNumber: customer?.phoneNumber || "",
+      });
 
-    console.log("customer detail", customer);
-  }, [customer]);
+      console.log("customer detail", customer);
+    }
+  }, [customer, isEditMode]);
 
   const handleBack = () => {
     navigate(-1);
   };
 
   const handleSave = async () => {
-    const customerToUpdate = {
-      id: id!,
-      ...customer,
-      ...formValue,
-      updatedAt: new Date(),
-    };
-    console.log("customer to update", customerToUpdate);
-    await updateCustomer({ id: id!, body: customerToUpdate });
+    if (isEditMode) {
+      const customerToUpdate = {
+        id: id!,
+        ...customer,
+        ...formValue,
+        updatedAt: new Date(),
+      };
+      console.log("customer to update", customerToUpdate);
+      await updateCustomer({ id: id!, body: customerToUpdate });
+    } else {
+      const newCustomer: CreateCustomer = { ...formValue, isVerified: false };
+      await createCustomer(newCustomer);
+    }
   };
 
   const handleInputChange = (

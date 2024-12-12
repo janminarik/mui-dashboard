@@ -9,6 +9,15 @@ export interface Customer {
     updatedAt: Date;
 }
 
+
+export interface CreateCustomer {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber?: string;
+    isVerified: boolean;
+}
+
 export interface CustomerDetail {
     id: string,
     customerId: string;
