@@ -17,6 +17,7 @@ import { Customer } from "../types/customer";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../config/routes";
 import Loader from "../../../shared/components/Loader";
+import ErrorBox from "../../../shared/components/ErrorBox";
 
 function CustomersPage() {
   const navigate = useNavigate();
@@ -147,7 +148,21 @@ function CustomersPage() {
         </Grid>
       </Grid>
     );
-  else
+  else if (isError) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          width: "100vw",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ErrorBox message="Ooops..."></ErrorBox>
+      </Box>
+    );
+  } else if (loading) {
     return (
       <Box
         sx={{
@@ -161,6 +176,7 @@ function CustomersPage() {
         <Loader message="Loading customers..." />
       </Box>
     );
+  }
 }
 
 export default CustomersPage;

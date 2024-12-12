@@ -55,15 +55,17 @@ export const apiCustomers = createApi({
             }
         }),
         getCustomerById: builder.query<Customer, string>({
-            query: (id) => `/customers/${id}`
+            query: (id) => `/customers/${id}`,
+            providesTags: (result, error, id) => [{ type: "Customer", id }]
         }),
         updateCustomer: builder.mutation<Customer, { id: string, body: Partial<Customer> }>({
             query: ({ id, body }) => ({
                 url: `/customers/${id}`,
-                method: 'PUT',
+                method: 'PATCH',
                 body,
             }),
-            invalidatesTags: ['Customer'],
+            invalidatesTags: (result, error, { id }) => [{ type: "Customer", id }, "Customer"]
+
         }),
         deleteCustomer: builder.mutation<void, string>({
             query: (id) => ({

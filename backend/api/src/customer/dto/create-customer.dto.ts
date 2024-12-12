@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty, IsBoolean, IsDate, IsOptional } from "class-validator"
-
+import { Transform } from 'class-transformer';
 
 export class CreateCustomerDto {
     @IsString()
@@ -24,9 +24,11 @@ export class CreateCustomerDto {
 
     @IsDate()
     @IsOptional()
+    @Transform(({ value }) => value ? new Date(value) : undefined)
     createdAt: Date;
 
     @IsDate()
     @IsOptional()
+    @Transform(({ value }) => value ? new Date(value) : undefined)
     updatedAt: Date;
 }

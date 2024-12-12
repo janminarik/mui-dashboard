@@ -59,6 +59,8 @@ function CustomerDetailPage() {
       email: customer?.email || "",
       phoneNumber: customer?.phoneNumber || "",
     });
+
+    console.log("customer detail", customer);
   }, [customer]);
 
   const handleBack = () => {
