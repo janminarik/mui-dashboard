@@ -29,7 +29,6 @@ import { ROUTES } from "../config/routes";
 import Loader from "../../../shared/components/Loader";
 import ErrorBox from "../../../shared/components/ErrorBox";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { buildFilter, buildSort } from "../../../shared/utils/muiUtil";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../app/store";
 import {
@@ -38,8 +37,9 @@ import {
   setSelectedItems,
   setSortOptions,
 } from "../slices/customersSlice";
-import { aggregateApiRequestState } from "../../../shared/utils/rtkUtil";
 import { extractErrorMessage } from "../../../shared/utils/errorUtils";
+import { buildFilter, buildSort } from "../../../shared/utils/muiUtils";
+import { aggregateApiRequestState } from "../../../shared/utils/rtkUtils";
 
 function CustomersPage() {
   const navigate = useNavigate();

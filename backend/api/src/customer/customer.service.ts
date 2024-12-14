@@ -60,7 +60,7 @@ export class CustomerService {
     }
   }
 
-  @Sleep(2000)
+  //@Sleep(2000)
   async remove(id: string): Promise<Customer> {
     try {
       return await this.prisma.customer.delete({

@@ -1,11 +1,5 @@
 import { GridFilterModel, GridSortModel } from "@mui/x-data-grid";
 
-// const sortOptions: SortOptions<T> = sortModel.map((model) => ({
-//     field: model.field as keyof T,
-//     direction: model.sort as "asc" | "desc",
-// }));
-
-
 export const buildSort = <T>(sortModel: GridSortModel) => {
     return sortModel.map((model) => ({
         field: model.field as keyof T,
