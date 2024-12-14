@@ -1,16 +1,19 @@
-export const createFilterQuery = (
-    items: { column: string; operator: string; value: any }[]
-): string => {
-    const queryString = items
-        .map((filter) => {
-            const column = encodeURIComponent(filter.column);
-            const filterOperator = encodeURIComponent(filter.operator);
-            const value = encodeURIComponent(filter.value);
-            const columnFilter = `${column}_${filterOperator}=${value}`;
+import { QueryParams } from "../types/Api"
 
-            return columnFilter;
-        })
-        .join("&");
+export const buildSearchParams = <T>(queryParams: QueryParams<T>) => {
+    const query = new URLSearchParams();
+    if (queryParams.page)
+        query.append('skip', queryParams.page.toString());
 
-    return queryString;
-};
+    if (queryParams.pageSize)
+        query.append('take', queryParams.pageSize.toString());
+
+    if (queryParams.filters)
+        query.append('filter', JSON.stringify(queryParams.filters));
+
+    if (queryParams.sortOptions)
+        query.append('orderBy', JSON.stringify(queryParams.sortOptions.map((sort) => ({ [sort.field]: sort.direction }))));
+
+    return query.toString();
+
+}

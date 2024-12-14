@@ -16,8 +16,8 @@ export class CustomerController {
   @Get()
   async findqueryAll(
     @Query('filter') filter?: string,
-    @Query('skip', ParseIntPipe) skip?: number,
-    @Query('take', ParseIntPipe) take?: number,
+    @Query('skip', new ParseIntPipe({ optional: true })) skip?: number,
+    @Query('take', new ParseIntPipe({ optional: true })) take?: number,
     @Query('orderBy') orderBy?: string
   ) {
 
