@@ -1,10 +1,6 @@
 import {
-  Filters,
-  SortOption,
   useDeleteCustomerMutation,
   useFetchCustomersQuery,
-  useGetCustomersQuery,
-  useGetFiltredCustomersQuery,
 } from "../api/customersApi";
 import {
   DataGrid,
@@ -13,13 +9,11 @@ import {
   GridPaginationModel,
   GridRowModel,
   GridRowSelectionModel,
-  GridSortDirection,
   GridSortModel,
   GridToolbar,
 } from "@mui/x-data-grid";
 import Grid from "@mui/material/Grid2";
 import { useEffect, useState } from "react";
-import { DataGridRequestParams } from "../../../shared/types/Api";
 import { useDebounce } from "react-use";
 import { Box, Button, IconButton, Menu, MenuItem } from "@mui/material";
 import { Customer } from "../types/customer";
@@ -29,7 +23,11 @@ import Loader from "../../../shared/components/Loader";
 import ErrorBox from "../../../shared/components/ErrorBox";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { extractErrorDetails } from "../../../shared/utils/errorUtils";
-import { buildFilter } from "../../../shared/utils/dataGridUtil";
+import {
+  buildFilter,
+  Filters,
+  SortOptions,
+} from "../../../shared/utils/apiUtil";
 
 function CustomersPage() {
   const navigate = useNavigate();
@@ -60,7 +58,7 @@ function CustomersPage() {
       items: [],
     });
 
-  const [requestParams, setRequestParams] = useState<DataGridRequestParams>({});
+  // const [requestParams, setRequestParams] = useState<DataGridRequestParams>({});
 
   const [, cancel] = useDebounce(
     () => {
@@ -71,11 +69,11 @@ function CustomersPage() {
   );
 
   //RTK queries and mutations
-  const skipQuery = requestParams.pagination === undefined;
+  // const skipQuery = requestParams.pagination === undefined;
 
   const filters: Filters<Customer> = buildFilter(filterModel);
 
-  const sortOptions: SortOption<Customer> = sortModel.map((model) => ({
+  const sortOptions: SortOptions<Customer> = sortModel.map((model) => ({
     field: model.field as keyof Customer,
     direction: model.sort as "asc" | "desc",
   }));
@@ -126,13 +124,13 @@ function CustomersPage() {
         value: item.value,
       }));
 
-    setRequestParams((prev) => ({
-      pagination: {
-        page: paginationModel.page + 1,
-        limit: paginationModel.pageSize,
-      },
-      columnFilters: filtredColumns,
-    }));
+    // setRequestParams((prev) => ({
+    //   pagination: {
+    //     page: paginationModel.page + 1,
+    //     limit: paginationModel.pageSize,
+    //   },
+    //   columnFilters: filtredColumns,
+    // }));
   }, [paginationModel, debouncedFilterModel]);
 
   const handlePaginationChange = (newModel: GridPaginationModel) => {

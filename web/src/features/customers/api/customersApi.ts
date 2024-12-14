@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CreateCustomer, Customer } from '../types/customer';
-import { buildSearchParams } from '../../../shared/utils/apiUtil';
-import { QueryParams } from '../../../shared/types/Api';
+import { buildSearchParams, QueryParams } from '../../../shared/utils/apiUtil';
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -44,10 +43,12 @@ export const apiCustomers = createApi({
             },
 
         }),
+
         getCustomers: builder.query<Customer[], void>({
             query: () => '/customers',
             providesTags: ['Customer'],
         }),
+
         fetchCustomers: builder.query<{ items: Customer[]; totalCount: number }, CustomerQueryParams>({
             query: (queryParams) => {
                 const urlSearchParams = buildSearchParams(queryParams)
@@ -55,10 +56,12 @@ export const apiCustomers = createApi({
             },
             providesTags: ['Customer'],
         }),
+
         getCustomerById: builder.query<Customer, string>({
             query: (id) => `/customers/${id}`,
             providesTags: (result, error, id) => [{ type: "Customer", id }]
         }),
+
         updateCustomer: builder.mutation<Customer, { id: string, body: Partial<Customer> }>({
             query: ({ id, body }) => ({
                 url: `/customers/${id}`,
@@ -68,6 +71,7 @@ export const apiCustomers = createApi({
             invalidatesTags: (result, error, { id }) => [{ type: "Customer", id }]
 
         }),
+
         deleteCustomer: builder.mutation<void, string>({
             query: (id) => ({
                 url: `/customers/${id}`,
