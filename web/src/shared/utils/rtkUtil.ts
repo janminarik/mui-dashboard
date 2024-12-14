@@ -9,9 +9,11 @@ interface QueryOrMutationState {
 }
 
 export const aggregateApiRequestState = (results: QueryOrMutationState[]) => {
-    const isLoading = results.some(r => r.isLoading || r.isFetching);
-    const isError = results.some(r => r.isError);
-    const errors = results.map(r => r.error).filter(Boolean);
+    const isLoading = results.some((r) => r.isLoading || r.isFetching);
+    const isError = results.some((r) => r.isError);
+    const errors = results
+        .map((r) => r.error)
+        .filter((error): error is FetchBaseQueryError | SerializedError => !!error);
 
     return { isLoading, isError, errors };
-}
+};

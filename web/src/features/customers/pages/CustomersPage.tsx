@@ -221,7 +221,9 @@ function CustomersPage() {
       >
         <ErrorBox
           message={
-            errors.length > 0 ? extractErrorMessage(errors[0]) : undefined
+            errors.length > 0
+              ? errors.map((error) => extractErrorMessage(error)).join("\n")
+              : undefined
           }
         ></ErrorBox>
       </Box>
