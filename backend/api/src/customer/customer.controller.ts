@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe, NotFoundException, Query, ParseIntPipe } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
+import { Customer, Prisma } from '@prisma/client'; // Import modelu Customer z Prisma
 
 @Controller('customers')
 export class CustomerController {
@@ -13,7 +14,22 @@ export class CustomerController {
   }
 
   @Get()
+  async findqueryAll(
+    @Query('filter') filter?: string,
+    @Query('skip', ParseIntPipe) skip?: number,
+    @Query('take', ParseIntPipe) take?: number,
+    @Query('orderBy') orderBy?: string
+  ) {
+
+    console.log("findqueryAll");
+    const parsedFilter: Prisma.CustomerWhereInput = filter ? JSON.parse(filter) : undefined;
+    const parsedOrderBy: Prisma.CustomerOrderByWithRelationInput = orderBy ? JSON.parse(orderBy) : undefined;
+    return this.customerService.queryAll(parsedFilter, skip, take, parsedOrderBy);
+  }
+
+  @Get()
   findAll() {
+    console.log("fineAll");
     return this.customerService.findAll();
   }
 

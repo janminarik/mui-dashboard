@@ -5,6 +5,17 @@ import { createFilterQuery } from '../../../shared/utils/apiUtil';
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
+type SortModel<T> = Array<{ field: keyof T; sort: 'asc' | 'desc' }>;
+type Filters<T> = Partial<Record<keyof T, any>>;
+
+interface QueryParams<T> {
+    page: number;
+    pageSize: number;
+    sortModel?: SortModel<T>;
+    filters?: Filters<T>;
+}
+
+type CustomerQueryParams = QueryParams<Customer>;
 
 export const apiCustomers = createApi({
     reducerPath: 'customers',
@@ -47,6 +58,46 @@ export const apiCustomers = createApi({
         }),
         getCustomers: builder.query<Customer[], void>({
             query: () => '/customers',
+            providesTags: ['Customer'],
+        }),
+        // queryCustomers: builder.query({
+        //     query: ({ page, pageSize, sortModel, filters }: CustomerQueryParams) => ({
+        //         url: 'customers',
+        //         params: {
+        //             skip: page * pageSize,
+        //             take: pageSize,
+        //             orderBy: sortModel?.length ? JSON.stringify({ [sortModel[0].field]: sortModel[0].sort }) : undefined,
+        //             filter: filters ? JSON.stringify(filters) : undefined,
+        //         },
+        //     }),
+        //     transformResponse: (response: { data: any[]; total: number }) => ({
+        //         data: response.data,
+        //         total: response.total,
+        //     }),
+        // }),
+        fetchCustomers: builder.query<{ items: Customer[]; totalCount: number }, CustomerQueryParams>({
+            query: ({ page, pageSize, sortModel, filters }) => {
+                const query = new URLSearchParams();
+
+                // Pridanie stránkovania
+                query.append('skip', page.toString());
+                query.append('take', pageSize.toString());
+
+                // Pridanie triedenia
+                if (sortModel) {
+                    query.append(
+                        'sort',
+                        JSON.stringify(sortModel.map(({ field, sort }) => ({ [field]: sort }))),
+                    );
+                }
+
+                // Pridanie filtrov
+                if (filters) {
+                    query.append('filter', JSON.stringify(filters));
+                }
+
+                return `/customers?${query.toString()}`;
+            },
             providesTags: ['Customer'],
         }),
         getFiltredCustomers: builder.query<ApiPaginatedResponse<Customer>, ApiRequestParams>({
@@ -108,6 +159,7 @@ export const {
     useCreateCustomerMutation,
     useGetCustomersQuery,
     useGetCustomerByIdQuery,
+    useFetchCustomersQuery,
     useGetFiltredCustomersQuery,
     useLazyGetFiltredCustomersQuery,
     useUpdateCustomerMutation,

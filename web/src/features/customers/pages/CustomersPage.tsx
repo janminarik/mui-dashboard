@@ -1,5 +1,6 @@
 import {
   useDeleteCustomerMutation,
+  useFetchCustomersQuery,
   useGetCustomersQuery,
   useGetFiltredCustomersQuery,
 } from "../api/customersApi";
@@ -10,6 +11,8 @@ import {
   GridPaginationModel,
   GridRowModel,
   GridRowSelectionModel,
+  GridSortDirection,
+  GridSortModel,
   GridToolbar,
 } from "@mui/x-data-grid";
 import Grid from "@mui/material/Grid2";
@@ -24,6 +27,7 @@ import Loader from "../../../shared/components/Loader";
 import ErrorBox from "../../../shared/components/ErrorBox";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { extractErrorDetails } from "../../../shared/utils/errorUtils";
+import { buildFilter } from "../../../shared/utils/dataGridUtil";
 
 function CustomersPage() {
   const navigate = useNavigate();
@@ -38,12 +42,14 @@ function CustomersPage() {
 
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
     page: 0,
-    pageSize: 100,
+    pageSize: 20,
   });
 
   const [filterModel, setFilterModel] = useState<GridFilterModel>({
     items: [],
   });
+  const [sortModel, setSortModel] = useState<GridSortModel>([]);
+
   const [rowSelectionModel, setRowSelectionModel] =
     useState<GridRowSelectionModel>([]);
 
@@ -65,13 +71,24 @@ function CustomersPage() {
   //RTK queries and mutations
   const skipQuery = requestParams.pagination === undefined;
 
+  const filters = buildFilter(filterModel);
+
+  paginationModel.page;
+
   const {
     data,
     isLoading: isGetCustomersLoading,
     isFetching: isGetCustomersFetching,
     isError: isGetCustomersError,
     error: getCustomersError,
-  } = useGetCustomersQuery(); //useGetFiltredCustomersQuery(requestParams, { skip: skipQuery });
+  } = useFetchCustomersQuery({
+    page: paginationModel.page,
+    pageSize: paginationModel.pageSize,
+    sortModel: undefined,
+    filters: filters,
+  }); //useGetFiltredCustomersQuery(requestParams, { skip: skipQuery });
+
+  console.log(data);
 
   const [deleteCustomer, result] = useDeleteCustomerMutation();
   const {
@@ -117,6 +134,10 @@ function CustomersPage() {
 
   const handleFilterChange = (newModel: GridFilterModel) => {
     setFilterModel(newModel);
+  };
+
+  const handleSortChange = (newModel: GridSortModel) => {
+    setSortModel(newModel);
   };
 
   const handleRowSelectionChange = (newModel: GridRowSelectionModel) => {
@@ -203,9 +224,9 @@ function CustomersPage() {
               },
             }}
             columns={columns}
-            rowCount={data?.length ? data.length : 0}
-            pageSizeOptions={[5, 10, 20, 1000]}
-            rows={data || []}
+            rowCount={data?.totalCount ? data.totalCount : 0}
+            pageSizeOptions={[5, 10, 20]}
+            rows={data.items || []}
             paginationMode="server"
             paginationModel={paginationModel}
             filterMode="server"
@@ -213,6 +234,7 @@ function CustomersPage() {
             onFilterModelChange={handleFilterChange}
             onPaginationModelChange={handlePaginationChange}
             onRowSelectionModelChange={handleRowSelectionChange}
+            onSortModelChange={handleSortChange}
             rowSelectionModel={rowSelectionModel}
             sx={{ m: 4 }}
           ></DataGrid>

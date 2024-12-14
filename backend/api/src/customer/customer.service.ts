@@ -2,36 +2,40 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
-import { Customer } from '@prisma/client'; // Import modelu Customer z Prisma
+import { Customer, Prisma } from '@prisma/client'; // Import modelu Customer z Prisma
 
 @Injectable()
 export class CustomerService {
   constructor(private prisma: PrismaService) { }
 
   async create(createCustomerDto: CreateCustomerDto): Promise<Customer> {
-    try {
-
-      return this.prisma.customer.create({ data: createCustomerDto });
-      // const newCustomer = await this.prisma.customer.create({ data: createCustomerDto });
-
-      // console.log(newCustomer);
-
-      // return newCustomer;
-
-    }
-    catch (error) {
-      throw error; // Prehoď iné chyby
-    }
+    return this.prisma.customer.create({ data: createCustomerDto });
   }
+
+  async queryAll(
+    filter?: Prisma.CustomerWhereInput,
+    skip?: number,
+    take?: number,
+    orderBy?: Prisma.CustomerOrderByWithRelationInput
+  ): Promise<{ items: Customer[]; totalCount: number }> {
+    const [data, total] = await Promise.all([
+      this.prisma.customer.findMany({
+        where: filter,
+        skip,
+        take,
+        orderBy,
+      }),
+      this.prisma.customer.count({ where: filter }),
+    ]);
+    return { items: data, totalCount: total };
+  }
+
 
   async findAll(): Promise<Customer[]> {
     return this.prisma.customer.findMany();
   }
 
-  //vola sa po create a nenajde lebo id je null
   async findOne(id: string): Promise<Customer | null> {
-
-
     const customer = await this.prisma.customer.findUnique({ where: { id } });
     if (!customer) {
       throw new NotFoundException(`find one  - Zákazník s ID ${id} nebol nájdený.`);
@@ -54,8 +58,6 @@ export class CustomerService {
   }
 
   async remove(id: string): Promise<Customer> {
-    ///throw new NotFoundException(`delete - Zákazník s ID ${id} nebol nájdený.`)
-
     try {
       return await this.prisma.customer.delete({
         where: { id },
