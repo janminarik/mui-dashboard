@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CreateCustomer, Customer } from '../types/customer';
-import { buildSearchParams, QueryParams } from '../../../shared/utils/apiUtil';
+import { buildSearchParams } from '../../../shared/utils/apiUtil';
+import { QueryParams } from '../../../shared/types/commonTypes';
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-
 
 type CustomerQueryParams = QueryParams<Customer>;
 

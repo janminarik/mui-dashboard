@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-import { Language } from "../../../shared/types/Language";
-import { ThemeName } from "../../../shared/types/ThemeName";
-
+import { Language, ThemeName } from "../../../shared/types/commonTypes";
 
 interface UiSettings {
     theme: ThemeName;

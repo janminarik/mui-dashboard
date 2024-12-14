@@ -19,11 +19,10 @@ import { AppDispatch, RootState } from "../../../app/store";
 import Sidebar, {
   SidebarProps,
 } from "../../../shared/components/Layout/Sidebar";
-import { Language } from "../../../shared/types/Language";
-import { ThemeName } from "../../../shared/types/ThemeName";
 import { closeSettingsPanel } from "../slices/settingsPanelSlice";
 import { setLanguage, setTheme } from "../slices/uiSettingsSlice";
 import { TRANSLATIONS_NAMESPACES } from "../../../i18n/config";
+import { Language, ThemeName } from "../../../shared/types/commonTypes";
 
 const StyledSettingsPanel = styled(Box)(({ theme }: { theme: Theme }) => ({
   display: "flex",

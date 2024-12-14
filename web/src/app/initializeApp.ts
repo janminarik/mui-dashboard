@@ -1,6 +1,6 @@
 import { setLanguage } from "../features/settings/slices/uiSettingsSlice";
 import i18n from "../i18n/i18n";
-import { Language } from "../shared/types/Language";
+import { Language } from "../shared/types/commonTypes";
 import { persistor, store } from "./store";
 
 

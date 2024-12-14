@@ -23,11 +23,8 @@ import Loader from "../../../shared/components/Loader";
 import ErrorBox from "../../../shared/components/ErrorBox";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { extractErrorDetails } from "../../../shared/utils/errorUtils";
-import {
-  buildFilter,
-  Filters,
-  SortOptions,
-} from "../../../shared/utils/apiUtil";
+import { buildFilter } from "../../../shared/utils/apiUtil";
+import { Filters, SortOptions } from "../../../shared/types/commonTypes";
 
 function CustomersPage() {
   const navigate = useNavigate();
