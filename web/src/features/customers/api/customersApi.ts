@@ -5,13 +5,13 @@ import { createFilterQuery } from '../../../shared/utils/apiUtil';
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
-type SortModel<T> = Array<{ field: keyof T; sort: 'asc' | 'desc' }>;
-type Filters<T> = Partial<Record<keyof T, any>>;
+export type SortOption<T> = Array<{ field: keyof T; direction: 'asc' | 'desc' }>;
+export type Filters<T> = Partial<Record<keyof T, any>>;
 
-interface QueryParams<T> {
+export interface QueryParams<T> {
     page: number;
     pageSize: number;
-    sortModel?: SortModel<T>;
+    sortOptions?: SortOption<T>;
     filters?: Filters<T>;
 }
 
@@ -76,7 +76,7 @@ export const apiCustomers = createApi({
         //     }),
         // }),
         fetchCustomers: builder.query<{ items: Customer[]; totalCount: number }, CustomerQueryParams>({
-            query: ({ page, pageSize, sortModel, filters }) => {
+            query: ({ page, pageSize, sortOptions, filters }) => {
                 const query = new URLSearchParams();
 
                 // Pridanie stránkovania
@@ -84,10 +84,10 @@ export const apiCustomers = createApi({
                 query.append('take', pageSize.toString());
 
                 // Pridanie triedenia
-                if (sortModel) {
+                if (sortOptions) {
                     query.append(
-                        'sort',
-                        JSON.stringify(sortModel.map(({ field, sort }) => ({ [field]: sort }))),
+                        'orderBy',
+                        JSON.stringify(sortOptions.map(({ field, direction }) => ({ [field]: direction }))),
                     );
                 }
 

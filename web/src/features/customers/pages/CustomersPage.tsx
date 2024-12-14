@@ -1,4 +1,6 @@
 import {
+  Filters,
+  SortOption,
   useDeleteCustomerMutation,
   useFetchCustomersQuery,
   useGetCustomersQuery,
@@ -71,9 +73,14 @@ function CustomersPage() {
   //RTK queries and mutations
   const skipQuery = requestParams.pagination === undefined;
 
-  const filters = buildFilter(filterModel);
+  const filters: Filters<Customer> = buildFilter(filterModel);
 
-  paginationModel.page;
+  const sortOptions: SortOption<Customer> = sortModel.map((model) => ({
+    field: model.field as keyof Customer,
+    direction: model.sort as "asc" | "desc",
+  }));
+
+  console.log("sort----------", sortOptions);
 
   const {
     data,
@@ -84,7 +91,7 @@ function CustomersPage() {
   } = useFetchCustomersQuery({
     page: paginationModel.page,
     pageSize: paginationModel.pageSize,
-    sortModel: undefined,
+    sortOptions: sortOptions,
     filters: filters,
   }); //useGetFiltredCustomersQuery(requestParams, { skip: skipQuery });
 
@@ -225,7 +232,7 @@ function CustomersPage() {
             }}
             columns={columns}
             rowCount={data?.totalCount ? data.totalCount : 0}
-            pageSizeOptions={[5, 10, 20]}
+            pageSizeOptions={[5, 10, 20, 100]}
             rows={data.items || []}
             paginationMode="server"
             paginationModel={paginationModel}
