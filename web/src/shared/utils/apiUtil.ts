@@ -11,9 +11,10 @@ export type Filters<T> = Partial<Record<keyof T, any>>;
 export interface QueryParams<T> {
     page?: number;
     pageSize?: number;
-    sortOptions: SortOptions<T>;
-    filters: Filters<T>
+    sortOptions?: SortOptions<T>;
+    filters?: Filters<T>
 }
+
 
 
 export const buildSearchParams = <T>(queryParams: QueryParams<T>) => {

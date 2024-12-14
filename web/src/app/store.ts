@@ -6,11 +6,13 @@ import { settingsPanelReducer } from "../features/settings/slices/settingsPanelS
 import { uiSettingsReducer } from "../features/settings/slices/uiSettingsSlice";
 import { navigationPanelReducer } from "../shared/slices/navigationPanelSlice";
 import { userReducer } from "../shared/slices/userSlice";
-import { apiCustomers } from "../features/customers";
+import { apiCustomers, customersListReducer } from "../features/customers";
+import { loggerMiddleware } from "../shared/middleware/loggerMiddleware";
 
 
 const rootReducer = combineReducers({
     user: userReducer,
+    customersList: customersListReducer,
     //perzistentne reduktory
     navigationPanel: navigationPanelReducer,
     settingsPanel: settingsPanelReducer,
@@ -40,7 +42,7 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
             },
-        }).concat(apiCustomers.middleware)
+        }).concat([apiCustomers.middleware])
 });
 
 // Konfigurácia persistoru

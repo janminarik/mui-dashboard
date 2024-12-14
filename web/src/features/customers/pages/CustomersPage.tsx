@@ -1,4 +1,5 @@
 import {
+  CustomerQueryParams,
   useDeleteCustomerMutation,
   useGetCustomersQuery,
 } from "../api/customersApi";
@@ -13,9 +14,15 @@ import {
   GridToolbar,
 } from "@mui/x-data-grid";
 import Grid from "@mui/material/Grid2";
-import { useEffect, useState } from "react";
-import { useDebounce } from "react-use";
-import { Box, Button, IconButton, Menu, MenuItem } from "@mui/material";
+import { useCallback, useMemo, useState } from "react";
+import {
+  Box,
+  Button,
+  debounce,
+  IconButton,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 import { Customer } from "../types/customer";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../config/routes";
@@ -23,59 +30,40 @@ import Loader from "../../../shared/components/Loader";
 import ErrorBox from "../../../shared/components/ErrorBox";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { extractErrorDetails } from "../../../shared/utils/errorUtils";
-import { Filters, SortOptions } from "../../../shared/utils/apiUtil";
-import { buildFilter } from "../../../shared/utils/muiUtil";
+import { buildFilter, buildSort } from "../../../shared/utils/muiUtil";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../app/store";
+import {
+  setFilters,
+  setPage,
+  setSelectedItems,
+  setSortOptions,
+} from "../slices/customersSlice";
 
 function CustomersPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
+  //row context menu
   const [customerCtxMenuEl, setCustomerCtxMenuEl] =
     useState<HTMLButtonElement | null>(null);
-
-  const openCustomerCtxMenu = Boolean(customerCtxMenuEl);
-
   const [selectedCustomer, setSelectedCustomer] =
     useState<GridRowModel<Customer> | null>(null);
+  const openCustomerCtxMenu = Boolean(customerCtxMenuEl);
 
-  const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
-    page: 0,
-    pageSize: 20,
-  });
-
-  const [filterModel, setFilterModel] = useState<GridFilterModel>({
-    items: [],
-  });
-  const [sortModel, setSortModel] = useState<GridSortModel>([]);
-
-  const [rowSelectionModel, setRowSelectionModel] =
-    useState<GridRowSelectionModel>([]);
-
-  const [debouncedFilterModel, setDebouncedFilterMode] =
-    useState<GridFilterModel>({
-      items: [],
-    });
-
-  // const [requestParams, setRequestParams] = useState<DataGridRequestParams>({});
-
-  const [, cancel] = useDebounce(
-    () => {
-      setDebouncedFilterMode(filterModel);
-    },
-    300,
-    [filterModel]
+  const { pagination, sortOptions, filters, selectedItems } = useSelector(
+    (state: RootState) => state.customersList
   );
 
-  //RTK queries and mutations
-  // const skipQuery = requestParams.pagination === undefined;
-
-  const filters: Filters<Customer> = buildFilter(filterModel);
-
-  const sortOptions: SortOptions<Customer> = sortModel.map((model) => ({
-    field: model.field as keyof Customer,
-    direction: model.sort as "asc" | "desc",
-  }));
-
-  console.log("sort----------", sortOptions);
+  const queryParams: CustomerQueryParams = useMemo(
+    () => ({
+      page: pagination.page,
+      pageSize: pagination.pageSize,
+      sortOptions: sortOptions ? buildSort(sortOptions) : undefined,
+      filters: filters ? buildFilter(filters) : undefined,
+    }),
+    [pagination, sortOptions, filters]
+  );
 
   const {
     data,
@@ -83,14 +71,7 @@ function CustomersPage() {
     isFetching: isGetCustomersFetching,
     isError: isGetCustomersError,
     error: getCustomersError,
-  } = useGetCustomersQuery({
-    page: paginationModel.page,
-    pageSize: paginationModel.pageSize,
-    sortOptions: sortOptions,
-    filters: filters,
-  });
-
-  console.log(data);
+  } = useGetCustomersQuery(queryParams, { skip: false });
 
   const [deleteCustomer, result] = useDeleteCustomerMutation();
   const {
@@ -105,47 +86,28 @@ function CustomersPage() {
   const rtkError = getCustomersError || deleteCustomerError;
   const error = extractErrorDetails(rtkError);
 
-  console.log("is error", isError);
-  console.log("error", rtkError);
+  const debounceDispatch = useCallback(
+    debounce((filters: GridFilterModel) => {
+      dispatch(setFilters(filters));
+    }, 500),
+    [dispatch]
+  );
 
-  useEffect(() => {
-    return () => {};
-  }, []);
+  const handleFilterChange = useCallback(
+    (newModel: GridFilterModel) => {
+      debounceDispatch(newModel);
+    },
+    [debounceDispatch]
+  );
 
-  useEffect(() => {
-    const filtredColumns = debouncedFilterModel.items
-      .filter((filter) => filter.value != undefined)
-      .map((item) => ({
-        column: item.field,
-        operator: item.operator,
-        value: item.value,
-      }));
+  const handlePaginationChange = (newModel: GridPaginationModel) =>
+    dispatch(setPage(newModel));
 
-    // setRequestParams((prev) => ({
-    //   pagination: {
-    //     page: paginationModel.page + 1,
-    //     limit: paginationModel.pageSize,
-    //   },
-    //   columnFilters: filtredColumns,
-    // }));
-  }, [paginationModel, debouncedFilterModel]);
+  const handleSortChange = (newModel: GridSortModel) =>
+    dispatch(setSortOptions(newModel));
 
-  const handlePaginationChange = (newModel: GridPaginationModel) => {
-    setPaginationModel(newModel);
-  };
-
-  const handleFilterChange = (newModel: GridFilterModel) => {
-    setFilterModel(newModel);
-  };
-
-  const handleSortChange = (newModel: GridSortModel) => {
-    setSortModel(newModel);
-  };
-
-  const handleRowSelectionChange = (newModel: GridRowSelectionModel) => {
-    console.log(newModel);
-    setRowSelectionModel(newModel);
-  };
+  const handleRowSelectionChange = (newModel: GridRowSelectionModel) =>
+    dispatch(setSelectedItems(newModel));
 
   const handleCustomerMenuOpen = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -155,18 +117,15 @@ function CustomersPage() {
     setSelectedCustomer(row);
   };
 
-  const handleCustomerEdit = () => {
+  const handleCustomerEdit = () =>
     navigate(ROUTES.CUSTOMERS + `/${selectedCustomer?.id}`);
-  };
 
   const handleCustomerDelete = () => {
     deleteCustomer(selectedCustomer?.id!);
     setCustomerCtxMenuEl(null);
   };
 
-  const handleCreateCustomer = () => {
-    navigate(ROUTES.CUSTOMER_CREATE);
-  };
+  const handleCreateCustomer = () => navigate(ROUTES.CUSTOMER_CREATE);
 
   const colDef = { flex: 1 };
 
@@ -194,6 +153,22 @@ function CustomersPage() {
             <MoreHorizIcon />
           </IconButton>
           <Menu
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            slotProps={{
+              paper: {
+                sx: {
+                  minWidth: 120,
+                },
+                elevation: 1,
+              },
+            }}
             open={openCustomerCtxMenu}
             anchorEl={customerCtxMenuEl}
             onClose={() => setCustomerCtxMenuEl(null)}
@@ -230,14 +205,15 @@ function CustomersPage() {
             pageSizeOptions={[5, 10, 20, 100]}
             rows={data.items || []}
             paginationMode="server"
-            paginationModel={paginationModel}
+            paginationModel={pagination}
             filterMode="server"
-            filterModel={filterModel}
+            sortingMode="server"
+            filterModel={filters}
             onFilterModelChange={handleFilterChange}
             onPaginationModelChange={handlePaginationChange}
             onRowSelectionModelChange={handleRowSelectionChange}
             onSortModelChange={handleSortChange}
-            rowSelectionModel={rowSelectionModel}
+            rowSelectionModel={selectedItems}
             sx={{ m: 4 }}
           ></DataGrid>
         </Grid>

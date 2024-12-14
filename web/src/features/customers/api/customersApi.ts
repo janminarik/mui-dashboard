@@ -4,7 +4,7 @@ import { buildSearchParams, QueryParams } from '../../../shared/utils/apiUtil';
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
-type CustomerQueryParams = QueryParams<Customer>;
+export type CustomerQueryParams = QueryParams<Customer>;
 
 export const apiCustomers = createApi({
     reducerPath: 'customers',
