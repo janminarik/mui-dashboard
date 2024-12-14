@@ -44,16 +44,8 @@ export const apiCustomers = createApi({
 
         }),
 
-        getCustomers: builder.query<Customer[], void>({
-            query: () => '/customers',
-            providesTags: ['Customer'],
-        }),
-
-        fetchCustomers: builder.query<{ items: Customer[]; totalCount: number }, CustomerQueryParams>({
-            query: (queryParams) => {
-                const urlSearchParams = buildSearchParams(queryParams)
-                return `/customers?${urlSearchParams}`
-            },
+        getCustomers: builder.query<{ items: Customer[]; totalCount: number }, CustomerQueryParams | void>({
+            query: (queryParams) => (queryParams ? `/customers?${buildSearchParams(queryParams)}` : "/customers"),
             providesTags: ['Customer'],
         }),
 
@@ -69,7 +61,6 @@ export const apiCustomers = createApi({
                 body,
             }),
             invalidatesTags: (result, error, { id }) => [{ type: "Customer", id }]
-
         }),
 
         deleteCustomer: builder.mutation<void, string>({
@@ -86,7 +77,6 @@ export const {
     useCreateCustomerMutation,
     useGetCustomersQuery,
     useGetCustomerByIdQuery,
-    useFetchCustomersQuery,
     useUpdateCustomerMutation,
     useDeleteCustomerMutation,
 } = apiCustomers;

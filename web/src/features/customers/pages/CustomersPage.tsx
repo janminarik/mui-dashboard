@@ -1,6 +1,6 @@
 import {
   useDeleteCustomerMutation,
-  useFetchCustomersQuery,
+  useGetCustomersQuery,
 } from "../api/customersApi";
 import {
   DataGrid,
@@ -83,12 +83,12 @@ function CustomersPage() {
     isFetching: isGetCustomersFetching,
     isError: isGetCustomersError,
     error: getCustomersError,
-  } = useFetchCustomersQuery({
+  } = useGetCustomersQuery({
     page: paginationModel.page,
     pageSize: paginationModel.pageSize,
     sortOptions: sortOptions,
     filters: filters,
-  }); //useGetFiltredCustomersQuery(requestParams, { skip: skipQuery });
+  });
 
   console.log(data);
 
