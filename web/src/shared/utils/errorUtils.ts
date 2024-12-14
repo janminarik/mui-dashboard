@@ -1,43 +1,27 @@
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { SerializedError } from '@reduxjs/toolkit';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
-interface ExtractedError {
-    errorMessage: string | null;
-    statusCode: number | null;
-}
+type ErrorMessage = string | undefined;
 
-export const extractErrorDetails = (
+export const extractErrorMessage = (
     error: FetchBaseQueryError | SerializedError | undefined
-): ExtractedError => {
+): ErrorMessage => {
     if (!error) {
-        return { errorMessage: null, statusCode: null };
+        return undefined;
     }
 
-    // Attempt to extract error details based on known structures
     if ('status' in error) {
-        const fetchError = error as FetchBaseQueryError;
-        const errorMessage =
-            typeof fetchError.data === 'string'
-                ? fetchError.data
-                : (fetchError.data as { message?: string })?.message || JSON.stringify(fetchError.data);
-
-        return {
-            errorMessage: errorMessage || (fetchError as any)?.error || null,
-            statusCode: typeof fetchError.status === 'number' ? fetchError.status : null,
-        };
+        // Handle FetchBaseQueryError
+        if (error.data && typeof error.data === 'object' && 'message' in error.data) {
+            return (error.data as { message?: string }).message;
+        }
+        return typeof error.data === 'string' ? error.data : undefined;
     }
 
     if ('message' in error) {
-        const serializedError = error as SerializedError;
-        return {
-            errorMessage: serializedError.message || null,
-            statusCode: null,
-        };
+        // Handle SerializedError
+        return error.message;
     }
 
-    // Generic fallback for unstructured errors
-    return {
-        errorMessage: JSON.stringify(error),
-        statusCode: null,
-    };
+    return undefined;
 };

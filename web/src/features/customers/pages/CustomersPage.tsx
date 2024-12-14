@@ -29,7 +29,6 @@ import { ROUTES } from "../config/routes";
 import Loader from "../../../shared/components/Loader";
 import ErrorBox from "../../../shared/components/ErrorBox";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { extractErrorDetails } from "../../../shared/utils/errorUtils";
 import { buildFilter, buildSort } from "../../../shared/utils/muiUtil";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../app/store";
@@ -39,6 +38,8 @@ import {
   setSelectedItems,
   setSortOptions,
 } from "../slices/customersSlice";
+import { aggregateApiRequestState } from "../../../shared/utils/rtkUtil";
+import { extractErrorMessage } from "../../../shared/utils/errorUtils";
 
 function CustomersPage() {
   const navigate = useNavigate();
@@ -65,26 +66,14 @@ function CustomersPage() {
     [pagination, sortOptions, filters]
   );
 
-  const {
-    data,
-    isLoading: isGetCustomersLoading,
-    isFetching: isGetCustomersFetching,
-    isError: isGetCustomersError,
-    error: getCustomersError,
-  } = useGetCustomersQuery(queryParams, { skip: false });
+  const customersQuery = useGetCustomersQuery(queryParams);
+  const { data } = customersQuery;
+  const [deleteCustomer, deleteCustomerResult] = useDeleteCustomerMutation();
 
-  const [deleteCustomer, result] = useDeleteCustomerMutation();
-  const {
-    isLoading: isDeleteCustomerLoading,
-    isError: isDeleteCustomerError,
-    error: deleteCustomerError,
-  } = result;
-
-  const loading =
-    isGetCustomersLoading || isGetCustomersFetching || isDeleteCustomerLoading;
-  const isError = isGetCustomersError || isDeleteCustomerError;
-  const rtkError = getCustomersError || deleteCustomerError;
-  const error = extractErrorDetails(rtkError);
+  const { isLoading, isError, errors } = aggregateApiRequestState([
+    customersQuery,
+    deleteCustomerResult,
+  ]);
 
   const debounceDispatch = useCallback(
     debounce((filters: GridFilterModel) => {
@@ -189,7 +178,7 @@ function CustomersPage() {
         </Grid>
         <Grid size={{ xs: 12 }}>
           <DataGrid
-            loading={loading}
+            loading={isLoading}
             disableRowSelectionOnClick
             checkboxSelection
             slots={{
@@ -230,10 +219,14 @@ function CustomersPage() {
           alignItems: "center",
         }}
       >
-        <ErrorBox message={error.errorMessage}></ErrorBox>
+        <ErrorBox
+          message={
+            errors.length > 0 ? extractErrorMessage(errors[0]) : undefined
+          }
+        ></ErrorBox>
       </Box>
     );
-  } else if (!isError && loading) {
+  } else if (!isError && isLoading) {
     return (
       <Box
         sx={{

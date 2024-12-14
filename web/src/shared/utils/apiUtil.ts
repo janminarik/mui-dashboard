@@ -16,7 +16,6 @@ export interface QueryParams<T> {
 }
 
 
-
 export const buildSearchParams = <T>(queryParams: QueryParams<T>) => {
     const query = new URLSearchParams();
     if (queryParams.page)

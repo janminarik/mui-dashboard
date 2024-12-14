@@ -3,6 +3,8 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { Customer, Prisma } from '@prisma/client'; // Import modelu Customer z Prisma
+import { Sleep } from 'src/utils/helpers';
+
 
 @Injectable()
 export class CustomerService {
@@ -12,6 +14,7 @@ export class CustomerService {
     return this.prisma.customer.create({ data: createCustomerDto });
   }
 
+  //@Sleep(2000)
   async queryAll(
     filter?: Prisma.CustomerWhereInput,
     skip?: number,
@@ -57,6 +60,7 @@ export class CustomerService {
     }
   }
 
+  @Sleep(2000)
   async remove(id: string): Promise<Customer> {
     try {
       return await this.prisma.customer.delete({
