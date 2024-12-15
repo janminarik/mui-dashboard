@@ -18,8 +18,8 @@ const rootReducer = combineReducers({
     settingsPanel: settingsPanelReducer,
     uiSettings: uiSettingsReducer,
     //api
-    // [apiCustomers.reducerPath]: apiCustomers.api.reducer,
-    [apiCustomers.reducerPath]: apiCustomers.reducer,
+    [apiCustomers.reducerPath]: apiCustomers.baseApi.reducer,
+    // [apiCustomers.reducerPath]: apiCustomers.reducer,
 
 
 })
@@ -43,8 +43,8 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
             },
-            // }).concat([apiCustomers.api.middleware])
-        }).concat([apiCustomers.middleware])
+        }).concat([apiCustomers.baseApi.middleware])
+    // }).concat([apiCustomers.middleware])
 });
 
 // Konfigurácia persistoru

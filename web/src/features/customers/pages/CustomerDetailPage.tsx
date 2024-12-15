@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   apiCustomers,
   useCreateCustomerMutation,
+  useGetCustomCustomerByIdQuery,
   useGetCustomerByIdQuery,
   useUpdateCustomerMutation,
 } from "../api/customersApi";
@@ -47,7 +48,7 @@ function CustomerDetailPage() {
     isFetching: isLoadingGetCustomer,
     isError: isErrorGetCustomer,
     error: errorGetCustomer,
-  } = useGetCustomerByIdQuery(id!, { skip: skipQuery });
+  } = useGetCustomCustomerByIdQuery(id!, { skip: skipQuery });
 
   //PUT
   const [updateCustomer, updateResult] = useUpdateCustomerMutation();
@@ -84,8 +85,6 @@ function CustomerDetailPage() {
         email: customer?.email || "",
         phoneNumber: customer?.phoneNumber || "",
       });
-
-      console.log("customer detail", customer);
     }
   }, [customer, isEditMode]);
 
@@ -122,7 +121,6 @@ function CustomerDetailPage() {
     field: keyof CustomerForm,
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    console.log(field, event.target.value);
     setFormValues((prev) => {
       return { ...prev, [field]: event.target.value };
     });

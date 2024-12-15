@@ -1,4 +1,4 @@
-import { SerializedError } from "@reduxjs/toolkit";
+import { ActionReducerMapBuilder, SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { capitalize } from "./commonUtils";
@@ -57,13 +57,13 @@ export interface TEntityBase<TId extends string | number> {
 }
 export const createGenericApi =
     <TId extends string | number, TEntity extends TEntityBase<TId>, TCreateEntity extends Partial<TEntity>>
-        (entityName: string, baseUrl: string) => {
+        (entityName: string, baseUrl: string,) => {
 
         const reducerPath = `${entityName.toLowerCase()}s`
         const entityTag = capitalize(entityName);
         const entityPath = `/${entityName.toLowerCase()}s`;
 
-        const api = createApi({
+        const baseApi = createApi({
             reducerPath: reducerPath,
             baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
             tagTypes: [`${capitalize(entityName)}`],
@@ -74,38 +74,19 @@ export const createGenericApi =
                         method: 'POST',
                         body,
                     }),
-                    invalidatesTags: (result) => {
-                        return result ? [{ type: entityTag, id: result.id }] : [entityTag]
-                    },
-                    async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-                        try {
-                            const { data: createdEntity } = await queryFulfilled;
-                            if (createdEntity.id) {
-                                dispatch(
-                                    api.util.updateQueryData(
-                                        "getEntities",
-                                        undefined,
-                                        (draft) => {
-                                            if (draft && Array.isArray(draft)) {
-                                                draft.push(createdEntity);
-                                            }
-                                        }
-                                    )
-                                );
-                            }
-                        } catch (error) {
-                            console.error("Error in onQueryStarted:", error);
-                        }
-                    },
+                    invalidatesTags: (result) => result ? [{ type: entityTag, id: "LIST" }] : []
                 }),
                 getEntities: builder.query<{ items: TEntity[]; totalCount: number }, QueryParams<TEntity> | void>({
                     query: (queryParams) => (queryParams ? `${entityPath}?${buildSearchParams(queryParams)}`
                         : `/${entityName.toLowerCase()}`),
-                    providesTags: [entityTag],
+                    providesTags: (result) => result ? [
+                        { type: entityTag, id: "LIST" },
+                        ...result.items.map((customer) => ({ type: `${entityTag}` as const, id: customer.id }))
+                    ] : []
                 }),
                 getEntityById: builder.query<TEntity, TId>({
                     query: (id) => `${entityPath}/${id}`,
-                    providesTags: (result, error, id) => [{ type: entityTag, id }]
+                    providesTags: (result, error, id) => [{ type: entityTag, id }],
                 }),
                 updateEntity: builder.mutation<TEntity, { id: TId, body: Partial<TEntity> }>({
                     query: ({ id, body }) => ({
@@ -120,10 +101,9 @@ export const createGenericApi =
                         url: `${entityPath}/${id}`,
                         method: 'DELETE',
                     }),
-                    invalidatesTags: [entityTag], //TODO: id
+                    invalidatesTags: (result, error, id) => [{ type: entityTag, id: "LIST" }]
                 }),
             }),
-
         });
 
         const {
@@ -132,10 +112,10 @@ export const createGenericApi =
             useGetEntityByIdQuery,
             useUpdateEntityMutation,
             useDeleteEntityMutation,
-        } = api;
+        } = baseApi;
 
         return {
-            api, reducerPath, useCreateEntityMutation,
+            baseApi, reducerPath, useCreateEntityMutation,
             useGetEntitiesQuery,
             useGetEntityByIdQuery,
             useUpdateEntityMutation,
