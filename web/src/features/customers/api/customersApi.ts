@@ -10,9 +10,9 @@ export const apiCustomers = createGenericApi<string, Customer, CreateCustomer>("
 
 export const extendedApiCustomers = apiCustomers.baseApi.injectEndpoints({
     endpoints: (builder) => ({
-        getCustomCustomerById: builder.query<Customer, string>({
-            query: (id) => `/customers/${id}`,
-        }),
+        // getExtendedCustomerById: builder.query<Customer, string>({
+        //     query: (id) => `/customers/${id}`,
+        // }),
     }),
     overrideExisting: false,
 });
@@ -23,7 +23,7 @@ export const {
     useGetEntityByIdQuery: useGetCustomerByIdQuery,
     useUpdateEntityMutation: useUpdateCustomerMutation,
     useDeleteEntityMutation: useDeleteCustomerMutation,
-    useGetCustomCustomerByIdQuery,
+    // useGetExtendedCustomerByIdQuery,
 } = extendedApiCustomers; //apiCustomers;
 
 /*

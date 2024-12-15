@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   apiCustomers,
   useCreateCustomerMutation,
-  useGetCustomCustomerByIdQuery,
   useGetCustomerByIdQuery,
   useUpdateCustomerMutation,
 } from "../api/customersApi";
@@ -48,7 +47,7 @@ function CustomerDetailPage() {
     isFetching: isLoadingGetCustomer,
     isError: isErrorGetCustomer,
     error: errorGetCustomer,
-  } = useGetCustomCustomerByIdQuery(id!, { skip: skipQuery });
+  } = useGetCustomerByIdQuery(id!, { skip: skipQuery });
 
   //PUT
   const [updateCustomer, updateResult] = useUpdateCustomerMutation();
