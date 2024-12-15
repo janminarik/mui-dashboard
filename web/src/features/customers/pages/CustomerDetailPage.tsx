@@ -102,7 +102,13 @@ function CustomerDetailPage() {
         updatedAt: new Date(),
       };
       console.log("customer to update", customerToUpdate);
-      await updateCustomer({ id: id!, body: customerToUpdate });
+      const updatedCustomer = await updateCustomer({
+        id: id!,
+        body: customerToUpdate,
+      });
+      if (updatedCustomer) {
+        navigate(-1);
+      }
     } else {
       const newCustomer: CreateCustomer = { ...formValue, isVerified: false };
       const createdCustomer = await createCustomer(newCustomer).unwrap();

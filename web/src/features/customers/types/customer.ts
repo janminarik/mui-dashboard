@@ -1,4 +1,6 @@
-export interface Customer {
+import { TEntityBase } from "../../../shared/utils/rtkUtils";
+
+export interface Customer extends TEntityBase<string> {
     id: string;
     firstName: string;
     lastName: string;

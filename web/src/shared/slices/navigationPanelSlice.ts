@@ -37,11 +37,9 @@ const navigationPanelSlice = createSlice({
     }
 })
 
-//export akcii na pouzitie v komponentoch
 export const { toggleNavigationPanel,
     closeNavigationPanel,
     setSelectedMenuItem,
     toggleSubmenu } = navigationPanelSlice.actions;
 
-//export reduceru, ktory bude priradeny do store
 export const navigationPanelReducer = navigationPanelSlice.reducer;

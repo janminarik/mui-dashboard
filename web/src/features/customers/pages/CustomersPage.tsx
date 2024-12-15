@@ -68,6 +68,17 @@ function CustomersPage() {
 
   const customersQuery = useGetCustomersQuery(queryParams);
   const { data } = customersQuery;
+
+  /*const [customersQueryTrigger, customersQueryResult] =
+    useLazyGetCustomersQuery();
+
+  const { data } = customersQueryResult;
+
+  useEffect(() => {
+    console.log("mount customers");
+    customersQueryTrigger(queryParams);
+  }, []);*/
+
   const [deleteCustomer, deleteCustomerResult] = useDeleteCustomerMutation();
 
   const { isLoading, isError, errors } = aggregateApiRequestState([

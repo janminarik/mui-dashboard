@@ -1,5 +1,8 @@
 import { SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { capitalize } from "./commonUtils";
+
 
 export type SortOptions<T> = Array<{
     field: keyof T;
@@ -48,3 +51,94 @@ export const aggregateApiRequestState = (results: QueryOrMutationState[]) => {
 
     return { isLoading, isError, errors };
 };
+
+export interface TEntityBase<TId extends string | number> {
+    id: TId;
+}
+export const createGenericApi =
+    <TId extends string | number, TEntity extends TEntityBase<TId>, TCreateEntity extends Partial<TEntity>>
+        (entityName: string, baseUrl: string) => {
+
+        const reducerPath = `${entityName.toLowerCase()}s`
+        const entityTag = capitalize(entityName);
+        const entityPath = `/${entityName.toLowerCase()}s`;
+
+        const api = createApi({
+            reducerPath: reducerPath,
+            baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
+            tagTypes: [`${capitalize(entityName)}`],
+            endpoints: (builder) => ({
+                createEntity: builder.mutation<TEntity, TCreateEntity>({
+                    query: (body) => ({
+                        url: entityPath,
+                        method: 'POST',
+                        body,
+                    }),
+                    invalidatesTags: (result) => {
+                        return result ? [{ type: entityTag, id: result.id }] : [entityTag]
+                    },
+                    async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                        try {
+                            const { data: createdEntity } = await queryFulfilled;
+                            if (createdEntity.id) {
+                                dispatch(
+                                    api.util.updateQueryData(
+                                        "getEntities",
+                                        undefined,
+                                        (draft) => {
+                                            if (draft && Array.isArray(draft)) {
+                                                draft.push(createdEntity);
+                                            }
+                                        }
+                                    )
+                                );
+                            }
+                        } catch (error) {
+                            console.error("Error in onQueryStarted:", error);
+                        }
+                    },
+                }),
+                getEntities: builder.query<{ items: TEntity[]; totalCount: number }, QueryParams<TEntity> | void>({
+                    query: (queryParams) => (queryParams ? `${entityPath}?${buildSearchParams(queryParams)}`
+                        : `/${entityName.toLowerCase()}`),
+                    providesTags: [entityTag],
+                }),
+                getEntityById: builder.query<TEntity, TId>({
+                    query: (id) => `${entityPath}/${id}`,
+                    providesTags: (result, error, id) => [{ type: entityTag, id }]
+                }),
+                updateEntity: builder.mutation<TEntity, { id: TId, body: Partial<TEntity> }>({
+                    query: ({ id, body }) => ({
+                        url: `${entityPath}/${id}`,
+                        method: 'PATCH',
+                        body,
+                    }),
+                    invalidatesTags: (result, error, { id }) => [{ type: entityTag, id }]
+                }),
+                deleteEntity: builder.mutation<void, TId>({
+                    query: (id) => ({
+                        url: `${entityPath}/${id}`,
+                        method: 'DELETE',
+                    }),
+                    invalidatesTags: [entityTag], //TODO: id
+                }),
+            }),
+
+        });
+
+        const {
+            useCreateEntityMutation,
+            useGetEntitiesQuery,
+            useGetEntityByIdQuery,
+            useUpdateEntityMutation,
+            useDeleteEntityMutation,
+        } = api;
+
+        return {
+            api, reducerPath, useCreateEntityMutation,
+            useGetEntitiesQuery,
+            useGetEntityByIdQuery,
+            useUpdateEntityMutation,
+            useDeleteEntityMutation,
+        };
+    }

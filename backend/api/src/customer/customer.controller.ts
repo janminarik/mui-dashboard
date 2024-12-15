@@ -4,6 +4,8 @@ import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { Customer, Prisma } from '@prisma/client'; // Import modelu Customer z Prisma
 
+
+
 @Controller('customers')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) { }
@@ -14,24 +16,23 @@ export class CustomerController {
   }
 
   @Get()
-  async findqueryAll(
+  async findAll(
     @Query('filter') filter?: string,
     @Query('skip', new ParseIntPipe({ optional: true })) skip?: number,
     @Query('take', new ParseIntPipe({ optional: true })) take?: number,
     @Query('orderBy') orderBy?: string
   ) {
 
-    console.log("findqueryAll");
     const parsedFilter: Prisma.CustomerWhereInput = filter ? JSON.parse(filter) : undefined;
     const parsedOrderBy: Prisma.CustomerOrderByWithRelationInput = orderBy ? JSON.parse(orderBy) : undefined;
     return this.customerService.queryAll(parsedFilter, skip, take, parsedOrderBy);
   }
 
-  @Get()
-  findAll() {
-    console.log("fineAll");
-    return this.customerService.findAll();
-  }
+  // @Get()
+  // findAll() {
+  //   console.log("fineAll");
+  //   return this.customerService.findAll();
+  // }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {

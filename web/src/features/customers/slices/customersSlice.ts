@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Customer } from "../types/customer";
-import { Filters, SortOptions } from "../../../shared/utils/apiUtil";
-import { GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel } from "@mui/x-data-grid";
+import { GridFilterModel, GridPaginationModel, GridRowSelectionModel, GridSortModel } from "@mui/x-data-grid";
 
 interface CustomersListState {
     pagination: GridPaginationModel,
