@@ -3,8 +3,8 @@ import {
   useGetCustomersQuery,
 } from "../api/customersApi";
 import { ROUTES } from "../config/routes";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../app/store";
 import {
   setCustomersColumnsVisibility,
   setCustomersFilters,
@@ -54,6 +54,7 @@ function CustomersPage2() {
       }
       useGetEntities={useGetCustomersQuery}
       useDeleteEntity={useDeleteCustomerMutation}
+      {...useSelector((state: RootState) => state.customersList)}
     />
   );
 }

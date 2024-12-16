@@ -36,6 +36,11 @@ export interface DataGridProps<TEntity> {
   showEditInContexMenu?: boolean;
   createEntityRoute: string;
   editEntityRoute: string;
+  pagination: GridPaginationModel;
+  filters?: GridFilterModel;
+  sortOptions?: GridSortModel;
+  selectedItems?: GridRowSelectionModel;
+  columnsVisbility?: GridColumnVisibilityModel;
   setPagination: (pagination: GridPaginationModel) => void;
   setFilters: (filters: GridFilterModel) => void;
   setSortOptions: (sortOptions: GridSortModel) => void;
@@ -57,6 +62,11 @@ function DataGrid<TEntity extends { id: string }>({
   showContextMenu,
   showEditInContexMenu,
   showDeleteInContextMenu,
+  pagination,
+  sortOptions,
+  filters,
+  selectedItems,
+  columnsVisbility,
   setPagination,
   setFilters,
   setSelectedItems,
@@ -76,8 +86,9 @@ function DataGrid<TEntity extends { id: string }>({
   const [selectedItem, setSelectedItem] =
     useState<GridRowModel<TEntity> | null>(null);
   const openContexMenu = Boolean(contextMenu);
-  const { pagination, sortOptions, filters, selectedItems, columnsVisbility } =
-    useSelector((state: RootState) => state.customersList);
+
+  // const { pagination, sortOptions, filters, selectedItems, columnsVisbility } =
+  //   useSelector((state: RootState) => state.customersList);
 
   const queryParams: QueryParams<TEntity> = useMemo(
     () => ({
