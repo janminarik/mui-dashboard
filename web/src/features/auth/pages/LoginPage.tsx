@@ -6,9 +6,9 @@ import { Button, Card, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 
 import { AppDispatch } from "../../../app/store";
+import { TRANSLATIONS_NAMESPACES } from "../../../i18n/config";
 import { setIsAuth } from "../../../shared/slices/userSlice";
 import { authService } from "../services/authService";
-import { TRANSLATIONS_NAMESPACES } from "../../../i18n/config";
 
 function LoginPage() {
   const { t } = useTranslation(TRANSLATIONS_NAMESPACES.AUTH);

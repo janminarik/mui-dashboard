@@ -2,13 +2,12 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+import { apiCustomers } from "../features/customers";
+import { customersReducer } from "../features/customers/slices/customersSliceV2";
 import { settingsPanelReducer } from "../features/settings/slices/settingsPanelSlice";
 import { uiSettingsReducer } from "../features/settings/slices/uiSettingsSlice";
 import { navigationPanelReducer } from "../shared/slices/navigationPanelSlice";
 import { userReducer } from "../shared/slices/userSlice";
-import { apiCustomers } from "../features/customers";
-import { loggerMiddleware } from "../shared/middleware/loggerMiddleware";
-import { customersReducer } from "../features/customers/slices/customersSliceV2";
 
 
 const rootReducer = combineReducers({

@@ -1,20 +1,21 @@
-import { CustomerQueryParams, useDeleteCustomerMutation, useGetCustomersQuery } from "../api/customersApiV2";
-import { DataGrid as MuiDataGrid, GridColDef, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, GridToolbar } from "@mui/x-data-grid";
-import Grid from "@mui/material/Grid2";
 import { useCallback, useMemo, useState } from "react";
-import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
-import { Customer } from "../types/customer";
-import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../config/routes";
-import Loader from "../../../shared/components/Loader";
-import ErrorBox from "../../../shared/components/ErrorBox";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import { DataGrid as MuiDataGrid, GridColDef, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, GridToolbar } from "@mui/x-data-grid";
+
 import { AppDispatch, RootState } from "../../../app/store";
-import { setCustomersFilters, setCustomersPage, setCustomersSelectedItems, setCustomersSortOptions } from "../slices/customersSliceV1";
+import ErrorBox from "../../../shared/components/ErrorBox";
+import Loader from "../../../shared/components/Loader";
 import { extractErrorMessage } from "../../../shared/utils/errorUtils";
 import { buildFilter, buildSort } from "../../../shared/utils/muiUtils";
 import { aggregateApiRequestState } from "../../../shared/utils/rtkUtils";
+import { CustomerQueryParams, useDeleteCustomerMutation, useGetCustomersQuery } from "../api/customersApiV2";
+import { ROUTES } from "../config/routes";
+import { setCustomersFilters, setCustomersPage, setCustomersSelectedItems, setCustomersSortOptions } from "../slices/customersSliceV1";
+import { Customer } from "../types/customer";
 
 //obsolete
 function CustomersPage0() {

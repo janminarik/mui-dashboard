@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Typography } from "@mui/material";
+
 import { TRANSLATIONS_NAMESPACES } from "../../i18n/config";
 
 function NotFoundPage() {

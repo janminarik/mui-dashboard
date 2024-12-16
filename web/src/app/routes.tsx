@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 
 import { authRoutes } from "../features/auth/routes/authRoutes";
+import { menuItems as customersMenuItem } from "../features/customers/config/menuItems";
+import { customersRoutes } from "../features/customers/routes/customersRoutes";
 import { menuItems as demoMenuItems } from "../features/demo/config/menuItems";
 import { demoRoutes } from "../features/demo/routes/demoRoutes";
 import { menuItems as muiDemoMenuItems } from "../features/muidemo/config/menuItems";
@@ -13,8 +15,6 @@ import ProtectedRoute from "../shared/components/ProtectedRoute";
 import ErrorPage from "../shared/pages/ErrorPage";
 import NotFoundPage from "../shared/pages/NotFoundPage";
 import { NavigationMenuItem } from "../shared/types/MenuItem";
-import { menuItems as customersMenuItem } from "../features/customers/config/menuItems";
-import { customersRoutes } from "../features/customers/routes/customersRoutes";
 
 const navigationMenuItems: NavigationMenuItem[] = [
   ...muiDemoMenuItems,

@@ -1,7 +1,7 @@
 import DashboardIcon from "@mui/icons-material/Dashboard";
 
-import { ROUTES } from "./routes";
 import { NavigationMenuItem } from "../../../shared/types/commonTypes";
+import { ROUTES } from "./routes";
 
 export const menuItems: NavigationMenuItem[] = [
   {

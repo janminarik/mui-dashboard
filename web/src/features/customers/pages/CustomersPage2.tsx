@@ -1,6 +1,7 @@
+import { GridColDef } from "@mui/x-data-grid";
+
 import DataGridWrapper from "../../../shared/components/DataGridWrapper";
 import { apiCustomers } from "../api/customersApiV2";
-import { GridColDef } from "@mui/x-data-grid";
 import { ROUTES } from "../config/routes";
 import { customersSlice } from "../slices/customersSliceV2";
 

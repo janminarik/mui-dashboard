@@ -1,7 +1,7 @@
 import WebIcon from "@mui/icons-material/Web";
 
-import { ROUTES } from "./routes";
 import { NavigationMenuItem } from "../../../shared/types/commonTypes";
+import { ROUTES } from "./routes";
 
 export const menuItems: NavigationMenuItem[] = [
   {

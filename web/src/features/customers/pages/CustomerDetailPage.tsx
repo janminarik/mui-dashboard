@@ -1,10 +1,5 @@
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  apiCustomers,
-  useCreateCustomerMutation,
-  useGetCustomerByIdQuery,
-  useUpdateCustomerMutation,
-} from "../api/customersApiV2";
 import {
   Box,
   FormControl,
@@ -13,9 +8,14 @@ import {
   TextFieldProps,
   Theme,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+
 import Form from "../../../shared/components/Form";
-import { CreateCustomer, Customer } from "../types/customer";
+import {
+  useCreateCustomerMutation,
+  useGetCustomerByIdQuery,
+  useUpdateCustomerMutation,
+} from "../api/customersApiV2";
+import { CreateCustomer } from "../types/customer";
 
 const textFieldSx: SxProps<Theme & TextFieldProps> = { mt: 3 };
 

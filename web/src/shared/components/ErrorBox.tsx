@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Box, Typography } from "@mui/material";
+
 import { TRANSLATIONS_NAMESPACES } from "../../i18n/config";
 
 interface ErrorBoxProps {

@@ -1,6 +1,7 @@
-import { ActionReducerMapBuilder, SerializedError } from "@reduxjs/toolkit";
+import { SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import { capitalize } from "./commonUtils";
 
 
@@ -21,16 +22,16 @@ export interface QueryParams<T> {
 export const buildSearchParams = <T>(queryParams: QueryParams<T>) => {
     const query = new URLSearchParams();
     if (queryParams.page)
-        query.append('skip', queryParams.page.toString());
+        query.append("skip", queryParams.page.toString());
 
     if (queryParams.pageSize)
-        query.append('take', queryParams.pageSize.toString());
+        query.append("take", queryParams.pageSize.toString());
 
     if (queryParams.filters)
-        query.append('filter', JSON.stringify(queryParams.filters));
+        query.append("filter", JSON.stringify(queryParams.filters));
 
     if (queryParams.sortOptions)
-        query.append('orderBy', JSON.stringify(queryParams.sortOptions.map((sort) => ({ [sort.field]: sort.direction }))));
+        query.append("orderBy", JSON.stringify(queryParams.sortOptions.map((sort) => ({ [sort.field]: sort.direction }))));
 
     return query.toString();
 }
@@ -71,7 +72,7 @@ export const createGenericApi =
                 createEntity: builder.mutation<TEntity, TCreateEntity>({
                     query: (body) => ({
                         url: entityPath,
-                        method: 'POST',
+                        method: "POST",
                         body,
                     }),
                     invalidatesTags: (result) => result ? [{ type: entityTag, id: "LIST" }] : []
@@ -91,7 +92,7 @@ export const createGenericApi =
                 updateEntity: builder.mutation<TEntity, { id: TId, body: Partial<TEntity> }>({
                     query: ({ id, body }) => ({
                         url: `${entityPath}/${id}`,
-                        method: 'PATCH',
+                        method: "PATCH",
                         body,
                     }),
                     invalidatesTags: (result, error, { id }) => [{ type: entityTag, id }]
@@ -99,7 +100,7 @@ export const createGenericApi =
                 deleteEntity: builder.mutation<void, TId>({
                     query: (id) => ({
                         url: `${entityPath}/${id}`,
-                        method: 'DELETE',
+                        method: "DELETE",
                     }),
                     invalidatesTags: (result, error, id) => [{ type: entityTag, id: "LIST" }]
                 }),

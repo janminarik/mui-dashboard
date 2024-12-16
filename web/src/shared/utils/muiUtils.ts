@@ -13,22 +13,22 @@ export const buildFilter = (filterModel: GridFilterModel) => {
             const { field, operator, value } = item;
 
             switch (operator) {
-                case 'contains':
+                case "contains":
                     acc[field] = { contains: value };
                     break;
-                case 'equals':
+                case "equals":
                     acc[field] = { equals: value };
                     break;
-                case 'startsWith':
+                case "startsWith":
                     acc[field] = { startsWith: value };
                     break;
-                case 'endsWith':
+                case "endsWith":
                     acc[field] = { endsWith: value };
                     break;
-                case 'isEmpty':
+                case "isEmpty":
                     acc[field] = { equals: null };
                     break;
-                case 'notEmpty':
+                case "notEmpty":
                     acc[field] = { not: null };
                     break;
                 default:

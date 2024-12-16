@@ -1,9 +1,9 @@
 import { initReactI18next } from "react-i18next";
-import i18n, { setDefaultNamespace } from "i18next";
+import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languageDetector";
 import HttpBackend from "i18next-http-backend";
-import { TRANSLATIONS_NAMESPACES, SUPPORTED_LANGUAGES, TRANSLATIONS_DEFAULT_NAMESPACE } from "./config"
 
+import { SUPPORTED_LANGUAGES, TRANSLATIONS_DEFAULT_NAMESPACE,TRANSLATIONS_NAMESPACES } from "./config"
 import Resources from "./resources.d";
 
 declare module "i18next" {

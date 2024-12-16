@@ -1,9 +1,8 @@
 import js from "@eslint/js";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
+import unusedImports from "eslint-plugin-unused-imports";
 import tseslint from "typescript-eslint";
-import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -16,35 +15,21 @@ export default tseslint.config(
     },
     plugins: {
       "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-      "simple-import-sort": simpleImportSort,
+      "unused-imports": unusedImports,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
-      "simple-import-sort/imports": [
+      // "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "unused-imports/no-unused-imports": "error", // Odstráni nepoužité importy
+      "unused-imports/no-unused-vars": [
         "warn",
         {
-          groups: [
-            // Dôležité knižnice
-            ["^react", "^@?\\w"],
-            // Komponenty a utility z projektu
-            ["^(@|src|components|utils)(/.*|$)"],
-            // Štýly
-            ["^.+\\.s?css$"],
-            // Všetko ostatné
-            ["^"],
-          ],
+          vars: "all", // Kontroluje všetky nepoužité premenné
+          varsIgnorePattern: "^_", // Ignoruje premenné začínajúce na "_"
+          args: "after-used", // Skontroluje nepoužité argumenty vo funkciách
+          argsIgnorePattern: "^_", // Ignoruje argumenty začínajúce na "_"
         },
       ],
-      "simple-import-sort/exports": "warn",
-      quotes: ["warn", "double"],
-      rules: {
-        // "no-unused-vars": "warn", // off
-      },
     },
   }
 );

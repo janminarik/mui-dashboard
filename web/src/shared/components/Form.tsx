@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import Loader from "./Loader";
 import {
   Button,
   Card,
@@ -8,7 +7,9 @@ import {
   CardHeader,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+
 import ErrorBox from "./ErrorBox";
+import Loader from "./Loader";
 
 interface FormProps {
   title: string;

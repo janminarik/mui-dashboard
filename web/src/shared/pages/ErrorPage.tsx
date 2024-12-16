@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
+
 import { TRANSLATIONS_NAMESPACES } from "../../i18n/config";
 
 interface ErrorPageProps {

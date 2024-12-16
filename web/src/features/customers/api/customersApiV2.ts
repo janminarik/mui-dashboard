@@ -1,5 +1,5 @@
-import { CreateCustomer, Customer } from '../types/customer';
-import { createGenericApi, QueryParams } from '../../../shared/utils/rtkUtils';
+import { createGenericApi, QueryParams } from "../../../shared/utils/rtkUtils";
+import { CreateCustomer, Customer } from "../types/customer";
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
