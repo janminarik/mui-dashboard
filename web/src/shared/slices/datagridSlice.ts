@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GridFilterModel, GridPaginationModel, GridRowSelectionModel, GridSortModel } from "@mui/x-data-grid";
+import { GridColumnVisibilityModel, GridFilterModel, GridPaginationModel, GridRowSelectionModel, GridSortModel } from "@mui/x-data-grid";
 
 export interface DataGridState {
     pagination: GridPaginationModel,
     filters?: GridFilterModel;
     sortOptions?: GridSortModel;
     selectedItems?: GridRowSelectionModel;
+    columnsVisbility?: GridColumnVisibilityModel;
 }
 
 const initialState: DataGridState = {

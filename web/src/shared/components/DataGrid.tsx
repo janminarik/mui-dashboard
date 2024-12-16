@@ -10,6 +10,7 @@ import {
   GridRowModel,
   GridRowSelectionModel,
   GridSortModel,
+  GridColumnVisibilityModel,
 } from "@mui/x-data-grid";
 import { buildFilter, buildSort } from "../utils/muiUtils";
 import { aggregateApiRequestState, QueryParams } from "../utils/rtkUtils";
@@ -26,6 +27,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ErrorBox from "./ErrorBox";
 import { extractErrorMessage } from "../utils/errorUtils";
 import Loader from "./Loader";
+import React from "react";
 
 export interface DataGridProps<TEntity> {
   columns: GridColDef[];
@@ -38,6 +40,8 @@ export interface DataGridProps<TEntity> {
   setFilters: (filters: GridFilterModel) => void;
   setSortOptions: (sortOptions: GridSortModel) => void;
   setSelectedItems: (selectedItems: GridRowSelectionModel) => void;
+  setColumnsVisibility: (columnsVisibility: GridColumnVisibilityModel) => void;
+  showAllColumns: (visible: boolean) => void;
   useGetEntities: (params: QueryParams<TEntity>) => {
     data?: { items: TEntity[]; totalCount: number };
     isLoading: boolean;
@@ -57,6 +61,8 @@ function DataGrid<TEntity extends { id: string }>({
   setFilters,
   setSelectedItems,
   setSortOptions,
+  setColumnsVisibility,
+  showAllColumns,
   createEntityRoute,
   editEntityRoute,
   useGetEntities,
@@ -70,9 +76,8 @@ function DataGrid<TEntity extends { id: string }>({
   const [selectedItem, setSelectedItem] =
     useState<GridRowModel<TEntity> | null>(null);
   const openContexMenu = Boolean(contextMenu);
-  const { pagination, sortOptions, filters, selectedItems } = useSelector(
-    (state: RootState) => state.customersList
-  );
+  const { pagination, sortOptions, filters, selectedItems, columnsVisbility } =
+    useSelector((state: RootState) => state.customersList);
 
   const queryParams: QueryParams<TEntity> = useMemo(
     () => ({
@@ -118,6 +123,14 @@ function DataGrid<TEntity extends { id: string }>({
 
   const handleRowSelectionChange = (newModel: GridRowSelectionModel) =>
     setSelectedItems(newModel);
+
+  const handleVisibilityModelChange = (newModel: GridColumnVisibilityModel) => {
+    if (Object.keys(newModel).length === 0) {
+      showAllColumns(true);
+    } else {
+      setColumnsVisibility(newModel);
+    }
+  };
 
   const handleContexMenuOpen = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -215,6 +228,7 @@ function DataGrid<TEntity extends { id: string }>({
             //     showQuickFilter: true,
             //   },
             // }}
+
             columns={showContextMenu ? [...columns, contextColumn] : columns}
             rowCount={data?.totalCount ? data.totalCount : 0}
             pageSizeOptions={[5, 10, 20, 100]}
@@ -229,6 +243,8 @@ function DataGrid<TEntity extends { id: string }>({
             onRowSelectionModelChange={handleRowSelectionChange}
             onSortModelChange={handleSortChange}
             rowSelectionModel={selectedItems}
+            columnVisibilityModel={columnsVisbility}
+            onColumnVisibilityModelChange={handleVisibilityModelChange}
             sx={{ m: 4 }}
           ></MuiDataGrid>
         </Grid>

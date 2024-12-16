@@ -6,10 +6,12 @@ import { ROUTES } from "../config/routes";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../app/store";
 import {
+  setCustomersColumnsVisibility,
   setCustomersFilters,
   setCustomersPage,
   setCustomersSelectedItems,
   setCustomersSortOptions,
+  showAllCustomersColumns,
 } from "../slices/customersSlice";
 import DataGrid from "../../../shared/components/DataGrid";
 import { GridColDef } from "@mui/x-data-grid";
@@ -38,6 +40,10 @@ function CustomersPage2() {
       showEditInContexMenu
       createEntityRoute={ROUTES.CUSTOMER_CREATE}
       editEntityRoute={ROUTES.CUSTOMERS}
+      setColumnsVisibility={(columnsVisibility) =>
+        dispatch(setCustomersColumnsVisibility(columnsVisibility))
+      }
+      showAllColumns={(visible) => dispatch(showAllCustomersColumns(visible))}
       setPagination={(pagination) => dispatch(setCustomersPage(pagination))}
       setFilters={(filters) => dispatch(setCustomersFilters(filters))}
       setSortOptions={(sortOptions) =>
