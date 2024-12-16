@@ -1,31 +1,28 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GridFilterModel, GridPaginationModel, GridRowSelectionModel, GridSortModel } from "@mui/x-data-grid";
+import { DataGridState } from "../../../shared/slices/datagridSlice";
 
-interface CustomersListState {
-    pagination: GridPaginationModel,
-    filters?: GridFilterModel;
-    sortOptions?: GridSortModel;
-    selectedItems?: GridRowSelectionModel;
+interface CustomersState extends DataGridState {
 }
 
-const initialState: CustomersListState = {
+const initialState: CustomersState = {
     pagination: { page: 0, pageSize: 20 }
 };
 
-export const CustomersListSlice = createSlice({
+export const customersSlice = createSlice({
     name: "customersList",
     initialState,
     reducers: {
-        setPage(state: CustomersListState, action: PayloadAction<GridPaginationModel>) {
+        setPage(state: CustomersState, action: PayloadAction<GridPaginationModel>) {
             state.pagination = action.payload;
         },
-        setFilters(state: CustomersListState, action: PayloadAction<GridFilterModel>) {
+        setFilters(state: CustomersState, action: PayloadAction<GridFilterModel>) {
             state.filters = action.payload;
         },
-        setSortOptions(state: CustomersListState, action: PayloadAction<GridSortModel>) {
+        setSortOptions(state: CustomersState, action: PayloadAction<GridSortModel>) {
             state.sortOptions = action.payload;
         },
-        setSelectedItems(state: CustomersListState, action: PayloadAction<GridRowSelectionModel>) {
+        setSelectedItems(state: CustomersState, action: PayloadAction<GridRowSelectionModel>) {
             state.selectedItems = action.payload;
         }
     },
@@ -33,5 +30,8 @@ export const CustomersListSlice = createSlice({
     }
 });
 
-export const { setPage, setFilters, setSortOptions, setSelectedItems } = CustomersListSlice.actions;
-export const customersListReducer = CustomersListSlice.reducer;
+export const { setPage: setCustomersPage,
+    setFilters: setCustomersFilters,
+    setSortOptions: setCustomersSortOptions,
+    setSelectedItems: setCustomersSelectedItems } = customersSlice.actions;
+export const customersReducer = customersSlice.reducer;

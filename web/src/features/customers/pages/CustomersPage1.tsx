@@ -32,10 +32,10 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../app/store";
 import {
-  setFilters,
-  setPage,
-  setSelectedItems,
-  setSortOptions,
+  setCustomersFilters,
+  setCustomersPage,
+  setCustomersSelectedItems,
+  setCustomersSortOptions,
 } from "../slices/customersSlice";
 import { extractErrorMessage } from "../../../shared/utils/errorUtils";
 import { buildFilter, buildSort } from "../../../shared/utils/muiUtils";
@@ -78,7 +78,7 @@ function CustomersPage1() {
 
   const debounceDispatch = useCallback(
     debounce((filters: GridFilterModel) => {
-      dispatch(setFilters(filters));
+      dispatch(setCustomersFilters(filters));
     }, 500),
     [dispatch]
   );
@@ -91,13 +91,13 @@ function CustomersPage1() {
   );
 
   const handlePaginationChange = (newModel: GridPaginationModel) =>
-    dispatch(setPage(newModel));
+    dispatch(setCustomersPage(newModel));
 
   const handleSortChange = (newModel: GridSortModel) =>
-    dispatch(setSortOptions(newModel));
+    dispatch(setCustomersSortOptions(newModel));
 
   const handleRowSelectionChange = (newModel: GridRowSelectionModel) =>
-    dispatch(setSelectedItems(newModel));
+    dispatch(setCustomersSelectedItems(newModel));
 
   const handleCustomerMenuOpen = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,

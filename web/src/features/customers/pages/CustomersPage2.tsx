@@ -6,10 +6,10 @@ import { ROUTES } from "../config/routes";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../app/store";
 import {
-  setFilters,
-  setPage,
-  setSelectedItems,
-  setSortOptions,
+  setCustomersFilters,
+  setCustomersPage,
+  setCustomersSelectedItems,
+  setCustomersSortOptions,
 } from "../slices/customersSlice";
 import DataGrid from "../../../shared/components/DataGrid";
 import { GridColDef } from "@mui/x-data-grid";
@@ -38,11 +38,13 @@ function CustomersPage2() {
       showEditInContexMenu
       createEntityRoute={ROUTES.CUSTOMER_CREATE}
       editEntityRoute={ROUTES.CUSTOMERS}
-      setPagination={(pagination) => dispatch(setPage(pagination))}
-      setFilters={(filters) => dispatch(setFilters(filters))}
-      setSortOptions={(sortOptions) => dispatch(setSortOptions(sortOptions))}
+      setPagination={(pagination) => dispatch(setCustomersPage(pagination))}
+      setFilters={(filters) => dispatch(setCustomersFilters(filters))}
+      setSortOptions={(sortOptions) =>
+        dispatch(setCustomersSortOptions(sortOptions))
+      }
       setSelectedItems={(selectedItems) =>
-        dispatch(setSelectedItems(selectedItems))
+        dispatch(setCustomersSelectedItems(selectedItems))
       }
       useGetEntities={useGetCustomersQuery}
       useDeleteEntity={useDeleteCustomerMutation}
