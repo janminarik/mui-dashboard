@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link as RouterLink } from "react-router-dom";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
@@ -12,6 +9,9 @@ import {
   ListSubheader,
   Popover,
 } from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink } from "react-router-dom";
 
 import { AppDispatch, RootState } from "../../../app/store";
 import useNavigationPanelState, {
@@ -29,11 +29,11 @@ export interface NavigationMenuProps {
 
 function NavigationMenu({ menuItems }: NavigationMenuProps) {
   const navigationPanelState = useNavigationPanelState();
-  const { selectedMenuItem, expandedSubMenu } = useSelector(
+  const { expandedSubMenu, selectedMenuItem } = useSelector(
     (state: RootState) => state.navigationPanel.menuState
   );
   const dispatch = useDispatch<AppDispatch>();
-  const [popoverAnchor, setPopoverAnchor] = useState<null | HTMLElement>(null);
+  const [popoverAnchor, setPopoverAnchor] = useState<HTMLElement | null>(null);
   const [hoveredMenuItem, setHoveredMenuItem] =
     useState<NavigationMenuItem | null>(null);
 
@@ -67,13 +67,13 @@ function NavigationMenu({ menuItems }: NavigationMenuProps) {
       <React.Fragment key={menuItem.label}>
         <ListItemButton
           component={RouterLink}
-          to={menuItem.to ?? ""}
-          selected={menuItem.label === selectedMenuItem}
           onClick={
             menuItem.subMenu
               ? () => handleSubMenuItemClick(menuItem.label)
               : () => handleMenuItemClick(menuItem.label)
           }
+          selected={menuItem.label === selectedMenuItem}
+          to={menuItem.to ?? ""}
         >
           <ListItemIcon>{menuItem.icon}</ListItemIcon>
           <ListItemText primary={menuItem.label} />
@@ -95,10 +95,10 @@ function NavigationMenu({ menuItems }: NavigationMenuProps) {
               {menuItem.subMenu.map((subMenuItem) => (
                 <ListItemButton
                   component={RouterLink}
-                  to={subMenuItem.to ?? ""}
-                  selected={subMenuItem.label === selectedMenuItem}
                   key={subMenuItem.label}
                   onClick={() => handleMenuItemClick(subMenuItem.label)}
+                  selected={subMenuItem.label === selectedMenuItem}
+                  to={subMenuItem.to ?? ""}
                 >
                   <ListItemIcon></ListItemIcon>
                   <ListItemText primary={subMenuItem.label}></ListItemText>
@@ -116,8 +116,6 @@ function NavigationMenu({ menuItems }: NavigationMenuProps) {
       <React.Fragment key={menuItem.label}>
         <ListItemButton
           component={RouterLink}
-          to={menuItem.to ?? ""}
-          selected={menuItem.label === selectedMenuItem}
           onClick={
             menuItem.subMenu
               ? () => handleSubMenuItemClick(menuItem.label)
@@ -126,22 +124,24 @@ function NavigationMenu({ menuItems }: NavigationMenuProps) {
           onMouseEnter={(event) =>
             menuItem.subMenu ? handlePopoverOpen(event, menuItem) : undefined
           }
+          selected={menuItem.label === selectedMenuItem}
+          to={menuItem.to ?? ""}
         >
           <ListItemIcon>{menuItem.icon}</ListItemIcon>
         </ListItemButton>
 
         {hoveredMenuItem?.label === menuItem.label ? (
           <Popover
-            open={Boolean(popoverAnchor)}
             anchorEl={popoverAnchor}
-            onClose={handlePopoverClose}
             anchorOrigin={{
-              vertical: "top",
               horizontal: "right",
-            }}
-            transformOrigin={{
               vertical: "top",
+            }}
+            onClose={handlePopoverClose}
+            open={Boolean(popoverAnchor)}
+            transformOrigin={{
               horizontal: "left",
+              vertical: "top",
             }}
           >
             {menuItem.subMenu && (
@@ -149,10 +149,10 @@ function NavigationMenu({ menuItems }: NavigationMenuProps) {
                 {menuItem.subMenu.map((subMenuItem) => (
                   <ListItemButton
                     component={RouterLink}
-                    to={subMenuItem.to ?? ""}
-                    selected={subMenuItem.label === selectedMenuItem}
                     key={subMenuItem.label}
                     onClick={() => handleMenuItemClick(subMenuItem.label)}
+                    selected={subMenuItem.label === selectedMenuItem}
+                    to={subMenuItem.to ?? ""}
                   >
                     <ListItemText primary={subMenuItem.label}></ListItemText>
                   </ListItemButton>

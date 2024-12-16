@@ -1,5 +1,3 @@
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   FormControl,
@@ -10,6 +8,8 @@ import {
   TextField,
 } from "@mui/material";
 import { Theme } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../../../app/store";
 import { TRANSLATIONS_NAMESPACES } from "../../../i18n/config";
@@ -28,7 +28,7 @@ const StyledSettingsPanel = styled(Box)(({ theme }: { theme: Theme }) => ({
 }));
 
 function SettingsPanel(props: SidebarProps) {
-  const { t, i18n } = useTranslation(TRANSLATIONS_NAMESPACES.SETTNGS);
+  const { i18n, t } = useTranslation(TRANSLATIONS_NAMESPACES.SETTNGS);
   const open = useSelector((state: RootState) => state.settingsPanel.open);
   const theme = useSelector((state: RootState) => state.uiSettings.theme);
   const language = useSelector((state: RootState) => state.uiSettings.language);
@@ -54,19 +54,19 @@ function SettingsPanel(props: SidebarProps) {
     <Sidebar
       anchor="right"
       mode="temporary"
-      open={open}
       onClose={handleClose}
+      open={open}
       {...props}
       content={
         <StyledSettingsPanel>
-          <Stack spacing={2} mt={2}>
+          <Stack mt={2} spacing={2}>
             <FormControl fullWidth size="small" variant="outlined">
               <TextField
                 label={t("settings.theme.label")}
-                value={theme}
+                onChange={(event) => handleSelectedThemeChange(event)}
                 select
                 size="small"
-                onChange={(event) => handleSelectedThemeChange(event)}
+                value={theme}
               >
                 {Object.values(ThemeName).map((item) => (
                   <MenuItem key={item} value={item}>
@@ -78,11 +78,11 @@ function SettingsPanel(props: SidebarProps) {
 
             <FormControl fullWidth size="small" variant="outlined">
               <TextField
+                label={t("settings.language.label")}
+                onChange={(event) => handleLanguageChange(event)}
                 select
                 size="small"
-                label={t("settings.language.label")}
                 value={language}
-                onChange={(event) => handleLanguageChange(event)}
               >
                 {Object.values(Language).map((lang) => (
                   <MenuItem key={lang} value={lang}>

@@ -11,14 +11,14 @@ import { userReducer } from "../shared/slices/userSlice";
 
 
 const rootReducer = combineReducers({
-    user: userReducer,
+    //api
+    [apiCustomers.reducerPath]: apiCustomers.baseApi.reducer,
     customersList: customersReducer,
     //perzistentne reduktory
     navigationPanel: navigationPanelReducer,
     settingsPanel: settingsPanelReducer,
     uiSettings: uiSettingsReducer,
-    //api
-    [apiCustomers.reducerPath]: apiCustomers.baseApi.reducer,
+    user: userReducer,
     // [apiCustomers.reducerPath]: apiCustomers.reducer,
 
 
@@ -37,13 +37,13 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // Konfigurácia store
 export const store = configureStore({
-    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
                 ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
             },
-        }).concat([apiCustomers.baseApi.middleware])
+        }).concat([apiCustomers.baseApi.middleware]),
+    reducer: persistedReducer
     // }).concat([apiCustomers.middleware])
 });
 
@@ -51,5 +51,5 @@ export const store = configureStore({
 export const persistor = persistStore(store);
 
 
-export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;

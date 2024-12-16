@@ -1,26 +1,26 @@
 import { Box, Typography } from "@mui/material";
 
 interface EmptyContentProps {
-  title?: string;
   message?: string;
+  title?: string;
 }
 
-function EmptyContent({ title, message }: EmptyContentProps) {
+function EmptyContent({ message, title }: EmptyContentProps) {
   return (
     <Box
+      alignItems="center"
       display="flex"
       flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
       height="100vh"
-      width="100vw"
-      textAlign="center"
+      justifyContent="center"
       p={2}
+      textAlign="center"
+      width="100vw"
     >
-      <Typography variant="h3" color="error" gutterBottom>
+      <Typography color="error" gutterBottom variant="h3">
         {title ?? "Empty"}
       </Typography>
-      <Typography variant="h6" color="textSecondary" gutterBottom>
+      <Typography color="textSecondary" gutterBottom variant="h6">
         {message ?? "No data available."}
       </Typography>
     </Box>

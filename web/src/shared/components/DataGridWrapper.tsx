@@ -1,11 +1,11 @@
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import { GridColDef,GridColumnVisibilityModel, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, DataGrid as MuiDataGrid } from "@mui/x-data-grid";
 import { useCallback, useMemo, useState } from "react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import { DataGrid as MuiDataGrid, GridColDef, GridColumnVisibilityModel, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel } from "@mui/x-data-grid";
 
 import { AppDispatch, RootState } from "../../app/store";
 import { DataGridSlice, DataGridState } from "../slices/datagridSlice";
@@ -15,47 +15,47 @@ import { aggregateApiRequestState, QueryParams } from "../utils/rtkUtils";
 import ErrorBox from "./ErrorBox";
 import Loader from "./Loader";
 
+export interface DataGridWrapperProps {
+  api: any;
+  columns: GridColDef[];
+  createEntityRoute: string;
+  editEntityRoute: string;
+  rowContextMenu: DataGridRowContextMenuConfig;
+  slice: DataGridSlice;
+}
+
 type DataGridRowContextMenuConfig = {
   show?: boolean;
   showDelete?: boolean;
   showEdit?: boolean;
 };
 
-export interface DataGridWrapperProps {
-  columns: GridColDef[];
-  createEntityRoute: string;
-  editEntityRoute: string;
-  slice: DataGridSlice;
-  api: any;
-  rowContextMenu: DataGridRowContextMenuConfig;
-}
-
-function DataGridWrapper<TEntity extends { id: string }>({ columns, createEntityRoute, editEntityRoute, slice, api, rowContextMenu }: DataGridWrapperProps) {
+function DataGridWrapper<TEntity extends { id: string }>({ api, columns, createEntityRoute, editEntityRoute, rowContextMenu, slice }: DataGridWrapperProps) {
   const navigate = useNavigate();
 
   const dispatch = useDispatch<AppDispatch>();
 
   const [contextMenu, setContextMenu] = useState<HTMLButtonElement | null>(null);
 
-  const [selectedItem, setSelectedItem] = useState<GridRowModel | null>(null);
-
   const openContexMenu = Boolean(contextMenu);
 
-  const { pagination, filters, sortOptions, selectedItems, columnsVisbility } = useSelector((state: RootState) => state[slice.name] as DataGridState);
+  const [selectedItem, setSelectedItem] = useState<GridRowModel | null>(null);
 
-  const { setFilters, setPage, setSelectedItems, setSortOptions, setColumnsVisibility, showAllColumns } = slice.actions;
+  const { columnsVisbility, filters, pagination, selectedItems, sortOptions } = useSelector((state: RootState) => state[slice.name] as DataGridState);
+
+  const { setColumnsVisibility, setFilters, setPage, setSelectedItems, setSortOptions, showAllColumns } = slice.actions;
 
   const queryParams: QueryParams<TEntity> = useMemo(
     () => ({
+      filters: filters ? (buildFilter(filters) as Partial<Record<keyof TEntity, any>>) : undefined,
       page: pagination.page,
       pageSize: pagination.pageSize,
       sortOptions: sortOptions ? buildSort(sortOptions) : undefined,
-      filters: filters ? (buildFilter(filters) as Partial<Record<keyof TEntity, any>>) : undefined,
     }),
     [pagination, sortOptions, filters]
   );
 
-  const { useGetEntitiesQuery, useDeleteEntityMutation } = api;
+  const { useDeleteEntityMutation, useGetEntitiesQuery } = api;
 
   const customersQuery = useGetEntitiesQuery(queryParams);
 
@@ -63,7 +63,7 @@ function DataGridWrapper<TEntity extends { id: string }>({ columns, createEntity
 
   const [deleteCustomer, deleteCustomerResult] = useDeleteEntityMutation();
 
-  const { isLoading, isError, errors } = aggregateApiRequestState([customersQuery, deleteCustomerResult]);
+  const { errors, isError, isLoading } = aggregateApiRequestState([customersQuery, deleteCustomerResult]);
 
   const handlePaginationChange = (newModel: GridPaginationModel) => dispatch(setPage(newModel));
 
@@ -109,9 +109,8 @@ function DataGridWrapper<TEntity extends { id: string }>({ columns, createEntity
 
   const contextColumn = {
     field: "action",
-    headerName: "",
-    sortable: false,
     filterable: false,
+    headerName: "",
     renderCell: (params: any) => (
       <>
         <IconButton
@@ -122,46 +121,47 @@ function DataGridWrapper<TEntity extends { id: string }>({ columns, createEntity
           <MoreHorizIcon />
         </IconButton>
         <Menu
+          anchorEl={contextMenu}
           anchorOrigin={{
+            horizontal: "right",
             vertical: "bottom",
-            horizontal: "right",
           }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
+          onClose={() => setContextMenu(null)}
+          open={openContexMenu}
           slotProps={{
             paper: {
+              elevation: 1,
               sx: {
                 minWidth: 120,
               },
-              elevation: 1,
             },
           }}
-          open={openContexMenu}
-          anchorEl={contextMenu}
-          onClose={() => setContextMenu(null)}
+          transformOrigin={{
+            horizontal: "right",
+            vertical: "top",
+          }}
         >
           {rowContextMenu.showEdit && <MenuItem onClick={handleEntityEdit}>Edit</MenuItem>}
           {rowContextMenu.showDelete && <MenuItem onClick={handleEntityDelete}>Delete</MenuItem>}
         </Menu>
       </>
     ),
+    sortable: false,
   };
 
   if (!isError && data) {
     return (
-      <Grid size={{ xs: 12 }} container justifyContent="stretch" flexDirection="column">
+      <Grid container flexDirection="column" justifyContent="stretch" size={{ xs: 12 }}>
         <Grid container flexDirection="row" justifyContent="stretch" pt={3} size={{ xs: 12 }}>
-          <Grid container mx={4} justifyContent="flex-end" size={{ xs: 12 }}>
+          <Grid container justifyContent="flex-end" mx={4} size={{ xs: 12 }}>
             <Button onClick={handleEntityCreate}>Create</Button>
           </Grid>
         </Grid>
         <Grid size={{ xs: 12 }}>
           <MuiDataGrid
-            loading={isLoading}
-            disableRowSelectionOnClick
             checkboxSelection
+            columns={rowContextMenu ? [...columns, contextColumn] : columns}
+            columnVisibilityModel={columnsVisbility}
             // slots={{
             //   toolbar: GridToolbar,
             // }}
@@ -171,22 +171,22 @@ function DataGridWrapper<TEntity extends { id: string }>({ columns, createEntity
             //   },
             // }}
 
-            columns={rowContextMenu ? [...columns, contextColumn] : columns}
-            rowCount={data?.totalCount ? data.totalCount : 0}
-            pageSizeOptions={[5, 10, 20, 100]}
-            rows={data.items || []}
-            paginationMode="server"
-            paginationModel={pagination}
+            disableRowSelectionOnClick
             filterMode="server"
-            sortingMode="server"
             filterModel={filters}
+            loading={isLoading}
+            onColumnVisibilityModelChange={handleVisibilityModelChange}
             onFilterModelChange={handleFilterChange}
             onPaginationModelChange={handlePaginationChange}
             onRowSelectionModelChange={handleRowSelectionChange}
             onSortModelChange={handleSortChange}
+            pageSizeOptions={[5, 10, 20, 100]}
+            paginationMode="server"
+            paginationModel={pagination}
+            rowCount={data?.totalCount ? data.totalCount : 0}
+            rows={data.items || []}
             rowSelectionModel={selectedItems}
-            columnVisibilityModel={columnsVisbility}
-            onColumnVisibilityModelChange={handleVisibilityModelChange}
+            sortingMode="server"
             sx={{ m: 4 }}
           ></MuiDataGrid>
         </Grid>
@@ -196,11 +196,11 @@ function DataGridWrapper<TEntity extends { id: string }>({ columns, createEntity
     return (
       <Box
         sx={{
+          alignItems: "center",
           display: "flex",
-          width: "100vw",
           height: "100vh",
           justifyContent: "center",
-          alignItems: "center",
+          width: "100vw",
         }}
       >
         <ErrorBox message={errors.length > 0 ? errors.map((error) => extractErrorMessage(error)).join("\n") : undefined}></ErrorBox>
@@ -210,11 +210,11 @@ function DataGridWrapper<TEntity extends { id: string }>({ columns, createEntity
     return (
       <Box
         sx={{
+          alignItems: "center",
           display: "flex",
-          width: "100vw",
           height: "100vh",
           justifyContent: "center",
-          alignItems: "center",
+          width: "100vw",
         }}
       >
         <Loader message="Loading customers..." />

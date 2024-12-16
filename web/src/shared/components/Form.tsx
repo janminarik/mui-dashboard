@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import {
   Button,
   Card,
@@ -7,34 +6,35 @@ import {
   CardHeader,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { ReactNode } from "react";
 
 import ErrorBox from "./ErrorBox";
 import Loader from "./Loader";
 
 interface FormProps {
-  title: string;
-  isLoading?: boolean;
-  isSaving?: boolean;
-  isError?: boolean;
-  error?: any;
-  children: ReactNode;
-  save?: () => void;
-  saveLabel?: string;
   cancel?: () => void;
   cancelLabel?: string;
+  children: ReactNode;
+  error?: any;
+  isError?: boolean;
+  isLoading?: boolean;
+  isSaving?: boolean;
+  save?: () => void;
+  saveLabel?: string;
+  title: string;
 }
 
 function Form({
-  title,
-  isLoading,
-  isSaving,
-  isError,
-  error,
-  children,
-  save,
-  saveLabel,
   cancel,
   cancelLabel,
+  children,
+  error,
+  isError,
+  isLoading,
+  isSaving,
+  save,
+  saveLabel,
+  title,
 }: FormProps) {
   return (
     <Grid container>
@@ -46,18 +46,18 @@ function Form({
           )}
           {isError && <ErrorBox />}
           {!isLoading && !isError && (
-            <CardContent sx={{ paddingTop: 0, margin: 0 }}>
+            <CardContent sx={{ margin: 0, paddingTop: 0 }}>
               {children}
             </CardContent>
           )}
           <CardActions>
             {save && (
-              <Button onClick={save} disabled={isSaving}>
+              <Button disabled={isSaving} onClick={save}>
                 {saveLabel ? saveLabel : "Save"}
               </Button>
             )}
             {cancel && (
-              <Button onClick={cancel} color="secondary" disabled={isSaving}>
+              <Button color="secondary" disabled={isSaving} onClick={cancel}>
                 {cancelLabel ? cancelLabel : "Cancel"}
               </Button>
             )}

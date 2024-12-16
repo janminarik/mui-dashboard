@@ -18,10 +18,10 @@ export const extendedApiCustomers = apiCustomers.baseApi.injectEndpoints({
 
 export const {
     useCreateEntityMutation: useCreateCustomerMutation,
+    useDeleteEntityMutation: useDeleteCustomerMutation,
     useGetEntitiesQuery: useGetCustomersQuery,
     useGetEntityByIdQuery: useGetCustomerByIdQuery,
     useUpdateEntityMutation: useUpdateCustomerMutation,
-    useDeleteEntityMutation: useDeleteCustomerMutation,
     // useGetExtendedCustomerByIdQuery,
 } = apiCustomers;
 //} = extendedApiCustomers; //apiCustomers;

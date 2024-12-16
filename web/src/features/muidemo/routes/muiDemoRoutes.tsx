@@ -11,11 +11,10 @@ const LazyDemoPage = React.lazy(() => import("../pages/DemoLazyPage"));
 
 export const muiDemoRoutes: RouteObject[] = [
   {
-    index: true,
     element: <DemoMUIPage />,
+    index: true,
   },
   {
-    path: ROUTES.MUI_LAZY_DEMO,
     element: (
       <ErrorBoundary fallback={<ErrorPage />}>
         <SuspenseWrapper>
@@ -23,5 +22,6 @@ export const muiDemoRoutes: RouteObject[] = [
         </SuspenseWrapper>
       </ErrorBoundary>
     ),
+    path: ROUTES.MUI_LAZY_DEMO,
   },
 ];

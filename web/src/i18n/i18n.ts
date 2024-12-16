@@ -1,7 +1,7 @@
-import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languageDetector";
 import HttpBackend from "i18next-http-backend";
+import { initReactI18next } from "react-i18next";
 
 import { SUPPORTED_LANGUAGES, TRANSLATIONS_DEFAULT_NAMESPACE,TRANSLATIONS_NAMESPACES } from "./config"
 import Resources from "./resources.d";
@@ -16,16 +16,16 @@ i18n.use(HttpBackend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        fallbackLng: SUPPORTED_LANGUAGES[0],
-        ns: [TRANSLATIONS_NAMESPACES.SHARED, TRANSLATIONS_NAMESPACES.AUTH, TRANSLATIONS_NAMESPACES.SETTNGS],
+        backend: {
+            loadPath: "/i18n/translations/{{lng}}/{{ns}}.json",
+        },
         defaultNS: TRANSLATIONS_DEFAULT_NAMESPACE,
+        fallbackLng: SUPPORTED_LANGUAGES[0],
         // debug: true,
         interpolation: {
             escapeValue: false,
         },
-        backend: {
-            loadPath: "/i18n/translations/{{lng}}/{{ns}}.json",
-        },
+        ns: [TRANSLATIONS_NAMESPACES.SHARED, TRANSLATIONS_NAMESPACES.AUTH, TRANSLATIONS_NAMESPACES.SETTNGS],
         // detection: {
         //     order: ["navigator", "htmlTag", "cookie", "localStorage", "sessionStorage", "path", "subdomain"],
         //     caches: ["cookie"], // Cache metódy na uloženie jazyka (voliteľné)

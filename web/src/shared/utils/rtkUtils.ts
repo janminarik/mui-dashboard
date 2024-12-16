@@ -5,19 +5,19 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { capitalize } from "./commonUtils";
 
 
-export type SortOptions<T> = Array<{
-    field: keyof T;
-    direction: "asc" | "desc"
-}>
-
 export type Filters<T> = Partial<Record<keyof T, any>>;
 
 export interface QueryParams<T> {
+    filters?: Filters<T>
     page?: number;
     pageSize?: number;
     sortOptions?: SortOptions<T>;
-    filters?: Filters<T>
 }
+
+export type SortOptions<T> = Array<{
+    direction: "asc" | "desc"
+    field: keyof T;
+}>
 
 export const buildSearchParams = <T>(queryParams: QueryParams<T>) => {
     const query = new URLSearchParams();
@@ -37,10 +37,10 @@ export const buildSearchParams = <T>(queryParams: QueryParams<T>) => {
 }
 
 interface QueryOrMutationState {
-    isLoading?: boolean;
-    isFetching?: boolean;
-    isError?: boolean;
     error?: unknown;
+    isError?: boolean;
+    isFetching?: boolean;
+    isLoading?: boolean;
 }
 
 export const aggregateApiRequestState = (results: QueryOrMutationState[]) => {
@@ -50,14 +50,14 @@ export const aggregateApiRequestState = (results: QueryOrMutationState[]) => {
         .map((r) => r.error)
         .filter((error): error is FetchBaseQueryError | SerializedError => !!error);
 
-    return { isLoading, isError, errors };
+    return { errors, isError, isLoading };
 };
 
-export interface TEntityBase<TId extends string | number> {
+export interface TEntityBase<TId extends number | string> {
     id: TId;
 }
 export const createGenericApi =
-    <TId extends string | number, TEntity extends TEntityBase<TId>, TCreateEntity extends Partial<TEntity>>
+    <TId extends number | string, TEntity extends TEntityBase<TId>, TCreateEntity extends Partial<TEntity>>
         (entityName: string, baseUrl: string,) => {
 
         const reducerPath = `${entityName.toLowerCase()}s`
@@ -65,61 +65,61 @@ export const createGenericApi =
         const entityPath = `/${entityName.toLowerCase()}s`;
 
         const baseApi = createApi({
-            reducerPath: reducerPath,
             baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
-            tagTypes: [`${capitalize(entityName)}`],
             endpoints: (builder) => ({
                 createEntity: builder.mutation<TEntity, TCreateEntity>({
+                    invalidatesTags: (result) => result ? [{ id: "LIST", type: entityTag }] : [],
                     query: (body) => ({
-                        url: entityPath,
+                        body,
                         method: "POST",
-                        body,
-                    }),
-                    invalidatesTags: (result) => result ? [{ type: entityTag, id: "LIST" }] : []
-                }),
-                getEntities: builder.query<{ items: TEntity[]; totalCount: number }, QueryParams<TEntity> | void>({
-                    query: (queryParams) => (queryParams ? `${entityPath}?${buildSearchParams(queryParams)}`
-                        : `/${entityName.toLowerCase()}`),
-                    providesTags: (result) => result ? [
-                        { type: entityTag, id: "LIST" },
-                        ...result.items.map((item) => ({ type: `${entityTag}` as const, id: item.id }))
-                    ] : []
-                }),
-                getEntityById: builder.query<TEntity, TId>({
-                    query: (id) => `${entityPath}/${id}`,
-                    providesTags: (result, error, id) => [{ type: entityTag, id }],
-                }),
-                updateEntity: builder.mutation<TEntity, { id: TId, body: Partial<TEntity> }>({
-                    query: ({ id, body }) => ({
-                        url: `${entityPath}/${id}`,
-                        method: "PATCH",
-                        body,
-                    }),
-                    invalidatesTags: (result, error, { id }) => [{ type: entityTag, id }]
+                        url: entityPath,
+                    })
                 }),
                 deleteEntity: builder.mutation<void, TId>({
+                    invalidatesTags: (result, error, id) => [{ id: "LIST", type: entityTag }],
                     query: (id) => ({
-                        url: `${entityPath}/${id}`,
                         method: "DELETE",
-                    }),
-                    invalidatesTags: (result, error, id) => [{ type: entityTag, id: "LIST" }]
+                        url: `${entityPath}/${id}`,
+                    })
+                }),
+                getEntities: builder.query<{ items: TEntity[]; totalCount: number; }, QueryParams<TEntity> | void>({
+                    providesTags: (result) => result ? [
+                        { id: "LIST", type: entityTag },
+                        ...result.items.map((item) => ({ id: item.id, type: `${entityTag}` as const }))
+                    ] : [],
+                    query: (queryParams) => (queryParams ? `${entityPath}?${buildSearchParams(queryParams)}`
+                        : `/${entityName.toLowerCase()}`)
+                }),
+                getEntityById: builder.query<TEntity, TId>({
+                    providesTags: (result, error, id) => [{ id, type: entityTag }],
+                    query: (id) => `${entityPath}/${id}`,
+                }),
+                updateEntity: builder.mutation<TEntity, { body: Partial<TEntity>; id: TId, }>({
+                    invalidatesTags: (result, error, { id }) => [{ id, type: entityTag }],
+                    query: ({ body, id }) => ({
+                        body,
+                        method: "PATCH",
+                        url: `${entityPath}/${id}`,
+                    })
                 }),
             }),
+            reducerPath: reducerPath,
+            tagTypes: [`${capitalize(entityName)}`],
         });
 
         const {
             useCreateEntityMutation,
+            useDeleteEntityMutation,
             useGetEntitiesQuery,
             useGetEntityByIdQuery,
             useUpdateEntityMutation,
-            useDeleteEntityMutation,
         } = baseApi;
 
         return {
             baseApi, reducerPath, useCreateEntityMutation,
+            useDeleteEntityMutation,
             useGetEntitiesQuery,
             useGetEntityByIdQuery,
             useUpdateEntityMutation,
-            useDeleteEntityMutation,
         };
     }

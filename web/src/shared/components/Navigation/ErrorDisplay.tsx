@@ -8,22 +8,22 @@ function ErrorDisplay({ message }: ErrorDisplayProps) {
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-        padding: 2,
+        backgroundColor: "error.light",
         border: "1px solid",
         borderColor: "error.main",
         borderRadius: 2,
-        backgroundColor: "error.light",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: 2,
+        textAlign: "center",
       }}
     >
-      <Typography variant="h6" color="error">
+      <Typography color="error" variant="h6">
         Oops! Something went wrong.
       </Typography>
-      <Typography variant="body2" sx={{ marginTop: 1 }}>
+      <Typography sx={{ marginTop: 1 }} variant="body2">
         {message}
       </Typography>
     </Box>

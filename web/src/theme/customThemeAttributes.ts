@@ -1,5 +1,5 @@
 export interface CustomThemeAttributes {
-    navigationPanelWidth?: number;
     closeNavigationPanelWidth?: number;
+    navigationPanelWidth?: number;
     settingsPanelWidth?: number;
 }

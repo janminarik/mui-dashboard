@@ -1,45 +1,45 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface NavigationPanelMenuState {
-    selectedMenuItem: string | null;
-    expandedSubMenu: string | null;
+    expandedSubMenu: null | string;
+    selectedMenuItem: null | string;
 }
 
 interface NavigationPanelState {
-    open: boolean;
     menuState: NavigationPanelMenuState;
+    open: boolean;
 }
 
 const initialState: NavigationPanelState = {
-    open: true,
     menuState: {
-        selectedMenuItem: null,
         expandedSubMenu: null,
-    }
+        selectedMenuItem: null,
+    },
+    open: true
 }
 
 const navigationPanelSlice = createSlice({
-    name: "navigationPanel",
     initialState,
+    name: "navigationPanel",
     reducers: {
-        toggleNavigationPanel(state: NavigationPanelState) {
-            state.open = !state.open;
-        },
         closeNavigationPanel(state: NavigationPanelState) {
             state.open = false;
         },
         setSelectedMenuItem(state: NavigationPanelState, action: PayloadAction<string>) {
             state.menuState.selectedMenuItem = action.payload;
         },
-        toggleSubmenu(state: NavigationPanelState, action: PayloadAction<string | null>) {
+        toggleNavigationPanel(state: NavigationPanelState) {
+            state.open = !state.open;
+        },
+        toggleSubmenu(state: NavigationPanelState, action: PayloadAction<null | string>) {
             state.menuState.expandedSubMenu = action.payload;
         }
     }
 })
 
-export const { toggleNavigationPanel,
-    closeNavigationPanel,
+export const { closeNavigationPanel,
     setSelectedMenuItem,
+    toggleNavigationPanel,
     toggleSubmenu } = navigationPanelSlice.actions;
 
 export const navigationPanelReducer = navigationPanelSlice.reducer;

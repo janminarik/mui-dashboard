@@ -22,12 +22,12 @@ function CustomersPage2() {
   return (
     <div>
       <DataGridWrapper
-        columns={columns}
-        slice={customersSlice}
         api={apiCustomers}
-        rowContextMenu={{ show: true, showDelete: true, showEdit: true }}
+        columns={columns}
         createEntityRoute={ROUTES.CUSTOMER_CREATE}
         editEntityRoute={ROUTES.CUSTOMERS}
+        rowContextMenu={{ show: true, showDelete: true, showEdit: true }}
+        slice={customersSlice}
       ></DataGridWrapper>
     </div>
   );

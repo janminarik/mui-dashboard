@@ -1,7 +1,7 @@
-import React, { createContext, ReactNode } from "react";
-import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Theme } from "@mui/material/styles";
+import React, { createContext, ReactNode } from "react";
+import { useSelector } from "react-redux";
 
 import { RootState } from "../app/store";
 import { getTheme } from "./defaultTheme";

@@ -7,13 +7,13 @@ interface LoaderProps {
 function Loader({ message }: LoaderProps) {
   return (
     <Box
+      alignItems="center"
       display="flex"
       flexDirection="column"
       justifyContent="center"
-      alignItems="center"
     >
       <CircularProgress />
-      <Typography variant="h6" pt={4}>
+      <Typography pt={4} variant="h6">
         {message ? message : "Defaul loading message"}
       </Typography>
     </Box>

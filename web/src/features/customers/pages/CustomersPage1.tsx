@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
 import { GridColDef } from "@mui/x-data-grid";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../../../app/store";
 import DataGrid from "../../../shared/components/DataGrid";
@@ -26,19 +26,19 @@ function CustomersPage1() {
   return (
     <DataGrid
       columns={columns}
-      showContextMenu
-      showDeleteInContextMenu
-      showEditInContexMenu
       createEntityRoute={ROUTES.CUSTOMER_CREATE}
       editEntityRoute={ROUTES.CUSTOMERS}
       setColumnsVisibility={(columnsVisibility) => dispatch(setCustomersColumnsVisibility(columnsVisibility))}
-      showAllColumns={(visible) => dispatch(showAllCustomersColumns(visible))}
-      setPagination={(pagination) => dispatch(setCustomersPage(pagination))}
       setFilters={(filters) => dispatch(setCustomersFilters(filters))}
-      setSortOptions={(sortOptions) => dispatch(setCustomersSortOptions(sortOptions))}
+      setPagination={(pagination) => dispatch(setCustomersPage(pagination))}
       setSelectedItems={(selectedItems) => dispatch(setCustomersSelectedItems(selectedItems))}
-      useGetEntities={useGetCustomersQuery}
+      setSortOptions={(sortOptions) => dispatch(setCustomersSortOptions(sortOptions))}
+      showAllColumns={(visible) => dispatch(showAllCustomersColumns(visible))}
+      showContextMenu
+      showDeleteInContextMenu
+      showEditInContexMenu
       useDeleteEntity={useDeleteCustomerMutation}
+      useGetEntities={useGetCustomersQuery}
       {...useSelector((state: RootState) => state.customersList)}
     />
   );

@@ -5,11 +5,11 @@ function DemoLazyPage() {
     <Box
       display="flex"
       flexDirection="row"
+      height="100vh"
       justifyContent="center"
       width="100vw"
-      height="100vh"
     >
-      <Typography variant="h4" textAlign="center" pt={2}>
+      <Typography pt={2} textAlign="center" variant="h4">
         Demo Lazy
       </Typography>
     </Box>

@@ -5,11 +5,11 @@ import { TRANSLATIONS_NAMESPACES } from "../../i18n/config";
 import Loader from "./Loader";
 
 interface SuspenseWrapperProps {
-  message?: string;
   children: ReactNode;
+  message?: string;
 }
 
-function SuspenseWrapper({ message, children }: SuspenseWrapperProps) {
+function SuspenseWrapper({ children, message }: SuspenseWrapperProps) {
   const { t } = useTranslation(TRANSLATIONS_NAMESPACES.SHARED);
   return (
     <Suspense

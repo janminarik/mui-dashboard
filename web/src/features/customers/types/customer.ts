@@ -1,52 +1,52 @@
 import { TEntityBase } from "../../../shared/utils/rtkUtils";
 
-export interface Customer extends TEntityBase<string> {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phoneNumber?: string;
-    isVerified: boolean;
-    createdAt: Date;
-    updatedAt: Date;
+export interface Address {
+    city: string;
+    country: string;
+    customerId: string,
+    id: string,
+    state?: string;
+    street: string;
+    zipCode: string;
 }
 
 
 export interface CreateCustomer {
-    id?: string,
-    firstName: string;
-    lastName: string;
     email: string;
-    phoneNumber?: string;
+    firstName: string;
+    id?: string,
     isVerified: boolean;
+    lastName: string;
+    phoneNumber?: string;
 }
 
+export interface Customer extends TEntityBase<string> {
+    createdAt: Date;
+    email: string;
+    firstName: string;
+    id: string;
+    isVerified: boolean;
+    lastName: string;
+    phoneNumber?: string;
+    updatedAt: Date;
+}
+
+
 export interface CustomerDetail {
-    id: string,
     customerId: string;
+    id: string,
     newsletterSubscribed: boolean;
-    preferredLanguage: string;
     preferredCurrency: string;
+    preferredLanguage: string;
     // orderHistory?: OrderHistory[];
 }
 
 
-export interface Address {
-    id: string,
-    customerId: string,
-    street: string;
-    city: string;
-    state?: string;
-    zipCode: string;
-    country: string;
-}
-
-
 export interface OrderHistory {
-    id: string;
     customerId: string;
-    orderId: string;
     date: Date;
+    id: string;
+    orderId: string;
     totalAmount: number;
 }
 

@@ -1,6 +1,6 @@
+import { Box, Button, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Typography } from "@mui/material";
 
 import { TRANSLATIONS_NAMESPACES } from "../../i18n/config";
 
@@ -14,22 +14,22 @@ function NotFoundPage() {
 
   return (
     <Box
+      alignItems="center"
       display="flex"
       flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
       height="100vh"
-      width="100vw"
-      textAlign="center"
+      justifyContent="center"
       p={2}
+      textAlign="center"
+      width="100vw"
     >
-      <Typography variant="h3" color="error" gutterBottom>
+      <Typography color="error" gutterBottom variant="h3">
         {t("notFoundPage.title")}
       </Typography>
-      <Typography variant="h6" color="textSecondary" gutterBottom>
+      <Typography color="textSecondary" gutterBottom variant="h6">
         {t("notFoundPage.message")}
       </Typography>
-      <Button variant="contained" color="primary" onClick={handleGoHome}>
+      <Button color="primary" onClick={handleGoHome} variant="contained">
         {t("notFoundPage.button")}
       </Button>
     </Box>

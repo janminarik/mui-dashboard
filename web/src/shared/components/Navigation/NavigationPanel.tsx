@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import HiveIcon from "@mui/icons-material/Hive";
 import {
   Box,
@@ -8,6 +7,7 @@ import {
   ListItemText,
   useMediaQuery,
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../../../app/store";
 import { useAppTheme } from "../../hooks/useAppTheme";
@@ -33,19 +33,19 @@ function AppLogo() {
   return (
     <Box
       sx={{
-        height: appBarHeight,
-        display: "flex",
         alignItems: "center",
+        display: "flex",
+        height: appBarHeight,
         my: 1,
       }}
     >
       {/* Temp */}
       <List
-        sx={{
-          width: "100%",
-          overflowX: "hidden",
-        }}
         disablePadding
+        sx={{
+          overflowX: "hidden",
+          width: "100%",
+        }}
       >
         <ListItemButton>
           <ListItemIcon>
@@ -78,18 +78,18 @@ function NavigationPanel({ menuItems, ...rest }: NavigationPanelProps) {
 
   return (
     <Sidebar
-      mode={isLarge ? "persistent" : "temporary"}
       anchor="left"
-      open={isLarge || open}
+      mode={isLarge ? "persistent" : "temporary"}
       onClose={handleClose}
+      open={isLarge || open}
       {...rest}
       content={
         <Box
           sx={{
+            alignItems: "stretch",
             display: "flex",
             flexDirection: "column",
             justifyContent: "stretch",
-            alignItems: "stretch",
             width: width,
           }}
         >

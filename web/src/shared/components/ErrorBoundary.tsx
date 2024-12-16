@@ -1,8 +1,8 @@
 import React, { Component, ReactNode } from "react";
 
 type ErrorBoundaryProps = {
-  fallback: ReactNode;
   children: ReactNode;
+  fallback: ReactNode;
 };
 
 type ErrorBoundaryState = {

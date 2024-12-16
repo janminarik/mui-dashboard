@@ -6,21 +6,21 @@ export enum Language {
 }
 
 export enum ThemeName {
-    Light = "light",
-    Dark = "dark"
+    Dark = "dark",
+    Light = "light"
 }
+
+export type MenuItem = {
+    icon?: ReactNode;
+    kind: "menuitem";
+    label: string;
+    subMenu?: MenuItem[];
+    to?: string;
+};
+
+export type NavigationMenuItem = MenuItem | SubHeaderItem;
 
 export type SubHeaderItem = {
     kind: "subheader";
     label: string;
 };
-
-export type MenuItem = {
-    kind: "menuitem";
-    label: string;
-    icon?: ReactNode;
-    subMenu?: MenuItem[];
-    to?: string;
-};
-
-export type NavigationMenuItem = SubHeaderItem | MenuItem;

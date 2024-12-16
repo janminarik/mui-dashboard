@@ -6,7 +6,7 @@ import { defineConfig } from "vite"
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), visualizer({
-    open: true, gzipSize: true,
-    brotliSize: true, template: "treemap"
+    brotliSize: true, gzipSize: true,
+    open: true, template: "treemap"
   })],
 })

@@ -1,7 +1,7 @@
-import { ElementType, Suspense } from "react";
-import { Outlet } from "react-router-dom";
 import { Container, styled, Theme, useMediaQuery } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { ElementType, Suspense } from "react";
+import { Outlet } from "react-router-dom";
 
 import { useAppTheme } from "../../hooks/useAppTheme";
 import useNavigationPanelResponsiveWidth from "../../hooks/useNavigationPanelResponsiveWidth";
@@ -15,23 +15,23 @@ const Offset = styled("div")(({ theme }: { theme: Theme }) => ({
 }));
 
 export interface MainLayoutProps {
+  Header: ElementType;
   menuItems: NavigationMenuItem[];
   NavigationPanel: ElementType<NavigationPanelProps>;
-  Header: ElementType;
   SettingsPanel: ElementType;
 }
 
 const sidebarGridSx = {
+  display: { lg: "flex", md: "none", xs: "none" },
   flex: 0,
   flexShrink: 0,
   size: { lg: "auto" },
-  display: { xs: "none", md: "none", lg: "flex" },
 };
 
 function MainLayout({
+  Header,
   menuItems,
   NavigationPanel,
-  Header,
   SettingsPanel,
 }: MainLayoutProps) {
   const theme = useAppTheme();
@@ -41,9 +41,9 @@ function MainLayout({
   return (
     <Container
       component="main"
-      role="main"
-      maxWidth={false}
       disableGutters
+      maxWidth={false}
+      role="main"
       sx={{
         background: theme.palette.background.default,
         height: "100vh",
@@ -52,18 +52,18 @@ function MainLayout({
       <Grid
         container
         sx={{
+          background: theme.palette.background.default,
           flex: 1,
           flexDirection: "row",
-          background: theme.palette.background.default,
         }}
       >
         {/* NavigationPanel */}
         <Grid
           sx={{
+            display: { lg: "flex", md: "flex", xs: "flex" },
             flex: 0,
             flexShrink: 0,
             size: { lg: "auto" },
-            display: { xs: "flex", md: "flex", lg: "flex" },
           }}
         >
           <NavigationPanel menuItems={menuItems} />
@@ -73,12 +73,12 @@ function MainLayout({
         <Grid
           container
           sx={{
-            flex: 1,
             direction: "column",
+            flex: 1,
             marginLeft: isLarge ? `${navigationPanelWidth}px` : 0,
             transition: theme.transitions.create(["margin"], {
-              easing: theme.transitions.easing.sharp,
               duration: theme.transitions.duration.leavingScreen,
+              easing: theme.transitions.easing.sharp,
             }),
           }}
         >

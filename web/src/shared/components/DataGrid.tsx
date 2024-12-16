@@ -1,27 +1,11 @@
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import { GridColDef, GridColumnVisibilityModel, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, DataGrid as MuiDataGrid } from "@mui/x-data-grid";
 import { useCallback, useMemo, useState } from "react";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import {
-  Box,
-  Button,
-  debounce,
-  IconButton,
-  Menu,
-  MenuItem,
-} from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import {
-  DataGrid as MuiDataGrid,
-  GridColDef,
-  GridColumnVisibilityModel,
-  GridFilterModel,
-  GridPaginationModel,
-  GridRowModel,
-  GridRowSelectionModel,
-  GridSortModel,
-} from "@mui/x-data-grid";
 
 import { AppDispatch } from "../../app/store";
 import { extractErrorMessage } from "../utils/errorUtils";
@@ -32,75 +16,67 @@ import Loader from "./Loader";
 
 export interface DataGridProps<TEntity> {
   columns: GridColDef[];
+  columnsVisbility?: GridColumnVisibilityModel;
+  createEntityRoute: string;
+  editEntityRoute: string;
+  filters?: GridFilterModel;
+  pagination: GridPaginationModel;
+
+  selectedItems?: GridRowSelectionModel;
+  setColumnsVisibility: (columnsVisibility: GridColumnVisibilityModel) => void;
+  setFilters: (filters: GridFilterModel) => void;
+  setPagination: (pagination: GridPaginationModel) => void;
+  setSelectedItems: (selectedItems: GridRowSelectionModel) => void;
+
+  setSortOptions: (sortOptions: GridSortModel) => void;
+  showAllColumns: (visible: boolean) => void;
   showContextMenu?: boolean;
   showDeleteInContextMenu?: boolean;
   showEditInContexMenu?: boolean;
-  createEntityRoute: string;
-  editEntityRoute: string;
-
-  pagination: GridPaginationModel;
-  filters?: GridFilterModel;
   sortOptions?: GridSortModel;
-  selectedItems?: GridRowSelectionModel;
-  columnsVisbility?: GridColumnVisibilityModel;
-
-  setPagination: (pagination: GridPaginationModel) => void;
-  setFilters: (filters: GridFilterModel) => void;
-  setSortOptions: (sortOptions: GridSortModel) => void;
-  setSelectedItems: (selectedItems: GridRowSelectionModel) => void;
-  setColumnsVisibility: (columnsVisibility: GridColumnVisibilityModel) => void;
-  showAllColumns: (visible: boolean) => void;
+  useDeleteEntity: any; //todo: fix type
   useGetEntities: (params: QueryParams<TEntity>) => {
     data?: { items: TEntity[]; totalCount: number };
-    isLoading: boolean;
-    isFetching: boolean;
-    isError: boolean;
     error?: unknown;
+    isError: boolean;
+    isFetching: boolean;
+    isLoading: boolean;
   };
-  useDeleteEntity: any; //todo: fix type
 }
 
 function DataGrid<TEntity extends { id: string }>({
   columns,
-  showContextMenu,
-  showEditInContexMenu,
-  showDeleteInContextMenu,
-  pagination,
-  sortOptions,
-  filters,
-  selectedItems,
   columnsVisbility,
-  setPagination,
-  setFilters,
-  setSelectedItems,
-  setSortOptions,
-  setColumnsVisibility,
-  showAllColumns,
   createEntityRoute,
   editEntityRoute,
-  useGetEntities,
+  filters,
+  pagination,
+  selectedItems,
+  setColumnsVisibility,
+  setFilters,
+  setPagination,
+  setSelectedItems,
+  setSortOptions,
+  showAllColumns,
+  showContextMenu,
+  showDeleteInContextMenu,
+  showEditInContexMenu,
+  sortOptions,
   useDeleteEntity,
+  useGetEntities,
 }: DataGridProps<TEntity>) {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const [contextMenu, setContextMenu] = useState<HTMLButtonElement | null>(
-    null
-  );
-  const [selectedItem, setSelectedItem] =
-    useState<GridRowModel<TEntity> | null>(null);
+  const [contextMenu, setContextMenu] = useState<HTMLButtonElement | null>(null);
+  const [selectedItem, setSelectedItem] = useState<GridRowModel<TEntity> | null>(null);
   const openContexMenu = Boolean(contextMenu);
-
-  // const { pagination, sortOptions, filters, selectedItems, columnsVisbility } =
-  //   useSelector((state: RootState) => state.customersList);
 
   const queryParams: QueryParams<TEntity> = useMemo(
     () => ({
+      filters: filters ? (buildFilter(filters) as Partial<Record<keyof TEntity, any>>) : undefined,
       page: pagination.page,
       pageSize: pagination.pageSize,
       sortOptions: sortOptions ? buildSort(sortOptions) : undefined,
-      filters: filters
-        ? (buildFilter(filters) as Partial<Record<keyof TEntity, any>>)
-        : undefined,
     }),
     [pagination, sortOptions, filters]
   );
@@ -110,10 +86,7 @@ function DataGrid<TEntity extends { id: string }>({
 
   const [deleteCustomer, deleteCustomerResult] = useDeleteEntity();
 
-  const { isLoading, isError, errors } = aggregateApiRequestState([
-    customersQuery,
-    deleteCustomerResult,
-  ]);
+  const { errors, isError, isLoading } = aggregateApiRequestState([customersQuery, deleteCustomerResult]);
 
   const debounceDispatch = useCallback(
     debounce((filters: GridFilterModel) => {
@@ -129,14 +102,11 @@ function DataGrid<TEntity extends { id: string }>({
     [debounceDispatch]
   );
 
-  const handlePaginationChange = (newModel: GridPaginationModel) =>
-    setPagination(newModel);
+  const handlePaginationChange = (newModel: GridPaginationModel) => setPagination(newModel);
 
-  const handleSortChange = (newModel: GridSortModel) =>
-    setSortOptions(newModel);
+  const handleSortChange = (newModel: GridSortModel) => setSortOptions(newModel);
 
-  const handleRowSelectionChange = (newModel: GridRowSelectionModel) =>
-    setSelectedItems(newModel);
+  const handleRowSelectionChange = (newModel: GridRowSelectionModel) => setSelectedItems(newModel);
 
   const handleVisibilityModelChange = (newModel: GridColumnVisibilityModel) => {
     if (Object.keys(newModel).length === 0) {
@@ -146,16 +116,12 @@ function DataGrid<TEntity extends { id: string }>({
     }
   };
 
-  const handleContexMenuOpen = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    row: GridRowModel<TEntity>
-  ) => {
+  const handleContexMenuOpen = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, row: GridRowModel<TEntity>) => {
     setContextMenu(event.currentTarget);
     setSelectedItem(row);
   };
 
-  const handleEntityEdit = () =>
-    navigate(editEntityRoute + `/${selectedItem?.id}`);
+  const handleEntityEdit = () => navigate(editEntityRoute + `/${selectedItem?.id}`);
 
   const handleEntityCreate = () => navigate(createEntityRoute);
 
@@ -166,9 +132,8 @@ function DataGrid<TEntity extends { id: string }>({
 
   const contextColumn = {
     field: "action",
-    headerName: "",
-    sortable: false,
     filterable: false,
+    headerName: "",
     renderCell: (params: any) => (
       <>
         <IconButton
@@ -179,61 +144,47 @@ function DataGrid<TEntity extends { id: string }>({
           <MoreHorizIcon />
         </IconButton>
         <Menu
+          anchorEl={contextMenu}
           anchorOrigin={{
+            horizontal: "right",
             vertical: "bottom",
-            horizontal: "right",
           }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
+          onClose={() => setContextMenu(null)}
+          open={openContexMenu}
           slotProps={{
             paper: {
+              elevation: 1,
               sx: {
                 minWidth: 120,
               },
-              elevation: 1,
             },
           }}
-          open={openContexMenu}
-          anchorEl={contextMenu}
-          onClose={() => setContextMenu(null)}
+          transformOrigin={{
+            horizontal: "right",
+            vertical: "top",
+          }}
         >
-          {showEditInContexMenu && (
-            <MenuItem onClick={handleEntityEdit}>Edit</MenuItem>
-          )}
-          {showDeleteInContextMenu && (
-            <MenuItem onClick={handleEntityDelete}>Delete</MenuItem>
-          )}
+          {showEditInContexMenu && <MenuItem onClick={handleEntityEdit}>Edit</MenuItem>}
+          {showDeleteInContextMenu && <MenuItem onClick={handleEntityDelete}>Delete</MenuItem>}
         </Menu>
       </>
     ),
+    sortable: false,
   };
 
   if (!isError && data) {
     return (
-      <Grid
-        size={{ xs: 12 }}
-        container
-        justifyContent="stretch"
-        flexDirection="column"
-      >
-        <Grid
-          container
-          flexDirection="row"
-          justifyContent="stretch"
-          pt={3}
-          size={{ xs: 12 }}
-        >
-          <Grid container mx={4} justifyContent="flex-end" size={{ xs: 12 }}>
+      <Grid container flexDirection="column" justifyContent="stretch" size={{ xs: 12 }}>
+        <Grid container flexDirection="row" justifyContent="stretch" pt={3} size={{ xs: 12 }}>
+          <Grid container justifyContent="flex-end" mx={4} size={{ xs: 12 }}>
             <Button onClick={handleEntityCreate}>Create</Button>
           </Grid>
         </Grid>
         <Grid size={{ xs: 12 }}>
           <MuiDataGrid
-            loading={isLoading}
-            disableRowSelectionOnClick
             checkboxSelection
+            columns={showContextMenu ? [...columns, contextColumn] : columns}
+            columnVisibilityModel={columnsVisbility}
             // slots={{
             //   toolbar: GridToolbar,
             // }}
@@ -243,22 +194,22 @@ function DataGrid<TEntity extends { id: string }>({
             //   },
             // }}
 
-            columns={showContextMenu ? [...columns, contextColumn] : columns}
-            rowCount={data?.totalCount ? data.totalCount : 0}
-            pageSizeOptions={[5, 10, 20, 100]}
-            rows={data.items || []}
-            paginationMode="server"
-            paginationModel={pagination}
+            disableRowSelectionOnClick
             filterMode="server"
-            sortingMode="server"
             filterModel={filters}
+            loading={isLoading}
+            onColumnVisibilityModelChange={handleVisibilityModelChange}
             onFilterModelChange={handleFilterChange}
             onPaginationModelChange={handlePaginationChange}
             onRowSelectionModelChange={handleRowSelectionChange}
             onSortModelChange={handleSortChange}
+            pageSizeOptions={[5, 10, 20, 100]}
+            paginationMode="server"
+            paginationModel={pagination}
+            rowCount={data?.totalCount ? data.totalCount : 0}
+            rows={data.items || []}
             rowSelectionModel={selectedItems}
-            columnVisibilityModel={columnsVisbility}
-            onColumnVisibilityModelChange={handleVisibilityModelChange}
+            sortingMode="server"
             sx={{ m: 4 }}
           ></MuiDataGrid>
         </Grid>
@@ -268,31 +219,25 @@ function DataGrid<TEntity extends { id: string }>({
     return (
       <Box
         sx={{
+          alignItems: "center",
           display: "flex",
-          width: "100vw",
           height: "100vh",
           justifyContent: "center",
-          alignItems: "center",
+          width: "100vw",
         }}
       >
-        <ErrorBox
-          message={
-            errors.length > 0
-              ? errors.map((error) => extractErrorMessage(error)).join("\n")
-              : undefined
-          }
-        ></ErrorBox>
+        <ErrorBox message={errors.length > 0 ? errors.map((error) => extractErrorMessage(error)).join("\n") : undefined}></ErrorBox>
       </Box>
     );
   } else if (!isError && isLoading) {
     return (
       <Box
         sx={{
+          alignItems: "center",
           display: "flex",
-          width: "100vw",
           height: "100vh",
           justifyContent: "center",
-          alignItems: "center",
+          width: "100vw",
         }}
       >
         <Loader message="Loading customers..." />

@@ -9,9 +9,9 @@ export const menuItems: NavigationMenuItem[] = [
     label: "Application",
   },
   {
+    icon: <WebIcon />,
     kind: "menuitem",
     label: "Pages",
-    icon: <WebIcon />,
     subMenu: [
       { kind: "menuitem", label: "505", to: ROUTES.ERROR },
       { kind: "menuitem", label: "404", to: ROUTES.NOTFOUND },

@@ -1,9 +1,9 @@
+import { Button, Card, TextField } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, TextField } from "@mui/material";
-import Grid from "@mui/material/Grid2";
 
 import { AppDispatch } from "../../../app/store";
 import { TRANSLATIONS_NAMESPACES } from "../../../i18n/config";
@@ -53,66 +53,66 @@ function LoginPage() {
     <Grid
       container
       sx={{
-        width: "100vw",
-        height: "100vh",
+        alignItems: "flex-start",
         display: "flex",
         flexDirection: "row",
+        height: "100vh",
         justifyContent: "center",
-        alignItems: "flex-start",
         paddingTop: 8,
+        width: "100vw",
       }}
     >
       <Card
         sx={{
+          borderRadius: 3,
           display: "flex",
           flexDirection: "column",
+          maxWidth: 500,
           px: 4,
           py: 8,
           rowGap: 4,
-          borderRadius: 3,
           width: {
-            xs: "90%",
-            sm: "80%",
-            md: "60%",
             lg: "40%",
+            md: "60%",
+            sm: "80%",
+            xs: "90%",
           },
-          maxWidth: 500,
         }}
       >
         <TextField
-          label={t("form.fields.email.label")}
-          placeholder={email ? undefined : t("form.fields.email.placeholder")}
-          required
-          fullWidth
-          size="small"
-          type="email"
           autoComplete="email"
           autoFocus
-          value={email}
+          error={emailError}
+          fullWidth
+          helperText={emailError && t("form.fields.email.errorMessage")}
+          label={t("form.fields.email.label")}
+          onBlur={validateEmail}
           onChange={(event) => {
             setEmail(event.target.value);
           }}
-          error={emailError}
-          helperText={emailError && t("form.fields.email.errorMessage")}
-          onBlur={validateEmail}
+          placeholder={email ? undefined : t("form.fields.email.placeholder")}
+          required
+          size="small"
+          type="email"
+          value={email}
         />
         <TextField
+          autoComplete="current-password"
+          error={passwordError}
+          fullWidth
+          helperText={passwordError && t("form.fields.password.errorMessage")}
           label={t("form.fields.password.label")}
+          onBlur={validatePassword}
+          onChange={(event) => setPassword(event.target.value)}
           placeholder={
             password ? undefined : t("form.fields.password.placeholder")
           }
           required
-          fullWidth
-          type="password"
           size="small"
+          type="password"
           value={password}
-          autoComplete="current-password"
-          onChange={(event) => setPassword(event.target.value)}
-          error={passwordError}
-          helperText={passwordError && t("form.fields.password.errorMessage")}
-          onBlur={validatePassword}
         />
-        <Button variant="contained" fullWidth onClick={handleLogin}>
+        <Button fullWidth onClick={handleLogin} variant="contained">
           {t("form.buttons.login")}
         </Button>
       </Card>

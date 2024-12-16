@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -10,6 +9,7 @@ import {
   Toolbar,
   useMediaQuery,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "../../../app/store";
 import { toggleSettingsPanel } from "../../../features/settings/slices/settingsPanelSlice";
@@ -40,19 +40,19 @@ function Header() {
     <AppBar>
       <Toolbar
         sx={{
-          width: isLarge ? `calc(100% - ${navigationPanelWidth}px)` : "100%",
           marginLeft: isLarge ? `${navigationPanelWidth}px` : 0,
           transition: theme.transitions.create(["width", "margin"], {
-            easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
+            easing: theme.transitions.easing.sharp,
           }),
+          width: isLarge ? `calc(100% - ${navigationPanelWidth}px)` : "100%",
         }}
       >
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
             flex: 1,
+            justifyContent: "space-between",
           }}
         >
           <IconButton onClick={handleToggleNavigationPanel}>

@@ -1,11 +1,11 @@
 import { ReactNode, useEffect, useState } from "react";
 
 interface DelayedWrapperProps {
-  delay: number;
   children: ReactNode;
+  delay: number;
 }
 
-function DelayedWrapper({ delay, children }: DelayedWrapperProps) {
+function DelayedWrapper({ children, delay }: DelayedWrapperProps) {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {

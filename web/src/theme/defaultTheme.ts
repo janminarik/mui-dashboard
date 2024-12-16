@@ -12,8 +12,8 @@ declare module "@mui/material/styles" {
     // Umožňuje získať prístup k vlastným hodnotám pri použití `theme.palette`.
     interface ThemeOptions {
         custom?: {
-            navigationPanelWidth?: number;
             closeNavigationPanelWidth?: number;
+            navigationPanelWidth?: number;
             settingsPanelWidth?: number;
         };
     }
@@ -22,18 +22,11 @@ declare module "@mui/material/styles" {
 
 export const getTheme = (mode: ThemeName): Theme => {
     return createTheme({
-        palette: {
-            mode: mode
-        },
         components: {
-            MuiCssBaseline: {
+            MuiAppBar: {
                 styleOverrides: {
-                    body: {
-                        margin: 0,
-                        padding: 0
-                    },
-                    "*": {
-                        boxSizing: "border-box"
+                    root: {
+                        ...(mode === "light") && { background: "#fff" }
                     }
                 }
             },
@@ -43,18 +36,15 @@ export const getTheme = (mode: ThemeName): Theme => {
                     }
                 }
             },
-            MuiAppBar: {
+            MuiCssBaseline: {
                 styleOverrides: {
-                    root: {
-                        ...(mode === "light") && { background: "#fff" }
+                    "*": {
+                        boxSizing: "border-box"
+                    },
+                    body: {
+                        margin: 0,
+                        padding: 0
                     }
-                }
-            },
-            MuiTypography: {
-                styleOverrides: {
-                    root: ({ theme }) => ({
-                        color: theme.palette.text.primary
-                    })
                 }
             },
             MuiSvgIcon: {
@@ -63,12 +53,22 @@ export const getTheme = (mode: ThemeName): Theme => {
                         color: theme.palette.mode === "light" ? "#545454" : "inherit"
                     })
                 }
+            },
+            MuiTypography: {
+                styleOverrides: {
+                    root: ({ theme }) => ({
+                        color: theme.palette.text.primary
+                    })
+                }
             }
         },
         custom: {
-            navigationPanelWidth: 250,
             closeNavigationPanelWidth: 60,
+            navigationPanelWidth: 250,
             settingsPanelWidth: 350,
+        },
+        palette: {
+            mode: mode
         }
     })
 }

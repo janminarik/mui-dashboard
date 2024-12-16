@@ -3,27 +3,27 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Language, ThemeName } from "../../../shared/types/commonTypes";
 
 interface UiSettings {
-    theme: ThemeName;
     language: Language | null,
+    theme: ThemeName;
 }
 
 const initialState: UiSettings = {
-    theme: ThemeName.Dark,
     language: null,
+    theme: ThemeName.Dark,
 }
 
 const uiSettingsSlice = createSlice({
-    name: "uiSettings",
     initialState,
+    name: "uiSettings",
     reducers: {
-        setTheme(state: UiSettings, actions: PayloadAction<ThemeName>) {
-            state.theme = actions.payload;
-        },
         setLanguage(state: UiSettings, actions: PayloadAction<Language>) {
             state.language = actions.payload;
+        },
+        setTheme(state: UiSettings, actions: PayloadAction<ThemeName>) {
+            state.theme = actions.payload;
         }
     }
 })
 
-export const { setTheme, setLanguage } = uiSettingsSlice.actions;
+export const { setLanguage, setTheme } = uiSettingsSlice.actions;
 export const uiSettingsReducer = uiSettingsSlice.reducer;

@@ -1,10 +1,10 @@
-import { useCallback, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { DataGrid as MuiDataGrid, GridColDef, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, GridToolbar } from "@mui/x-data-grid";
+import { GridColDef,GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, GridToolbar, DataGrid as MuiDataGrid } from "@mui/x-data-grid";
+import { useCallback, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { AppDispatch, RootState } from "../../../app/store";
 import ErrorBox from "../../../shared/components/ErrorBox";
@@ -26,14 +26,14 @@ function CustomersPage0() {
   const [selectedCustomer, setSelectedCustomer] = useState<GridRowModel<Customer> | null>(null);
   const openCustomerCtxMenu = Boolean(customerCtxMenuEl);
 
-  const { pagination, sortOptions, filters, selectedItems } = useSelector((state: RootState) => state.customersList);
+  const { filters, pagination, selectedItems, sortOptions } = useSelector((state: RootState) => state.customersList);
 
   const queryParams: CustomerQueryParams = useMemo(
     () => ({
+      filters: filters ? buildFilter(filters) : undefined,
       page: pagination.page,
       pageSize: pagination.pageSize,
       sortOptions: sortOptions ? buildSort(sortOptions) : undefined,
-      filters: filters ? buildFilter(filters) : undefined,
     }),
     [pagination, sortOptions, filters]
   );
@@ -43,7 +43,7 @@ function CustomersPage0() {
 
   const [deleteCustomer, deleteCustomerResult] = useDeleteCustomerMutation();
 
-  const { isLoading, isError, errors } = aggregateApiRequestState([customersQuery, deleteCustomerResult]);
+  const { errors, isError, isLoading } = aggregateApiRequestState([customersQuery, deleteCustomerResult]);
 
   const debounceDispatch = useCallback(
     debounce((filters: GridFilterModel) => {
@@ -92,9 +92,8 @@ function CustomersPage0() {
     { ...colDef, field: "updatedAt", headerName: "Updated At" },
     {
       field: "action",
-      headerName: "",
-      sortable: false,
       filterable: false,
+      headerName: "",
       renderCell: (params) => (
         <>
           <IconButton
@@ -105,31 +104,32 @@ function CustomersPage0() {
             <MoreHorizIcon />
           </IconButton>
           <Menu
+            anchorEl={customerCtxMenuEl}
             anchorOrigin={{
+              horizontal: "right",
               vertical: "bottom",
-              horizontal: "right",
             }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
+            onClose={() => setCustomerCtxMenuEl(null)}
+            open={openCustomerCtxMenu}
             slotProps={{
               paper: {
+                elevation: 1,
                 sx: {
                   minWidth: 120,
                 },
-                elevation: 1,
               },
             }}
-            open={openCustomerCtxMenu}
-            anchorEl={customerCtxMenuEl}
-            onClose={() => setCustomerCtxMenuEl(null)}
+            transformOrigin={{
+              horizontal: "right",
+              vertical: "top",
+            }}
           >
             <MenuItem onClick={handleCustomerEdit}>Edit</MenuItem>
             <MenuItem onClick={handleCustomerDelete}>Delete</MenuItem>
           </Menu>
         </>
       ),
+      sortable: false,
     },
   ];
 
@@ -141,31 +141,31 @@ function CustomersPage0() {
         </Grid>
         <Grid size={{ xs: 12 }}>
           <MuiDataGrid
-            loading={isLoading}
-            disableRowSelectionOnClick
             checkboxSelection
-            slots={{
-              toolbar: GridToolbar,
-            }}
+            columns={columns}
+            disableRowSelectionOnClick
+            filterMode="server"
+            filterModel={filters}
+            loading={isLoading}
+            onFilterModelChange={handleFilterChange}
+            onPaginationModelChange={handlePaginationChange}
+            onRowSelectionModelChange={handleRowSelectionChange}
+            onSortModelChange={handleSortChange}
+            pageSizeOptions={[5, 10, 20, 100]}
+            paginationMode="server"
+            paginationModel={pagination}
+            rowCount={data?.totalCount ? data.totalCount : 0}
+            rows={data.items || []}
+            rowSelectionModel={selectedItems}
             slotProps={{
               toolbar: {
                 showQuickFilter: true,
               },
             }}
-            columns={columns}
-            rowCount={data?.totalCount ? data.totalCount : 0}
-            pageSizeOptions={[5, 10, 20, 100]}
-            rows={data.items || []}
-            paginationMode="server"
-            paginationModel={pagination}
-            filterMode="server"
+            slots={{
+              toolbar: GridToolbar,
+            }}
             sortingMode="server"
-            filterModel={filters}
-            onFilterModelChange={handleFilterChange}
-            onPaginationModelChange={handlePaginationChange}
-            onRowSelectionModelChange={handleRowSelectionChange}
-            onSortModelChange={handleSortChange}
-            rowSelectionModel={selectedItems}
             sx={{ m: 4 }}
           ></MuiDataGrid>
         </Grid>
@@ -175,11 +175,11 @@ function CustomersPage0() {
     return (
       <Box
         sx={{
+          alignItems: "center",
           display: "flex",
-          width: "100vw",
           height: "100vh",
           justifyContent: "center",
-          alignItems: "center",
+          width: "100vw",
         }}
       >
         <ErrorBox message={errors.length > 0 ? errors.map((error) => extractErrorMessage(error)).join("\n") : undefined}></ErrorBox>
@@ -189,11 +189,11 @@ function CustomersPage0() {
     return (
       <Box
         sx={{
+          alignItems: "center",
           display: "flex",
-          width: "100vw",
           height: "100vh",
           justifyContent: "center",
-          alignItems: "center",
+          width: "100vw",
         }}
       >
         <Loader message="Loading customers..." />

@@ -30,30 +30,30 @@ const dashboardRoutes: RouteObject[] = [
 
 const router = createBrowserRouter([
   {
-    errorElement: <ErrorPage />,
     children: [
       ...authRoutes,
       {
-        element: <ProtectedRoute />,
         children: [
           {
+            children: [...dashboardRoutes],
             element: (
               <MainLayout
-                menuItems={navigationMenuItems}
                 Header={Header}
+                menuItems={navigationMenuItems}
                 NavigationPanel={NavigationPanel}
                 SettingsPanel={SettingsPanel}
               />
             ),
-            children: [...dashboardRoutes],
           },
         ],
+        element: <ProtectedRoute />,
       },
       {
-        path: "*",
         element: <NotFoundPage />,
+        path: "*",
       },
     ],
+    errorElement: <ErrorPage />,
   },
 ]);
 

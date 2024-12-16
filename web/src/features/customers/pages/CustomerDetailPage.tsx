@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -8,6 +6,8 @@ import {
   TextFieldProps,
   Theme,
 } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Form from "../../../shared/components/Form";
 import {
@@ -17,12 +17,12 @@ import {
 } from "../api/customersApiV2";
 import { CreateCustomer } from "../types/customer";
 
-const textFieldSx: SxProps<Theme & TextFieldProps> = { mt: 3 };
+const textFieldSx: SxProps<TextFieldProps & Theme> = { mt: 3 };
 
 interface CustomerForm {
+  email: string;
   firstName: string;
   lastName: string;
-  email: string;
   phoneNumber?: string;
 }
 
@@ -31,9 +31,9 @@ function CustomerDetailPage() {
   const isEditMode = Boolean(id);
   const navigate = useNavigate();
   const [formValue, setFormValues] = useState<CustomerForm>({
+    email: "",
     firstName: "",
     lastName: "",
-    email: "",
     phoneNumber: "",
   });
 
@@ -44,29 +44,29 @@ function CustomerDetailPage() {
   //GET
   const {
     data: customer,
-    isFetching: isLoadingGetCustomer,
-    isError: isErrorGetCustomer,
     error: errorGetCustomer,
+    isError: isErrorGetCustomer,
+    isFetching: isLoadingGetCustomer,
   } = useGetCustomerByIdQuery(id!, { skip: skipQuery });
 
   //PUT
   const [updateCustomer, updateResult] = useUpdateCustomerMutation();
   const {
-    isLoading: isUpdatingCustomer,
-    isError: isErrorUpdateCustomer,
-    error: errorUpdateCustomer,
-    isSuccess: isSucessUpdateCustomer,
     data: updateCustomerData,
+    error: errorUpdateCustomer,
+    isError: isErrorUpdateCustomer,
+    isLoading: isUpdatingCustomer,
+    isSuccess: isSucessUpdateCustomer,
   } = updateResult;
 
   //POST
   const [createCustomer, createResult] = useCreateCustomerMutation();
   const {
-    isLoading: isCreateCustomer,
-    isError: isErrorCreateCustomer,
-    error: errorCreateCustomer,
-    isSuccess: isSucessCreateCustomer,
     data: createCustomerData,
+    error: errorCreateCustomer,
+    isError: isErrorCreateCustomer,
+    isLoading: isCreateCustomer,
+    isSuccess: isSucessCreateCustomer,
   } = updateResult;
 
   //merge
@@ -79,9 +79,9 @@ function CustomerDetailPage() {
   useEffect(() => {
     if (isEditMode) {
       setFormValues({
+        email: customer?.email || "",
         firstName: customer?.firstName || "",
         lastName: customer?.lastName || "",
-        email: customer?.email || "",
         phoneNumber: customer?.phoneNumber || "",
       });
     }
@@ -101,8 +101,8 @@ function CustomerDetailPage() {
       };
       console.log("customer to update", customerToUpdate);
       const updatedCustomer = await updateCustomer({
-        id: id!,
         body: customerToUpdate,
+        id: id!,
       });
       if (updatedCustomer) {
         navigate(-1);
@@ -128,32 +128,32 @@ function CustomerDetailPage() {
   const formContent = (
     <FormControl>
       <TextField
-        sx={textFieldSx}
-        size="small"
         label="First name"
         onChange={(event) => handleInputChange("firstName", event)}
+        size="small"
+        sx={textFieldSx}
         value={formValue.firstName}
       ></TextField>
       <TextField
-        size="small"
         label="Last name"
         onChange={(event) => handleInputChange("lastName", event)}
-        value={formValue.lastName}
+        size="small"
         sx={textFieldSx}
+        value={formValue.lastName}
       ></TextField>
       <TextField
-        size="small"
-        type="email"
-        sx={textFieldSx}
         label="email"
         onChange={(event) => handleInputChange("email", event)}
+        size="small"
+        sx={textFieldSx}
+        type="email"
         value={formValue.email}
       ></TextField>
       <TextField
-        size="small"
-        sx={textFieldSx}
         label="phone"
         onChange={(event) => handleInputChange("phoneNumber", event)}
+        size="small"
+        sx={textFieldSx}
         value={formValue.phoneNumber}
       ></TextField>
     </FormControl>
@@ -162,14 +162,14 @@ function CustomerDetailPage() {
   return (
     <Box m={2}>
       <Form
-        title="Customer detail"
-        isLoading={isLoading}
-        isSaving={isUpdatingCustomer}
-        isError={isError}
-        error={error}
-        save={handleSave}
         cancel={handleBack}
         cancelLabel="BACK"
+        error={error}
+        isError={isError}
+        isLoading={isLoading}
+        isSaving={isUpdatingCustomer}
+        save={handleSave}
+        title="Customer detail"
       >
         {formContent}
       </Form>

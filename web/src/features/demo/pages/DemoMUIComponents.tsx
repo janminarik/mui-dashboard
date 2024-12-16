@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import EmailIcon from "@mui/icons-material/Email";
 import {
   Accordion,
@@ -35,8 +34,39 @@ import {
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import React, { useState } from "react";
 
 const COMPONENTS = {
+  Accordion: (
+    <Accordion>
+      <AccordionSummary>Title</AccordionSummary>
+      <AccordionDetails>
+        <Typography variant="body1">Content</Typography>
+      </AccordionDetails>
+    </Accordion>
+  ),
+  Alert: (
+    <>
+      <Alert severity="error">This is an error alert!</Alert>
+      <Alert severity="warning">This is a warning alert!</Alert>
+      <Alert severity="info">This is an info alert!</Alert>
+      <Alert severity="success">This is a success alert!</Alert>
+    </>
+  ),
+  AppBar: (
+    <AppBar position="static">
+      <Tabs value={0}>
+        <Tab label="Item One" />
+        <Tab label="Item Two" />
+      </Tabs>
+    </AppBar>
+  ),
+  Avatar: <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />,
+  Badge: (
+    <Badge badgeContent={4} color="primary">
+      <EmailIcon />
+    </Badge>
+  ),
   Button: (
     <>
       <Button variant="text">Text Button</Button>
@@ -44,16 +74,53 @@ const COMPONENTS = {
       <Button variant="outlined">Outlined Button</Button>
     </>
   ),
+  Card: (
+    <>
+      <Card>Default Card Content</Card>
+      <Card variant="outlined">Outlined Card Content</Card>
+    </>
+  ),
   Checkbox: <Checkbox defaultChecked />,
+  Chip: (
+    <>
+      <Chip label="Basic Chip" />
+      <Chip label="Outlined Chip" variant="outlined" />
+    </>
+  ),
+  CircularProgress: <CircularProgress />,
+  Container: <Container>Container Content</Container>,
+  Dialog: <Dialog open={true}>Dialog Content</Dialog>,
+  Divider: <Divider />,
   Fab: (
     <>
-      <Fab color="primary" aria-label="add">
+      <Fab aria-label="add" color="primary">
         +
       </Fab>
-      <Fab color="secondary" aria-label="edit">
+      <Fab aria-label="edit" color="secondary">
         Edit
       </Fab>
       <Fab variant="extended">Extended</Fab>
+    </>
+  ),
+  Grid: (
+    <Grid container spacing={2}>
+      <Grid>Item 1</Grid>
+      <Grid>Item 2</Grid>
+    </Grid>
+  ),
+  LinearProgress: (
+    <>
+      <LinearProgress />
+      <LinearProgress value={50} variant="determinate" />
+    </>
+  ),
+  Paper: (
+    <>
+      <Paper>Default Paper Content</Paper>
+      <Paper variant="outlined">Outlined Paper Content</Paper>
+      <Paper elevation={3} variant="elevation">
+        Elevated Paper Content
+      </Paper>
     </>
   ),
   Radio: <Radio />,
@@ -66,6 +133,14 @@ const COMPONENTS = {
     </Select>
   ),
   Slider: <Slider defaultValue={30} />,
+  Snackbar: <Snackbar message="Snackbar message" open={true} />,
+  Stack: (
+    <Stack spacing={2}>
+      <Button variant="contained">Contained</Button>
+      <Button variant="outlined">Outlined</Button>
+      <Button variant="text">Text</Button>
+    </Stack>
+  ),
   Switch: <Switch defaultChecked />,
   TextField: (
     <>
@@ -74,19 +149,6 @@ const COMPONENTS = {
       <TextField label="Outlined" variant="outlined" />
     </>
   ),
-  Avatar: <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />,
-  Badge: (
-    <Badge badgeContent={4} color="primary">
-      <EmailIcon />
-    </Badge>
-  ),
-  Chip: (
-    <>
-      <Chip label="Basic Chip" />
-      <Chip label="Outlined Chip" variant="outlined" />
-    </>
-  ),
-  Divider: <Divider />,
   Tooltip: (
     <Tooltip title="Delete">
       <Button>Delete</Button>
@@ -106,73 +168,11 @@ const COMPONENTS = {
       <Typography variant="body2">Body 2</Typography>
     </>
   ),
-  Alert: (
-    <>
-      <Alert severity="error">This is an error alert!</Alert>
-      <Alert severity="warning">This is a warning alert!</Alert>
-      <Alert severity="info">This is an info alert!</Alert>
-      <Alert severity="success">This is a success alert!</Alert>
-    </>
-  ),
-  CircularProgress: <CircularProgress />,
-  Dialog: <Dialog open={true}>Dialog Content</Dialog>,
-  LinearProgress: (
-    <>
-      <LinearProgress />
-      <LinearProgress variant="determinate" value={50} />
-    </>
-  ),
-  Snackbar: <Snackbar open={true} message="Snackbar message" />,
-  Accordion: (
-    <Accordion>
-      <AccordionSummary>Title</AccordionSummary>
-      <AccordionDetails>
-        <Typography variant="body1">Content</Typography>
-      </AccordionDetails>
-    </Accordion>
-  ),
-  Card: (
-    <>
-      <Card>Default Card Content</Card>
-      <Card variant="outlined">Outlined Card Content</Card>
-    </>
-  ),
-  Paper: (
-    <>
-      <Paper>Default Paper Content</Paper>
-      <Paper variant="outlined">Outlined Paper Content</Paper>
-      <Paper variant="elevation" elevation={3}>
-        Elevated Paper Content
-      </Paper>
-    </>
-  ),
-  AppBar: (
-    <AppBar position="static">
-      <Tabs value={0}>
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-      </Tabs>
-    </AppBar>
-  ),
-  Container: <Container>Container Content</Container>,
-  Grid: (
-    <Grid container spacing={2}>
-      <Grid>Item 1</Grid>
-      <Grid>Item 2</Grid>
-    </Grid>
-  ),
-  Stack: (
-    <Stack spacing={2}>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-      <Button variant="text">Text</Button>
-    </Stack>
-  ),
 };
 
 const DemoMUIComponents: React.FC = () => {
   const [selectedComponent, setSelectedComponent] = useState<
-    keyof typeof COMPONENTS | ""
+    "" | keyof typeof COMPONENTS
   >("");
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
@@ -181,10 +181,10 @@ const DemoMUIComponents: React.FC = () => {
 
   return (
     <Stack p={2}>
-      <Typography variant="h5" pb={2}>
+      <Typography pb={2} variant="h5">
         Material UI Component Viewer
       </Typography>
-      <Select value={selectedComponent} fullWidth size="small">
+      <Select fullWidth size="small" value={selectedComponent}>
         {Object.keys(COMPONENTS).map((componentName) => (
           <MenuItem key={componentName} value={componentName}>
             {componentName}

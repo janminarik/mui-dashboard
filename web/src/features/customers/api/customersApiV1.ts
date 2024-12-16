@@ -8,58 +8,58 @@ const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 export type CustomerQueryParams = QueryParams<Customer>;
 
 export const apiCustomers = createApi({
-    reducerPath: "customers",
     baseQuery: fetchBaseQuery({ baseUrl: apiBaseUrl }),
-    tagTypes: ["Customer"],
     endpoints: (builder) => ({
         createCustomer: builder.mutation<Customer, CreateCustomer>({
+            invalidatesTags: (result) => result ? [{ id: "LIST", type: "Customer" }] : [],
             query: (body) => ({
-                url: "/customers",
+                body,
                 method: "POST",
-                body,
-            }),
-            invalidatesTags: (result) => result ? [{ type: "Customer", id: "LIST" }] : []
-        }),
-
-        getCustomers: builder.query<{ items: Customer[]; totalCount: number }, CustomerQueryParams | void>({
-            query: (queryParams) => (queryParams ? `/customers?${buildSearchParams(queryParams)}` : "/customers"),
-            providesTags: (result) => result ? [
-                { type: "Customer", id: "LIST" },
-                ...result.items.map((customer) => ({ type: "Customer" as const, id: customer.id }))
-            ] : []
-        }),
-
-        getCustomerById: builder.query<Customer, string>({
-            query: (id) => `/customers/${id}`,
-            providesTags: (result, error, id) => [{ type: "Customer", id }],
-        }),
-
-        updateCustomer: builder.mutation<Customer, { id: string, body: Partial<Customer> }>({
-            query: ({ id, body }) => ({
-                url: `/customers/${id}`,
-                method: "PATCH",
-                body,
-            }),
-            invalidatesTags: (result, error, { id }) => [{ type: "Customer", id }]
+                url: "/customers",
+            })
         }),
 
         deleteCustomer: builder.mutation<void, string>({
+            invalidatesTags: (result, error, id) => [{ id: "LIST", type: "Customer" }],
             query: (id) => ({
-                url: `/customers/${id}`,
                 method: "DELETE",
-            }),
-            invalidatesTags: (result, error, id) => [{ type: "Customer", id: "LIST" }]
+                url: `/customers/${id}`,
+            })
+        }),
+
+        getCustomerById: builder.query<Customer, string>({
+            providesTags: (result, error, id) => [{ id, type: "Customer" }],
+            query: (id) => `/customers/${id}`,
+        }),
+
+        getCustomers: builder.query<{ items: Customer[]; totalCount: number; }, CustomerQueryParams | void>({
+            providesTags: (result) => result ? [
+                { id: "LIST", type: "Customer" },
+                ...result.items.map((customer) => ({ id: customer.id, type: "Customer" as const }))
+            ] : [],
+            query: (queryParams) => (queryParams ? `/customers?${buildSearchParams(queryParams)}` : "/customers")
+        }),
+
+        updateCustomer: builder.mutation<Customer, { body: Partial<Customer>; id: string, }>({
+            invalidatesTags: (result, error, { id }) => [{ id, type: "Customer" }],
+            query: ({ body, id }) => ({
+                body,
+                method: "PATCH",
+                url: `/customers/${id}`,
+            })
         }),
     }),
+    reducerPath: "customers",
+    tagTypes: ["Customer"],
 });
 
 export const {
     useCreateCustomerMutation,
-    useGetCustomersQuery,
-    useGetCustomerByIdQuery,
-    useUpdateCustomerMutation,
     useDeleteCustomerMutation,
+    useGetCustomerByIdQuery,
+    useGetCustomersQuery,
     useLazyGetCustomersQuery,
+    useUpdateCustomerMutation,
 } = apiCustomers;
 
 

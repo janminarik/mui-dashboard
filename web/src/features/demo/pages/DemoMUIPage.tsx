@@ -1,4 +1,3 @@
-import React from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -14,13 +13,13 @@ import {
   Card,
   CardContent,
   Checkbox,
+  MenuItem as DropdownItem,
   FormControl,
   FormControlLabel,
   FormLabel,
   IconButton,
   InputLabel,
   Menu,
-  MenuItem as DropdownItem,
   MenuItem,
   Radio,
   RadioGroup,
@@ -32,13 +31,14 @@ import {
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import React from "react";
 
 const DemoMUIPage: React.FC = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const [bottomNavValue, setBottomNavValue] = React.useState(0);
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const [ratingValue, setRatingValue] = React.useState<number | null>(2);
+  const [ratingValue, setRatingValue] = React.useState<null | number>(2);
   const [stepperActiveStep, setStepperActiveStep] = React.useState(0);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const autocompleteOptions = ["Option 1", "Option 2", "Option 3"];
@@ -77,32 +77,32 @@ const DemoMUIPage: React.FC = () => {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            color="inherit"
+            edge="start"
             onClick={handleMenu}
+            size="large"
+            sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography component="div" sx={{ flexGrow: 1 }} variant="h6">
             Material UI Demo
           </Typography>
           <Menu
-            id="menu-appbar"
             anchorEl={anchorEl}
             anchorOrigin={{
-              vertical: "top",
               horizontal: "right",
+              vertical: "top",
             }}
+            id="menu-appbar"
             keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            open={open}
             onClose={handleClose}
+            open={open}
+            transformOrigin={{
+              horizontal: "right",
+              vertical: "top",
+            }}
           >
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>Settings</MenuItem>
@@ -115,10 +115,10 @@ const DemoMUIPage: React.FC = () => {
         <Grid>
           <Card variant="outlined">
             <CardContent>
-              <Typography variant="h5" component="div">
+              <Typography component="div" variant="h5">
                 Test Card (Outlined)
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography color="text.secondary" variant="body2">
                 This is a sample text for the Material UI Card component.
               </Typography>
             </CardContent>
@@ -127,10 +127,10 @@ const DemoMUIPage: React.FC = () => {
         <Grid>
           <Card>
             <CardContent>
-              <Typography variant="h5" component="div">
+              <Typography component="div" variant="h5">
                 Test Card (Default)
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography color="text.secondary" variant="body2">
                 This is a sample text for the Material UI Card component.
               </Typography>
             </CardContent>
@@ -139,23 +139,23 @@ const DemoMUIPage: React.FC = () => {
 
         {/* TextField Component Variants */}
         <Grid>
-          <TextField label="Name" variant="outlined" fullWidth />
-          <TextField label="Name" variant="filled" fullWidth sx={{ mt: 2 }} />
-          <TextField label="Name" variant="standard" fullWidth sx={{ mt: 2 }} />
+          <TextField fullWidth label="Name" variant="outlined" />
+          <TextField fullWidth label="Name" sx={{ mt: 2 }} variant="filled" />
+          <TextField fullWidth label="Name" sx={{ mt: 2 }} variant="standard" />
         </Grid>
 
         {/* Button Component Variants */}
         <Grid>
-          <Button variant="contained" color="primary" sx={{ m: 2 }}>
+          <Button color="primary" sx={{ m: 2 }} variant="contained">
             Primary Button
           </Button>
-          <Button variant="outlined" color="secondary" sx={{ m: 2 }}>
+          <Button color="secondary" sx={{ m: 2 }} variant="outlined">
             Secondary Button
           </Button>
-          <Button variant="text" sx={{ m: 2 }}>
+          <Button sx={{ m: 2 }} variant="text">
             Text Button
           </Button>
-          <ButtonGroup variant="contained" color="primary" sx={{ m: 2 }}>
+          <ButtonGroup color="primary" sx={{ m: 2 }} variant="contained">
             <Button>One</Button>
             <Button>Two</Button>
             <Button>Three</Button>
@@ -184,19 +184,19 @@ const DemoMUIPage: React.FC = () => {
             <FormLabel>Choose an option</FormLabel>
             <RadioGroup defaultValue="option1">
               <FormControlLabel
-                value="option1"
                 control={<Radio />}
                 label="Option 1"
+                value="option1"
               />
               <FormControlLabel
-                value="option2"
                 control={<Radio />}
                 label="Option 2"
+                value="option2"
               />
               <FormControlLabel
-                value="option3"
                 control={<Radio disabled />}
                 label="Option 3 (Disabled)"
+                value="option3"
               />
             </RadioGroup>
           </FormControl>
@@ -222,9 +222,9 @@ const DemoMUIPage: React.FC = () => {
               Select (Default)
             </InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              label="Select"
               defaultValue=""
+              label="Select"
+              labelId="demo-simple-select-label"
             >
               <DropdownItem value={10}>Ten</DropdownItem>
               <DropdownItem value={20}>Twenty</DropdownItem>
@@ -236,10 +236,10 @@ const DemoMUIPage: React.FC = () => {
               Select (Filled)
             </InputLabel>
             <Select
+              defaultValue=""
+              label="Select"
               labelId="demo-simple-select-label-filled"
               variant="filled"
-              label="Select"
-              defaultValue=""
             >
               <DropdownItem value={10}>Ten</DropdownItem>
               <DropdownItem value={20}>Twenty</DropdownItem>
@@ -251,16 +251,16 @@ const DemoMUIPage: React.FC = () => {
         {/* Slider Component Variants */}
         <Grid>
           <Slider
-            defaultValue={30}
             aria-label="Default"
+            defaultValue={30}
             valueLabelDisplay="auto"
           />
           <Slider
+            aria-label="Disabled"
             defaultValue={50}
             disabled
-            aria-label="Disabled"
-            valueLabelDisplay="auto"
             sx={{ mt: 4 }}
+            valueLabelDisplay="auto"
           />
         </Grid>
 
@@ -271,9 +271,9 @@ const DemoMUIPage: React.FC = () => {
             This is an error message!
           </Alert>
           <Button
-            variant="outlined"
             onClick={() => alert("Snackbar Button Clicked")}
             sx={{ mt: 2 }}
+            variant="outlined"
           >
             Open Snackbar
           </Button>
@@ -282,14 +282,14 @@ const DemoMUIPage: React.FC = () => {
         {/* BottomNavigation Component Variants */}
         <Grid>
           <BottomNavigation
-            value={bottomNavValue}
             onChange={(event, newValue) => {
               setBottomNavValue(newValue);
             }}
+            value={bottomNavValue}
           >
-            <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+            <BottomNavigationAction icon={<RestoreIcon />} label="Recents" />
+            <BottomNavigationAction icon={<FavoriteIcon />} label="Favorites" />
+            <BottomNavigationAction icon={<LocationOnIcon />} label="Nearby" />
           </BottomNavigation>
         </Grid>
       </Grid>

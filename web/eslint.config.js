@@ -4,6 +4,8 @@ import reactHooks from "eslint-plugin-react-hooks";
 import unusedImports from "eslint-plugin-unused-imports";
 import tseslint from "typescript-eslint";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import reactPlugin from "eslint-plugin-react";
+import perfectionist from "eslint-plugin-perfectionist";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -15,12 +17,23 @@ export default tseslint.config(
       globals: globals.browser,
     },
     plugins: {
-      "react-hooks": reactHooks,
+      react: reactPlugin,
+      reactHooks,
+      perfectionist,
       "unused-imports": unusedImports,
       "simple-import-sort": simpleImportSort,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
+      // ...reactHooks.configs.recommended.rules,
+      ...perfectionist.configs["recommended-alphabetical"].rules,
+      // "react-hooks/rules-of-hooks": "error", // Kontrola pravidiel pre hooky
+      // "react-hooks/exhaustive-deps": "warn", // Overenie závislostí v efektových hookoch
+      // "react/sort-comp": [
+      //   "warn",
+      //   {
+      //     order: ["static-methods", "instance-variables", "lifecycle", "everything-else", "render"],
+      //   },
+      // ],
       "unused-imports/no-unused-imports": "error", // Odstráni nepoužité importy
       "unused-imports/no-unused-vars": [
         "warn",
@@ -31,22 +44,6 @@ export default tseslint.config(
           argsIgnorePattern: "^_", // Ignoruje argumenty začínajúce na "_"
         },
       ],
-      "simple-import-sort/imports": [
-        "warn",
-        {
-          groups: [
-            // Dôležité knižnice
-            ["^react", "^@?\\w"],
-            // Komponenty a utility z projektu
-            ["^(@|src|components|utils)(/.*|$)"],
-            // Štýly
-            ["^.+\\.s?css$"],
-            // Všetko ostatné
-            ["^"],
-          ],
-        },
-      ],
-      "simple-import-sort/exports": "warn",
     },
   }
 );

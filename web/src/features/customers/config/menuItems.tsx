@@ -9,9 +9,9 @@ export const menuItems: NavigationMenuItem[] = [
     label: "Customers",
   },
   {
+    icon: <PersonIcon />,
     kind: "menuitem",
     label: "Customer",
-    icon: <PersonIcon />,
     to: ROUTES.CUSTOMERS,
   },
 ];

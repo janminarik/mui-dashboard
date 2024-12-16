@@ -9,17 +9,17 @@ const initialState: SettingsPanelState = {
 }
 
 const settingsPanelSlice = createSlice({
-    name: "settingsPanel",
     initialState,
+    name: "settingsPanel",
     reducers: {
-        toggleSettingsPanel(state: SettingsPanelState) {
-            state.open = !state.open;
-        },
         closeSettingsPanel(state: SettingsPanelState) {
             state.open = false;
+        },
+        toggleSettingsPanel(state: SettingsPanelState) {
+            state.open = !state.open;
         }
     }
 });
 
-export const { toggleSettingsPanel, closeSettingsPanel } = settingsPanelSlice.actions;
+export const { closeSettingsPanel, toggleSettingsPanel } = settingsPanelSlice.actions;
 export const settingsPanelReducer = settingsPanelSlice.reducer;

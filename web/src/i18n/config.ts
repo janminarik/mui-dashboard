@@ -1,8 +1,8 @@
 
 export const TRANSLATIONS_NAMESPACES = {
-    SHARED: "shared",
     AUTH: "auth",
-    SETTNGS: "settings"
+    SETTNGS: "settings",
+    SHARED: "shared"
 } as const;
 
 

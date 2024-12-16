@@ -8,7 +8,7 @@ export const ROUTES = {
 
 export const authRoutes: RouteObject[] = [
   {
-    path: ROUTES.LOGIN,
     element: <LoginPage />,
+    path: ROUTES.LOGIN,
   },
 ];

@@ -1,6 +1,6 @@
+import { useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useMediaQuery } from "@mui/material";
 
 import { RootState } from "../../app/store";
 import { useAppTheme } from "./useAppTheme";
@@ -8,10 +8,10 @@ import { useAppTheme } from "./useAppTheme";
 
 
 export enum NavigationPanelState {
-    LargeOpen = "LARGE_OPEN",
     LargeClose = "LARGE_CLOSE",
-    MediumOrSmallOpen = "MEDIUM_OR_SMALL_OPEN",
+    LargeOpen = "LARGE_OPEN",
     MediumOrSmallClose = "MEDIUM_OR_SMALL_CLOSE",
+    MediumOrSmallOpen = "MEDIUM_OR_SMALL_OPEN",
 }
 
 

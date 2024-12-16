@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UserState {
-    username: string | null,
     isAuth: boolean;
+    username: null | string,
 }
 
 const initialState: UserState = {
-    username: null,
-    isAuth: false
+    isAuth: false,
+    username: null
 }
 
 
 const userSlice = createSlice({
-    name: "user",
     initialState,
+    name: "user",
     reducers: {
         setIsAuth(state: UserState, action: PayloadAction<boolean>) {
             state.isAuth = action.payload;

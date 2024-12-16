@@ -9,15 +9,15 @@ export const menuItems: NavigationMenuItem[] = [
     label: "Material UI Demo",
   },
   {
+    icon: <DashboardIcon />,
     kind: "menuitem",
     label: "MUI",
-    icon: <DashboardIcon />,
     to: "/",
   },
   {
+    icon: <DashboardIcon />,
     kind: "menuitem",
     label: "MUI Lazy",
-    icon: <DashboardIcon />,
     to: ROUTES.MUI_LAZY_DEMO,
   },
 ];

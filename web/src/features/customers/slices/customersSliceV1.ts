@@ -7,37 +7,39 @@ interface CustomersState extends DataGridState {
 }
 
 const initialState: CustomersState = {
-    pagination: { page: 0, pageSize: 20 },
     columnsVisbility: {
-        id: true,
-        firstName: true,
-        lastName: true,
-        email: true,
-        phoneNumber: true,
-        isVerified: true,
         createdAt: true,
+        email: true,
+        firstName: true,
+        id: true,
+        isVerified: true,
+        lastName: true,
+        phoneNumber: true,
         updatedAt: true,
-    }
+    },
+    pagination: { page: 0, pageSize: 20 }
 };
 
 export const customersSlice = createSlice({
-    name: "customersList",
+    extraReducers: (builder) => {
+    },
     initialState,
+    name: "customersList",
     reducers: {
-        setPage(state: CustomersState, action: PayloadAction<GridPaginationModel>) {
-            state.pagination = action.payload;
+        setColumnsVisibility(state: CustomersState, action: PayloadAction<GridColumnVisibilityModel>) {
+            state.columnsVisbility = { ...state.columnsVisbility, ...action.payload }
         },
         setFilters(state: CustomersState, action: PayloadAction<GridFilterModel>) {
             state.filters = action.payload;
         },
-        setSortOptions(state: CustomersState, action: PayloadAction<GridSortModel>) {
-            state.sortOptions = action.payload;
+        setPage(state: CustomersState, action: PayloadAction<GridPaginationModel>) {
+            state.pagination = action.payload;
         },
         setSelectedItems(state: CustomersState, action: PayloadAction<GridRowSelectionModel>) {
             state.selectedItems = action.payload;
         },
-        setColumnsVisibility(state: CustomersState, action: PayloadAction<GridColumnVisibilityModel>) {
-            state.columnsVisbility = { ...state.columnsVisbility, ...action.payload }
+        setSortOptions(state: CustomersState, action: PayloadAction<GridSortModel>) {
+            state.sortOptions = action.payload;
         },
         showAllColumns(state: CustomersState, action: PayloadAction<boolean>) {
             for (const field in state.columnsVisbility) {
@@ -45,16 +47,14 @@ export const customersSlice = createSlice({
             }
         }
 
-    },
-    extraReducers: (builder) => {
     }
 });
 
-export const { setPage: setCustomersPage,
+export const { setColumnsVisibility: setCustomersColumnsVisibility,
     setFilters: setCustomersFilters,
-    setSortOptions: setCustomersSortOptions,
+    setPage: setCustomersPage,
     setSelectedItems: setCustomersSelectedItems,
-    setColumnsVisibility: setCustomersColumnsVisibility,
+    setSortOptions: setCustomersSortOptions,
     showAllColumns: showAllCustomersColumns } = customersSlice.actions;
 
 

@@ -1,21 +1,21 @@
+import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
 
 import { TRANSLATIONS_NAMESPACES } from "../../i18n/config";
-
-interface ErrorPageProps {
-  title?: string;
-  message?: string;
-}
 
 type AppError = {
   message: string;
   statusCode: number;
 };
 
+interface ErrorPageProps {
+  message?: string;
+  title?: string;
+}
+
 //TODO: refactoring
-function ErrorPage({ title, message }: ErrorPageProps) {
+function ErrorPage({ message, title }: ErrorPageProps) {
   const { t } = useTranslation(TRANSLATIONS_NAMESPACES.SHARED);
   const error = useRouteError();
 
@@ -39,18 +39,18 @@ function ErrorPage({ title, message }: ErrorPageProps) {
 
   return (
     <Box
-      p={2}
+      alignItems="center"
       display="flex"
       flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
       height="100vh"
+      justifyContent="center"
+      p={2}
       width="100vw"
     >
-      <Typography color="error" variant="h3" gutterBottom>
+      <Typography color="error" gutterBottom variant="h3">
         {errorTitle}
       </Typography>
-      <Typography variant="h6" color="textSecondary">
+      <Typography color="textSecondary" variant="h6">
         {errorMessage}
       </Typography>
     </Box>

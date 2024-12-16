@@ -6,11 +6,11 @@ import { ROUTES } from "../config/routes";
 
 export const demoRoutes: RouteObject[] = [
   {
-    path: ROUTES.ERROR,
     element: <ErrorPage />,
+    path: ROUTES.ERROR,
   },
   {
-    path: ROUTES.NOTFOUND,
     element: <NotFoundPage />,
+    path: ROUTES.NOTFOUND,
   },
 ];
