@@ -14,7 +14,7 @@ import {
 import DataGrid from "../../../shared/components/DataGrid";
 import { GridColDef } from "@mui/x-data-grid";
 
-function CustomersPage() {
+function CustomersPage2() {
   const dispatch = useDispatch<AppDispatch>();
 
   const colDef = { flex: 1 };
@@ -50,4 +50,4 @@ function CustomersPage() {
   );
 }
 
-export default CustomersPage;
+export default CustomersPage2;

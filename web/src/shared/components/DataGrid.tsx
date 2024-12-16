@@ -185,9 +185,22 @@ function DataGrid<TEntity extends { id: string }>({
 
   if (!isError && data) {
     return (
-      <Grid container flexDirection="row" justifyContent="stretch">
-        <Grid>
-          <Button onClick={handleEntityCreate}>Create</Button>
+      <Grid
+        size={{ xs: 12 }}
+        container
+        justifyContent="stretch"
+        flexDirection="column"
+      >
+        <Grid
+          container
+          flexDirection="row"
+          justifyContent="stretch"
+          pt={3}
+          size={{ xs: 12 }}
+        >
+          <Grid container mx={4} justifyContent="flex-end" size={{ xs: 12 }}>
+            <Button onClick={handleEntityCreate}>Create</Button>
+          </Grid>
         </Grid>
         <Grid size={{ xs: 12 }}>
           <MuiDataGrid

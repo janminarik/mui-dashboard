@@ -42,7 +42,7 @@ import { buildFilter, buildSort } from "../../../shared/utils/muiUtils";
 import { aggregateApiRequestState } from "../../../shared/utils/rtkUtils";
 
 //obsolete
-function Customers() {
+function CustomersPage1() {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -245,3 +245,5 @@ function Customers() {
     );
   }
 }
+
+export default CustomersPage1;
