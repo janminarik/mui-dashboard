@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 import { useAppTheme } from "../../hooks/useAppTheme";
 import useNavigationPanelResponsiveWidth from "../../hooks/useNavigationPanelResponsiveWidth";
-import { NavigationMenuItem } from "../../types/MenuItem";
+import { NavigationMenuItem } from "../../types/commonTypes";
 import Loader from "../Loader";
 import { NavigationPanelProps } from "../Navigation/NavigationPanel";
 
@@ -28,12 +28,7 @@ const sidebarGridSx = {
   size: { lg: "auto" },
 };
 
-function MainLayout({
-  Header,
-  menuItems,
-  NavigationPanel,
-  SettingsPanel,
-}: MainLayoutProps) {
+function MainLayout({ Header, menuItems, NavigationPanel, SettingsPanel }: MainLayoutProps) {
   const theme = useAppTheme();
   const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
   const navigationPanelWidth = useNavigationPanelResponsiveWidth();

@@ -171,9 +171,7 @@ const COMPONENTS = {
 };
 
 const DemoMUIComponents: React.FC = () => {
-  const [selectedComponent, setSelectedComponent] = useState<
-    "" | keyof typeof COMPONENTS
-  >("");
+  const [selectedComponent, setSelectedComponent] = useState<"" | keyof typeof COMPONENTS>("");
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setSelectedComponent(event.target.value as keyof typeof COMPONENTS);

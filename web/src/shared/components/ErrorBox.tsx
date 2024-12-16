@@ -11,13 +11,7 @@ interface ErrorBoxProps {
 function ErrorBox({ message, title }: ErrorBoxProps) {
   const { t } = useTranslation(TRANSLATIONS_NAMESPACES.SHARED);
   return (
-    <Box
-      alignItems="center"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      p={2}
-    >
+    <Box alignItems="center" display="flex" flexDirection="column" justifyContent="center" p={2}>
       <Typography color="error" gutterBottom variant="h4">
         {title ? title : t("errorPage.unexpectedTitle")}
       </Typography>

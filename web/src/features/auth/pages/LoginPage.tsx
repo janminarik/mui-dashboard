@@ -104,9 +104,7 @@ function LoginPage() {
           label={t("form.fields.password.label")}
           onBlur={validatePassword}
           onChange={(event) => setPassword(event.target.value)}
-          placeholder={
-            password ? undefined : t("form.fields.password.placeholder")
-          }
+          placeholder={password ? undefined : t("form.fields.password.placeholder")}
           required
           size="small"
           type="password"

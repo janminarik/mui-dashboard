@@ -13,16 +13,7 @@ function NotFoundPage() {
   };
 
   return (
-    <Box
-      alignItems="center"
-      display="flex"
-      flexDirection="column"
-      height="100vh"
-      justifyContent="center"
-      p={2}
-      textAlign="center"
-      width="100vw"
-    >
+    <Box alignItems="center" display="flex" flexDirection="column" height="100vh" justifyContent="center" p={2} textAlign="center" width="100vw">
       <Typography color="error" gutterBottom variant="h3">
         {t("notFoundPage.title")}
       </Typography>

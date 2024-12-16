@@ -1,7 +1,16 @@
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { GridColDef, GridColumnVisibilityModel, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, DataGrid as MuiDataGrid } from "@mui/x-data-grid";
+import {
+  GridColDef,
+  GridColumnVisibilityModel,
+  GridFilterModel,
+  GridPaginationModel,
+  GridRowModel,
+  GridRowSelectionModel,
+  GridSortModel,
+  DataGrid as MuiDataGrid,
+} from "@mui/x-data-grid";
 import { useCallback, useMemo, useState } from "react";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -78,7 +87,7 @@ function DataGrid<TEntity extends { id: string }>({
       pageSize: pagination.pageSize,
       sortOptions: sortOptions ? buildSort(sortOptions) : undefined,
     }),
-    [pagination, sortOptions, filters]
+    [pagination, sortOptions, filters],
   );
 
   const customersQuery = useGetEntities(queryParams);
@@ -92,14 +101,14 @@ function DataGrid<TEntity extends { id: string }>({
     debounce((filters: GridFilterModel) => {
       setFilters(filters);
     }, 500),
-    [dispatch]
+    [dispatch],
   );
 
   const handleFilterChange = useCallback(
     (newModel: GridFilterModel) => {
       debounceDispatch(newModel);
     },
-    [debounceDispatch]
+    [debounceDispatch],
   );
 
   const handlePaginationChange = (newModel: GridPaginationModel) => setPagination(newModel);

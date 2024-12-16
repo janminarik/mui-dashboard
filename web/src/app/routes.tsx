@@ -14,19 +14,11 @@ import NavigationPanel from "../shared/components/Navigation/NavigationPanel";
 import ProtectedRoute from "../shared/components/ProtectedRoute";
 import ErrorPage from "../shared/pages/ErrorPage";
 import NotFoundPage from "../shared/pages/NotFoundPage";
-import { NavigationMenuItem } from "../shared/types/MenuItem";
+import { NavigationMenuItem } from "../shared/types/commonTypes";
 
-const navigationMenuItems: NavigationMenuItem[] = [
-  ...muiDemoMenuItems,
-  ...demoMenuItems,
-  ...customersMenuItem,
-];
+const navigationMenuItems: NavigationMenuItem[] = [...muiDemoMenuItems, ...demoMenuItems, ...customersMenuItem];
 
-const dashboardRoutes: RouteObject[] = [
-  ...muiDemoRoutes,
-  ...demoRoutes,
-  ...customersRoutes,
-];
+const dashboardRoutes: RouteObject[] = [...muiDemoRoutes, ...demoRoutes, ...customersRoutes];
 
 const router = createBrowserRouter([
   {
@@ -36,14 +28,7 @@ const router = createBrowserRouter([
         children: [
           {
             children: [...dashboardRoutes],
-            element: (
-              <MainLayout
-                Header={Header}
-                menuItems={navigationMenuItems}
-                NavigationPanel={NavigationPanel}
-                SettingsPanel={SettingsPanel}
-              />
-            ),
+            element: <MainLayout Header={Header} menuItems={navigationMenuItems} NavigationPanel={NavigationPanel} SettingsPanel={SettingsPanel} />,
           },
         ],
         element: <ProtectedRoute />,

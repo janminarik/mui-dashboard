@@ -11,13 +11,7 @@ interface SuspenseWrapperProps {
 
 function SuspenseWrapper({ children, message }: SuspenseWrapperProps) {
   const { t } = useTranslation(TRANSLATIONS_NAMESPACES.SHARED);
-  return (
-    <Suspense
-      fallback={<Loader message={message ?? t("loader.messages.default")} />}
-    >
-      {children}
-    </Suspense>
-  );
+  return <Suspense fallback={<Loader message={message ?? t("loader.messages.default")} />}>{children}</Suspense>;
 }
 
 export default SuspenseWrapper;

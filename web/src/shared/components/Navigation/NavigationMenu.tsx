@@ -1,27 +1,14 @@
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import {
-  Collapse,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  ListSubheader,
-  Popover,
-} from "@mui/material";
+import { Collapse, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Popover } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
 import { AppDispatch, RootState } from "../../../app/store";
-import useNavigationPanelState, {
-  NavigationPanelState,
-} from "../../hooks/useNavigationPanelState";
-import {
-  setSelectedMenuItem,
-  toggleSubmenu,
-} from "../../slices/navigationPanelSlice";
-import { MenuItem, NavigationMenuItem } from "../../types/MenuItem";
+import useNavigationPanelState, { NavigationPanelState } from "../../hooks/useNavigationPanelState";
+import { setSelectedMenuItem, toggleSubmenu } from "../../slices/navigationPanelSlice";
+import { NavigationMenuItem } from "../../types/commonTypes";
 
 export interface NavigationMenuProps {
   menuItems: NavigationMenuItem[];
@@ -29,13 +16,10 @@ export interface NavigationMenuProps {
 
 function NavigationMenu({ menuItems }: NavigationMenuProps) {
   const navigationPanelState = useNavigationPanelState();
-  const { expandedSubMenu, selectedMenuItem } = useSelector(
-    (state: RootState) => state.navigationPanel.menuState
-  );
+  const { expandedSubMenu, selectedMenuItem } = useSelector((state: RootState) => state.navigationPanel.menuState);
   const dispatch = useDispatch<AppDispatch>();
   const [popoverAnchor, setPopoverAnchor] = useState<HTMLElement | null>(null);
-  const [hoveredMenuItem, setHoveredMenuItem] =
-    useState<NavigationMenuItem | null>(null);
+  const [hoveredMenuItem, setHoveredMenuItem] = useState<NavigationMenuItem | null>(null);
 
   const handleMenuItemClick = (item: string) => {
     dispatch(setSelectedMenuItem(item));
@@ -49,10 +33,7 @@ function NavigationMenu({ menuItems }: NavigationMenuProps) {
     }
   };
 
-  const handlePopoverOpen = (
-    event: React.MouseEvent<HTMLElement>,
-    menuItem: NavigationMenuItem
-  ) => {
+  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>, menuItem: NavigationMenuItem) => {
     setPopoverAnchor(event.currentTarget);
     setHoveredMenuItem(menuItem);
   };
@@ -67,30 +48,16 @@ function NavigationMenu({ menuItems }: NavigationMenuProps) {
       <React.Fragment key={menuItem.label}>
         <ListItemButton
           component={RouterLink}
-          onClick={
-            menuItem.subMenu
-              ? () => handleSubMenuItemClick(menuItem.label)
-              : () => handleMenuItemClick(menuItem.label)
-          }
+          onClick={menuItem.subMenu ? () => handleSubMenuItemClick(menuItem.label) : () => handleMenuItemClick(menuItem.label)}
           selected={menuItem.label === selectedMenuItem}
           to={menuItem.to ?? ""}
         >
           <ListItemIcon>{menuItem.icon}</ListItemIcon>
           <ListItemText primary={menuItem.label} />
-          {menuItem.subMenu ? (
-            expandedSubMenu == menuItem.label ? (
-              <ExpandLessIcon />
-            ) : (
-              <ExpandMoreIcon />
-            )
-          ) : null}
+          {menuItem.subMenu ? expandedSubMenu == menuItem.label ? <ExpandLessIcon /> : <ExpandMoreIcon /> : null}
         </ListItemButton>
         {menuItem.subMenu && (
-          <Collapse
-            in={expandedSubMenu == menuItem.label}
-            timeout="auto"
-            unmountOnExit
-          >
+          <Collapse in={expandedSubMenu == menuItem.label} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {menuItem.subMenu.map((subMenuItem) => (
                 <ListItemButton
@@ -116,14 +83,8 @@ function NavigationMenu({ menuItems }: NavigationMenuProps) {
       <React.Fragment key={menuItem.label}>
         <ListItemButton
           component={RouterLink}
-          onClick={
-            menuItem.subMenu
-              ? () => handleSubMenuItemClick(menuItem.label)
-              : () => handleMenuItemClick(menuItem.label)
-          }
-          onMouseEnter={(event) =>
-            menuItem.subMenu ? handlePopoverOpen(event, menuItem) : undefined
-          }
+          onClick={menuItem.subMenu ? () => handleSubMenuItemClick(menuItem.label) : () => handleMenuItemClick(menuItem.label)}
+          onMouseEnter={(event) => (menuItem.subMenu ? handlePopoverOpen(event, menuItem) : undefined)}
           selected={menuItem.label === selectedMenuItem}
           to={menuItem.to ?? ""}
         >
@@ -169,10 +130,7 @@ function NavigationMenu({ menuItems }: NavigationMenuProps) {
     <List
       disablePadding
       sx={{
-        overflow:
-          navigationPanelState === NavigationPanelState.LargeClose
-            ? "hidden"
-            : "auto",
+        overflow: navigationPanelState === NavigationPanelState.LargeClose ? "hidden" : "auto",
       }}
     >
       {menuItems.map((item) => {

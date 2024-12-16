@@ -1,2 +1,2 @@
-export * from "./api/customersApiV2"
-export * from "./slices/customersSliceV2"
+export * from "./api/customersApiV2";
+export * from "./slices/customersSliceV2";

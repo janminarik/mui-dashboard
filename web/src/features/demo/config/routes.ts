@@ -1,4 +1,4 @@
 export const ROUTES = {
-    ERROR: "/error",
-    NOTFOUND: "/notfound",
+  ERROR: "/error",
+  NOTFOUND: "/notfound",
 };

@@ -1,10 +1,4 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-} from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardHeader } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { ReactNode } from "react";
 
@@ -24,32 +18,15 @@ interface FormProps {
   title: string;
 }
 
-function Form({
-  cancel,
-  cancelLabel,
-  children,
-  error,
-  isError,
-  isLoading,
-  isSaving,
-  save,
-  saveLabel,
-  title,
-}: FormProps) {
+function Form({ cancel, cancelLabel, children, error, isError, isLoading, isSaving, save, saveLabel, title }: FormProps) {
   return (
     <Grid container>
       <Grid size={{ xs: 6 }}>
         <Card>
           <CardHeader title={title}></CardHeader>
-          {isLoading && (
-            <Loader message={isSaving ? "Saving data..." : undefined} />
-          )}
+          {isLoading && <Loader message={isSaving ? "Saving data..." : undefined} />}
           {isError && <ErrorBox />}
-          {!isLoading && !isError && (
-            <CardContent sx={{ margin: 0, paddingTop: 0 }}>
-              {children}
-            </CardContent>
-          )}
+          {!isLoading && !isError && <CardContent sx={{ margin: 0, paddingTop: 0 }}>{children}</CardContent>}
           <CardActions>
             {save && (
               <Button disabled={isSaving} onClick={save}>

@@ -1,19 +1,12 @@
 import HiveIcon from "@mui/icons-material/Hive";
-import {
-  Box,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../../../app/store";
 import { useAppTheme } from "../../hooks/useAppTheme";
 import useNavigationPanelResponsiveWidth from "../../hooks/useNavigationPanelResponsiveWidth";
 import { closeNavigationPanel } from "../../slices/navigationPanelSlice";
-import { NavigationMenuItem } from "../../types/MenuItem";
+import { NavigationMenuItem } from "../../types/commonTypes";
 import Sidebar, { SidebarProps } from "../Layout/Sidebar";
 import NavigationMenu from "./NavigationMenu";
 
@@ -26,9 +19,7 @@ function AppLogo() {
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const appBarHeight = isMobile
-    ? theme.mixins.toolbar?.minHeight || 48
-    : theme.mixins.toolbar.minHeight || 64;
+  const appBarHeight = isMobile ? theme.mixins.toolbar?.minHeight || 48 : theme.mixins.toolbar.minHeight || 64;
 
   return (
     <Box
@@ -56,9 +47,7 @@ function AppLogo() {
               }}
             />
           </ListItemIcon>
-          <ListItemText primaryTypographyProps={{ variant: "h5" }}>
-            Hive
-          </ListItemText>
+          <ListItemText primaryTypographyProps={{ variant: "h5" }}>Hive</ListItemText>
         </ListItemButton>
       </List>
     </Box>

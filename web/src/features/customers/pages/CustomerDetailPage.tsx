@@ -1,20 +1,9 @@
-import {
-  Box,
-  FormControl,
-  SxProps,
-  TextField,
-  TextFieldProps,
-  Theme,
-} from "@mui/material";
+import { Box, FormControl, SxProps, TextField, TextFieldProps, Theme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Form from "../../../shared/components/Form";
-import {
-  useCreateCustomerMutation,
-  useGetCustomerByIdQuery,
-  useUpdateCustomerMutation,
-} from "../api/customersApiV2";
+import { useCreateCustomerMutation, useGetCustomerByIdQuery, useUpdateCustomerMutation } from "../api/customersApiV2";
 import { CreateCustomer } from "../types/customer";
 
 const textFieldSx: SxProps<TextFieldProps & Theme> = { mt: 3 };
@@ -70,10 +59,8 @@ function CustomerDetailPage() {
   } = updateResult;
 
   //merge
-  const isLoading =
-    isLoadingGetCustomer || isUpdatingCustomer || isCreateCustomer;
-  const isError =
-    isErrorGetCustomer || isErrorUpdateCustomer || isErrorCreateCustomer;
+  const isLoading = isLoadingGetCustomer || isUpdatingCustomer || isCreateCustomer;
+  const isError = isErrorGetCustomer || isErrorUpdateCustomer || isErrorCreateCustomer;
   const error = errorGetCustomer || errorUpdateCustomer || errorCreateCustomer;
 
   useEffect(() => {
@@ -116,10 +103,7 @@ function CustomerDetailPage() {
     }
   };
 
-  const handleInputChange = (
-    field: keyof CustomerForm,
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (field: keyof CustomerForm, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormValues((prev) => {
       return { ...prev, [field]: event.target.value };
     });

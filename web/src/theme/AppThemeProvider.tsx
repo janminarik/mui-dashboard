@@ -12,12 +12,8 @@ type AppThemeProviderProps = {
   children: ReactNode;
 };
 
-export const AppThemeProvider: React.FC<AppThemeProviderProps> = ({
-  children,
-}) => {
-  const currentTheme = useSelector(
-    (state: RootState) => state.uiSettings.theme
-  );
+export const AppThemeProvider: React.FC<AppThemeProviderProps> = ({ children }) => {
+  const currentTheme = useSelector((state: RootState) => state.uiSettings.theme);
 
   const theme = getTheme(currentTheme);
 

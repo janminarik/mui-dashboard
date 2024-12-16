@@ -11,14 +11,7 @@ export interface SidebarProps {
   width?: number;
 }
 
-export function Sidebar({
-  anchor,
-  content,
-  mode,
-  onClose,
-  open,
-  width,
-}: SidebarProps) {
+export function Sidebar({ anchor, content, mode, onClose, open, width }: SidebarProps) {
   return (
     <Grid>
       <Drawer

@@ -3,9 +3,10 @@ import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import unusedImports from "eslint-plugin-unused-imports";
 import tseslint from "typescript-eslint";
-import simpleImportSort from "eslint-plugin-simple-import-sort";
-import reactPlugin from "eslint-plugin-react";
+import react from "eslint-plugin-react";
 import perfectionist from "eslint-plugin-perfectionist";
+import importPlugin from "eslint-plugin-import";
+import prettier from "eslint-plugin-prettier";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -17,33 +18,36 @@ export default tseslint.config(
       globals: globals.browser,
     },
     plugins: {
-      react: reactPlugin,
-      reactHooks,
+      react,
+      "react-hooks": reactHooks,
       perfectionist,
+      import: importPlugin,
       "unused-imports": unusedImports,
-      "simple-import-sort": simpleImportSort,
+      prettier,
     },
     rules: {
-      // ...reactHooks.configs.recommended.rules,
       ...perfectionist.configs["recommended-alphabetical"].rules,
-      // "react-hooks/rules-of-hooks": "error", // Kontrola pravidiel pre hooky
-      // "react-hooks/exhaustive-deps": "warn", // Overenie závislostí v efektových hookoch
-      // "react/sort-comp": [
-      //   "warn",
-      //   {
-      //     order: ["static-methods", "instance-variables", "lifecycle", "everything-else", "render"],
-      //   },
-      // ],
+      "prettier/prettier": [
+        "error",
+        {
+          printWidth: 150,
+        },
+      ], // Spustenie Prettier ako lint pravidla
       "unused-imports/no-unused-imports": "error", // Odstráni nepoužité importy
-      "unused-imports/no-unused-vars": [
+      "react-hooks/rules-of-hooks": "error", // Kontrola správneho používania hookov
+      "react-hooks/exhaustive-deps": "warn", // Overenie závislostí v efektových hookoch
+      "import/order": [
         "warn",
         {
-          vars: "all", // Kontroluje všetky nepoužité premenné
-          varsIgnorePattern: "^_", // Ignoruje premenné začínajúce na "_"
-          args: "after-used", // Skontroluje nepoužité argumenty vo funkciách
-          argsIgnorePattern: "^_", // Ignoruje argumenty začínajúce na "_"
+          groups: ["builtin", "external", "internal"],
+          "newlines-between": "always",
         },
       ],
     },
-  }
+    settings: {
+      react: {
+        version: "detect", // Automatická detekcia verzie Reactu
+      },
+    },
+  },
 );

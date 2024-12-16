@@ -59,31 +59,19 @@ const DemoMUIPage: React.FC = () => {
     setDialogOpen(false);
   };
 
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-      setDrawerOpen(open);
-    };
+  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (event.type === "keydown" && ((event as React.KeyboardEvent).key === "Tab" || (event as React.KeyboardEvent).key === "Shift")) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
 
   return (
     <Box sx={{ flexGrow: 1, p: 4 }}>
       {/* AppBar Component */}
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            aria-label="menu"
-            color="inherit"
-            edge="start"
-            onClick={handleMenu}
-            size="large"
-            sx={{ mr: 2 }}
-          >
+          <IconButton aria-label="menu" color="inherit" edge="start" onClick={handleMenu} size="large" sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
           <Typography component="div" sx={{ flexGrow: 1 }} variant="h6">
@@ -164,18 +152,9 @@ const DemoMUIPage: React.FC = () => {
 
         {/* Checkbox Component Variants */}
         <Grid>
-          <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="Checkbox (Checked)"
-          />
-          <FormControlLabel
-            control={<Checkbox />}
-            label="Checkbox (Unchecked)"
-          />
-          <FormControlLabel
-            control={<Checkbox disabled />}
-            label="Checkbox (Disabled)"
-          />
+          <FormControlLabel control={<Checkbox defaultChecked />} label="Checkbox (Checked)" />
+          <FormControlLabel control={<Checkbox />} label="Checkbox (Unchecked)" />
+          <FormControlLabel control={<Checkbox disabled />} label="Checkbox (Disabled)" />
         </Grid>
 
         {/* Radio Button Component Variants */}
@@ -183,64 +162,33 @@ const DemoMUIPage: React.FC = () => {
           <FormControl>
             <FormLabel>Choose an option</FormLabel>
             <RadioGroup defaultValue="option1">
-              <FormControlLabel
-                control={<Radio />}
-                label="Option 1"
-                value="option1"
-              />
-              <FormControlLabel
-                control={<Radio />}
-                label="Option 2"
-                value="option2"
-              />
-              <FormControlLabel
-                control={<Radio disabled />}
-                label="Option 3 (Disabled)"
-                value="option3"
-              />
+              <FormControlLabel control={<Radio />} label="Option 1" value="option1" />
+              <FormControlLabel control={<Radio />} label="Option 2" value="option2" />
+              <FormControlLabel control={<Radio disabled />} label="Option 3 (Disabled)" value="option3" />
             </RadioGroup>
           </FormControl>
         </Grid>
 
         {/* Switch Component Variants */}
         <Grid>
-          <FormControlLabel
-            control={<Switch defaultChecked />}
-            label="Switch (Checked)"
-          />
+          <FormControlLabel control={<Switch defaultChecked />} label="Switch (Checked)" />
           <FormControlLabel control={<Switch />} label="Switch (Unchecked)" />
-          <FormControlLabel
-            control={<Switch disabled />}
-            label="Switch (Disabled)"
-          />
+          <FormControlLabel control={<Switch disabled />} label="Switch (Disabled)" />
         </Grid>
 
         {/* Select Component Variants */}
         <Grid>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">
-              Select (Default)
-            </InputLabel>
-            <Select
-              defaultValue=""
-              label="Select"
-              labelId="demo-simple-select-label"
-            >
+            <InputLabel id="demo-simple-select-label">Select (Default)</InputLabel>
+            <Select defaultValue="" label="Select" labelId="demo-simple-select-label">
               <DropdownItem value={10}>Ten</DropdownItem>
               <DropdownItem value={20}>Twenty</DropdownItem>
               <DropdownItem value={30}>Thirty</DropdownItem>
             </Select>
           </FormControl>
           <FormControl fullWidth sx={{ mt: 2 }}>
-            <InputLabel id="demo-simple-select-label-filled">
-              Select (Filled)
-            </InputLabel>
-            <Select
-              defaultValue=""
-              label="Select"
-              labelId="demo-simple-select-label-filled"
-              variant="filled"
-            >
+            <InputLabel id="demo-simple-select-label-filled">Select (Filled)</InputLabel>
+            <Select defaultValue="" label="Select" labelId="demo-simple-select-label-filled" variant="filled">
               <DropdownItem value={10}>Ten</DropdownItem>
               <DropdownItem value={20}>Twenty</DropdownItem>
               <DropdownItem value={30}>Thirty</DropdownItem>
@@ -250,18 +198,8 @@ const DemoMUIPage: React.FC = () => {
 
         {/* Slider Component Variants */}
         <Grid>
-          <Slider
-            aria-label="Default"
-            defaultValue={30}
-            valueLabelDisplay="auto"
-          />
-          <Slider
-            aria-label="Disabled"
-            defaultValue={50}
-            disabled
-            sx={{ mt: 4 }}
-            valueLabelDisplay="auto"
-          />
+          <Slider aria-label="Default" defaultValue={30} valueLabelDisplay="auto" />
+          <Slider aria-label="Disabled" defaultValue={50} disabled sx={{ mt: 4 }} valueLabelDisplay="auto" />
         </Grid>
 
         {/* Snackbar and Alert Components */}
@@ -270,11 +208,7 @@ const DemoMUIPage: React.FC = () => {
           <Alert severity="error" sx={{ mt: 2 }}>
             This is an error message!
           </Alert>
-          <Button
-            onClick={() => alert("Snackbar Button Clicked")}
-            sx={{ mt: 2 }}
-            variant="outlined"
-          >
+          <Button onClick={() => alert("Snackbar Button Clicked")} sx={{ mt: 2 }} variant="outlined">
             Open Snackbar
           </Button>
         </Grid>

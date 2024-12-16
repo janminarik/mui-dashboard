@@ -1,7 +1,16 @@
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { GridColDef,GridColumnVisibilityModel, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, DataGrid as MuiDataGrid } from "@mui/x-data-grid";
+import {
+  GridColDef,
+  GridColumnVisibilityModel,
+  GridFilterModel,
+  GridPaginationModel,
+  GridRowModel,
+  GridRowSelectionModel,
+  GridSortModel,
+  DataGrid as MuiDataGrid,
+} from "@mui/x-data-grid";
 import { useCallback, useMemo, useState } from "react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +39,14 @@ type DataGridRowContextMenuConfig = {
   showEdit?: boolean;
 };
 
-function DataGridWrapper<TEntity extends { id: string }>({ api, columns, createEntityRoute, editEntityRoute, rowContextMenu, slice }: DataGridWrapperProps) {
+function DataGridWrapper<TEntity extends { id: string }>({
+  api,
+  columns,
+  createEntityRoute,
+  editEntityRoute,
+  rowContextMenu,
+  slice,
+}: DataGridWrapperProps) {
   const navigate = useNavigate();
 
   const dispatch = useDispatch<AppDispatch>();
@@ -52,7 +68,7 @@ function DataGridWrapper<TEntity extends { id: string }>({ api, columns, createE
       pageSize: pagination.pageSize,
       sortOptions: sortOptions ? buildSort(sortOptions) : undefined,
     }),
-    [pagination, sortOptions, filters]
+    [pagination, sortOptions, filters],
   );
 
   const { useDeleteEntityMutation, useGetEntitiesQuery } = api;
@@ -88,14 +104,14 @@ function DataGridWrapper<TEntity extends { id: string }>({ api, columns, createE
       debounce((filters: GridFilterModel) => {
         dispatch(setFilters(filters));
       }, 500),
-    [dispatch, setFilters]
+    [dispatch, setFilters],
   );
 
   const handleFilterChange = useCallback(
     (newModel: GridFilterModel) => {
       debounceDispatch(newModel);
     },
-    [debounceDispatch]
+    [debounceDispatch],
   );
 
   const handleEntityEdit = () => navigate(editEntityRoute + `/${selectedItem?.id}`);

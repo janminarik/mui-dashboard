@@ -1,4 +1,4 @@
 export const ROUTES = {
-    MUI_DEMO: "/mui",
-    MUI_LAZY_DEMO: "/muilazy",
+  MUI_DEMO: "/mui",
+  MUI_LAZY_DEMO: "/muilazy",
 };

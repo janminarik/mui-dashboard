@@ -6,12 +6,7 @@ interface LoaderProps {
 
 function Loader({ message }: LoaderProps) {
   return (
-    <Box
-      alignItems="center"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-    >
+    <Box alignItems="center" display="flex" flexDirection="column" justifyContent="center">
       <CircularProgress />
       <Typography pt={4} variant="h6">
         {message ? message : "Defaul loading message"}

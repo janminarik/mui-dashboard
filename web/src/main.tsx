@@ -10,7 +10,7 @@ const bootstrap = async () => {
   createRoot(document.getElementById("root")!).render(
     <StrictMode>
       <App />
-    </StrictMode>
+    </StrictMode>,
   );
 };
 

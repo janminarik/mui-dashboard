@@ -1,14 +1,7 @@
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Stack,
-  Toolbar,
-  useMediaQuery,
-} from "@mui/material";
+import { AppBar, Box, IconButton, Stack, Toolbar, useMediaQuery } from "@mui/material";
 import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "../../../app/store";

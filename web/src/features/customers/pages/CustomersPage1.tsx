@@ -5,7 +5,14 @@ import { AppDispatch, RootState } from "../../../app/store";
 import DataGrid from "../../../shared/components/DataGrid";
 import { useDeleteCustomerMutation, useGetCustomersQuery } from "../api/customersApiV2";
 import { ROUTES } from "../config/routes";
-import { setCustomersColumnsVisibility, setCustomersFilters, setCustomersPage, setCustomersSelectedItems, setCustomersSortOptions, showAllCustomersColumns } from "../slices/customersSliceV1";
+import {
+  setCustomersColumnsVisibility,
+  setCustomersFilters,
+  setCustomersPage,
+  setCustomersSelectedItems,
+  setCustomersSortOptions,
+  showAllCustomersColumns,
+} from "../slices/customersSliceV1";
 
 function CustomersPage1() {
   const dispatch = useDispatch<AppDispatch>();

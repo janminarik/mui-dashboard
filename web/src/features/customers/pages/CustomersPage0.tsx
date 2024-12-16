@@ -1,7 +1,16 @@
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { GridColDef,GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, GridToolbar, DataGrid as MuiDataGrid } from "@mui/x-data-grid";
+import {
+  GridColDef,
+  GridFilterModel,
+  GridPaginationModel,
+  GridRowModel,
+  GridRowSelectionModel,
+  GridSortModel,
+  GridToolbar,
+  DataGrid as MuiDataGrid,
+} from "@mui/x-data-grid";
 import { useCallback, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +44,7 @@ function CustomersPage0() {
       pageSize: pagination.pageSize,
       sortOptions: sortOptions ? buildSort(sortOptions) : undefined,
     }),
-    [pagination, sortOptions, filters]
+    [pagination, sortOptions, filters],
   );
 
   const customersQuery = useGetCustomersQuery(queryParams);
@@ -49,14 +58,14 @@ function CustomersPage0() {
     debounce((filters: GridFilterModel) => {
       dispatch(setCustomersFilters(filters));
     }, 500),
-    [dispatch]
+    [dispatch],
   );
 
   const handleFilterChange = useCallback(
     (newModel: GridFilterModel) => {
       debounceDispatch(newModel);
     },
-    [debounceDispatch]
+    [debounceDispatch],
   );
 
   const handlePaginationChange = (newModel: GridPaginationModel) => dispatch(setCustomersPage(newModel));

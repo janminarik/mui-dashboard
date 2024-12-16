@@ -38,15 +38,7 @@ function ErrorPage({ message, title }: ErrorPageProps) {
   }
 
   return (
-    <Box
-      alignItems="center"
-      display="flex"
-      flexDirection="column"
-      height="100vh"
-      justifyContent="center"
-      p={2}
-      width="100vw"
-    >
+    <Box alignItems="center" display="flex" flexDirection="column" height="100vh" justifyContent="center" p={2} width="100vw">
       <Typography color="error" gutterBottom variant="h3">
         {errorTitle}
       </Typography>
