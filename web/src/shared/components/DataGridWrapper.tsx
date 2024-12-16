@@ -2,26 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../app/store";
 import { useCallback, useMemo, useState } from "react";
-import {
-  DataGrid as MuiDataGrid,
-  GridColDef,
-  GridFilterModel,
-  GridPaginationModel,
-  GridRowModel,
-  GridRowSelectionModel,
-  GridSortModel,
-  GridColumnVisibilityModel,
-} from "@mui/x-data-grid";
+import { DataGrid as MuiDataGrid, GridColDef, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel, GridColumnVisibilityModel } from "@mui/x-data-grid";
 import { buildFilter, buildSort } from "../utils/muiUtils";
 import { aggregateApiRequestState, QueryParams } from "../utils/rtkUtils";
-import {
-  Box,
-  Button,
-  debounce,
-  IconButton,
-  Menu,
-  MenuItem,
-} from "@mui/material";
+import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ErrorBox from "./ErrorBox";
@@ -29,11 +13,6 @@ import { extractErrorMessage } from "../utils/errorUtils";
 import Loader from "./Loader";
 import React from "react";
 import { DataGridSlice, DataGridState } from "../slices/datagridSlice";
-
-type EntityRoutes = {
-  create: string;
-  edit: string;
-};
 
 type DataGridRowContextMenuConfig = {
   show?: boolean;
@@ -50,45 +29,27 @@ export interface DataGridWrapperProps {
   rowContextMenu: DataGridRowContextMenuConfig;
 }
 
-function DataGridWrapper<TEntity extends { id: string }>({
-  columns,
-  createEntityRoute,
-  editEntityRoute,
-  slice,
-  api,
-  rowContextMenu,
-}: DataGridWrapperProps) {
+function DataGridWrapper<TEntity extends { id: string }>({ columns, createEntityRoute, editEntityRoute, slice, api, rowContextMenu }: DataGridWrapperProps) {
   const navigate = useNavigate();
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const [contextMenu, setContextMenu] = useState<HTMLButtonElement | null>(
-    null
-  );
+  const [contextMenu, setContextMenu] = useState<HTMLButtonElement | null>(null);
+
   const [selectedItem, setSelectedItem] = useState<GridRowModel | null>(null);
 
   const openContexMenu = Boolean(contextMenu);
 
-  const { pagination, filters, sortOptions, selectedItems, columnsVisbility } =
-    useSelector((state: RootState) => state[slice.name] as DataGridState);
+  const { pagination, filters, sortOptions, selectedItems, columnsVisbility } = useSelector((state: RootState) => state[slice.name] as DataGridState);
 
-  const {
-    setFilters,
-    setPage,
-    setSelectedItems,
-    setSortOptions,
-    setColumnsVisibility,
-    showAllColumns,
-  } = slice.actions;
+  const { setFilters, setPage, setSelectedItems, setSortOptions, setColumnsVisibility, showAllColumns } = slice.actions;
 
   const queryParams: QueryParams<TEntity> = useMemo(
     () => ({
       page: pagination.page,
       pageSize: pagination.pageSize,
       sortOptions: sortOptions ? buildSort(sortOptions) : undefined,
-      filters: filters
-        ? (buildFilter(filters) as Partial<Record<keyof TEntity, any>>)
-        : undefined,
+      filters: filters ? (buildFilter(filters) as Partial<Record<keyof TEntity, any>>) : undefined,
     }),
     [pagination, sortOptions, filters]
   );
@@ -101,10 +62,25 @@ function DataGridWrapper<TEntity extends { id: string }>({
 
   const [deleteCustomer, deleteCustomerResult] = useDeleteEntityMutation();
 
-  const { isLoading, isError, errors } = aggregateApiRequestState([
-    customersQuery,
-    deleteCustomerResult,
-  ]);
+  const { isLoading, isError, errors } = aggregateApiRequestState([customersQuery, deleteCustomerResult]);
+
+  const handlePaginationChange = (newModel: GridPaginationModel) => dispatch(setPage(newModel));
+
+  const handleSortChange = (newModel: GridSortModel) => dispatch(setSortOptions(newModel));
+
+  const handleRowSelectionChange = (newModel: GridRowSelectionModel) => dispatch(setSelectedItems(newModel));
+
+  const handleContexMenuOpen = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, row: GridRowModel<TEntity>) => {
+    setContextMenu(event.currentTarget);
+    setSelectedItem(row);
+  };
+  const handleVisibilityModelChange = (newModel: GridColumnVisibilityModel) => {
+    if (Object.keys(newModel).length === 0) {
+      dispatch(showAllColumns(true));
+    } else {
+      dispatch(setColumnsVisibility(newModel));
+    }
+  };
 
   const debounceDispatch = useCallback(
     debounce((filters: GridFilterModel) => {
@@ -120,33 +96,7 @@ function DataGridWrapper<TEntity extends { id: string }>({
     [debounceDispatch]
   );
 
-  const handlePaginationChange = (newModel: GridPaginationModel) =>
-    dispatch(setPage(newModel));
-
-  const handleSortChange = (newModel: GridSortModel) =>
-    dispatch(setSortOptions(newModel));
-
-  const handleRowSelectionChange = (newModel: GridRowSelectionModel) =>
-    dispatch(setSelectedItems(newModel));
-
-  const handleVisibilityModelChange = (newModel: GridColumnVisibilityModel) => {
-    if (Object.keys(newModel).length === 0) {
-      dispatch(showAllColumns(true));
-    } else {
-      dispatch(setColumnsVisibility(newModel));
-    }
-  };
-
-  const handleContexMenuOpen = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    row: GridRowModel<TEntity>
-  ) => {
-    setContextMenu(event.currentTarget);
-    setSelectedItem(row);
-  };
-
-  const handleEntityEdit = () =>
-    navigate(editEntityRoute + `/${selectedItem?.id}`);
+  const handleEntityEdit = () => navigate(editEntityRoute + `/${selectedItem?.id}`);
 
   const handleEntityCreate = () => navigate(createEntityRoute);
 
@@ -190,12 +140,8 @@ function DataGridWrapper<TEntity extends { id: string }>({
           anchorEl={contextMenu}
           onClose={() => setContextMenu(null)}
         >
-          {rowContextMenu.showEdit && (
-            <MenuItem onClick={handleEntityEdit}>Edit</MenuItem>
-          )}
-          {rowContextMenu.showDelete && (
-            <MenuItem onClick={handleEntityDelete}>Delete</MenuItem>
-          )}
+          {rowContextMenu.showEdit && <MenuItem onClick={handleEntityEdit}>Edit</MenuItem>}
+          {rowContextMenu.showDelete && <MenuItem onClick={handleEntityDelete}>Delete</MenuItem>}
         </Menu>
       </>
     ),
@@ -203,19 +149,8 @@ function DataGridWrapper<TEntity extends { id: string }>({
 
   if (!isError && data) {
     return (
-      <Grid
-        size={{ xs: 12 }}
-        container
-        justifyContent="stretch"
-        flexDirection="column"
-      >
-        <Grid
-          container
-          flexDirection="row"
-          justifyContent="stretch"
-          pt={3}
-          size={{ xs: 12 }}
-        >
+      <Grid size={{ xs: 12 }} container justifyContent="stretch" flexDirection="column">
+        <Grid container flexDirection="row" justifyContent="stretch" pt={3} size={{ xs: 12 }}>
           <Grid container mx={4} justifyContent="flex-end" size={{ xs: 12 }}>
             <Button onClick={handleEntityCreate}>Create</Button>
           </Grid>
@@ -266,13 +201,7 @@ function DataGridWrapper<TEntity extends { id: string }>({
           alignItems: "center",
         }}
       >
-        <ErrorBox
-          message={
-            errors.length > 0
-              ? errors.map((error) => extractErrorMessage(error)).join("\n")
-              : undefined
-          }
-        ></ErrorBox>
+        <ErrorBox message={errors.length > 0 ? errors.map((error) => extractErrorMessage(error)).join("\n") : undefined}></ErrorBox>
       </Box>
     );
   } else if (!isError && isLoading) {

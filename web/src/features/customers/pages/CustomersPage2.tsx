@@ -1,24 +1,10 @@
-import {
-  useDeleteCustomerMutation,
-  useGetCustomersQuery,
-} from "../api/customersApi";
-import { ROUTES } from "../config/routes";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../app/store";
-import {
-  setCustomersColumnsVisibility,
-  setCustomersFilters,
-  setCustomersPage,
-  setCustomersSelectedItems,
-  setCustomersSortOptions,
-  showAllCustomersColumns,
-} from "../slices/customersSlice";
-import DataGrid from "../../../shared/components/DataGrid";
+import DataGridWrapper from "../../../shared/components/DataGridWrapper";
+import { apiCustomers } from "../api/customersApiV2";
 import { GridColDef } from "@mui/x-data-grid";
+import { ROUTES } from "../config/routes";
+import { customersSlice } from "../slices/customersSliceV2";
 
 function CustomersPage2() {
-  const dispatch = useDispatch<AppDispatch>();
-
   const colDef = { flex: 1 };
 
   const columns: GridColDef[] = [
@@ -33,29 +19,16 @@ function CustomersPage2() {
   ];
 
   return (
-    <DataGrid
-      columns={columns}
-      showContextMenu
-      showDeleteInContextMenu
-      showEditInContexMenu
-      createEntityRoute={ROUTES.CUSTOMER_CREATE}
-      editEntityRoute={ROUTES.CUSTOMERS}
-      setColumnsVisibility={(columnsVisibility) =>
-        dispatch(setCustomersColumnsVisibility(columnsVisibility))
-      }
-      showAllColumns={(visible) => dispatch(showAllCustomersColumns(visible))}
-      setPagination={(pagination) => dispatch(setCustomersPage(pagination))}
-      setFilters={(filters) => dispatch(setCustomersFilters(filters))}
-      setSortOptions={(sortOptions) =>
-        dispatch(setCustomersSortOptions(sortOptions))
-      }
-      setSelectedItems={(selectedItems) =>
-        dispatch(setCustomersSelectedItems(selectedItems))
-      }
-      useGetEntities={useGetCustomersQuery}
-      useDeleteEntity={useDeleteCustomerMutation}
-      {...useSelector((state: RootState) => state.customersList)}
-    />
+    <div>
+      <DataGridWrapper
+        columns={columns}
+        slice={customersSlice}
+        api={apiCustomers}
+        rowContextMenu={{ show: true, showDelete: true, showEdit: true }}
+        createEntityRoute={ROUTES.CUSTOMER_CREATE}
+        editEntityRoute={ROUTES.CUSTOMERS}
+      ></DataGridWrapper>
+    </div>
   );
 }
 

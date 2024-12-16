@@ -1,33 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CreateCustomer, Customer } from '../types/customer';
-import { buildSearchParams, createGenericApi, QueryParams } from '../../../shared/utils/rtkUtils';
+import { buildSearchParams, QueryParams } from '../../../shared/utils/rtkUtils';
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export type CustomerQueryParams = QueryParams<Customer>;
 
-export const apiCustomers = createGenericApi<string, Customer, CreateCustomer>("customer", apiBaseUrl);
-
-export const extendedApiCustomers = apiCustomers.baseApi.injectEndpoints({
-    endpoints: (builder) => ({
-        // getExtendedCustomerById: builder.query<Customer, string>({
-        //     query: (id) => `/customers/${id}`,
-        // }),
-    }),
-    overrideExisting: false,
-});
-
-export const {
-    useCreateEntityMutation: useCreateCustomerMutation,
-    useGetEntitiesQuery: useGetCustomersQuery,
-    useGetEntityByIdQuery: useGetCustomerByIdQuery,
-    useUpdateEntityMutation: useUpdateCustomerMutation,
-    useDeleteEntityMutation: useDeleteCustomerMutation,
-    // useGetExtendedCustomerByIdQuery,
-} = apiCustomers;
-//} = extendedApiCustomers; //apiCustomers;
-
-/*
 export const apiCustomers = createApi({
     reducerPath: 'customers',
     baseQuery: fetchBaseQuery({ baseUrl: apiBaseUrl }),
@@ -81,6 +59,6 @@ export const {
     useUpdateCustomerMutation,
     useDeleteCustomerMutation,
     useLazyGetCustomersQuery,
-} = apiCustomers;*/
+} = apiCustomers;
 
 

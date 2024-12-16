@@ -122,6 +122,3 @@ export const createGenericApi =
             useDeleteEntityMutation,
         };
     }
-
-
-export const { useCreateEntityMutation } = createGenericApi;

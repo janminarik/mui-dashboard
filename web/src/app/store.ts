@@ -6,14 +6,13 @@ import { settingsPanelReducer } from "../features/settings/slices/settingsPanelS
 import { uiSettingsReducer } from "../features/settings/slices/uiSettingsSlice";
 import { navigationPanelReducer } from "../shared/slices/navigationPanelSlice";
 import { userReducer } from "../shared/slices/userSlice";
-import { apiCustomers, customersListReducer } from "../features/customers";
+import { apiCustomers } from "../features/customers";
 import { loggerMiddleware } from "../shared/middleware/loggerMiddleware";
-import { customersReducer } from "../features/customers/pages/CustomersPage3";
+import { customersReducer } from "../features/customers/slices/customersSliceV2";
 
 
 const rootReducer = combineReducers({
     user: userReducer,
-    // customersList: customersListReducer,
     customersList: customersReducer,
     //perzistentne reduktory
     navigationPanel: navigationPanelReducer,

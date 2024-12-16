@@ -1,14 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GridColumnVisibilityModel, GridFilterModel, GridPaginationModel, GridRowSelectionModel, GridSortModel } from "@mui/x-data-grid";
 import { DataGridState } from "../../../shared/slices/datagridSlice";
-import { TRANSLATIONS_DEFAULT_NAMESPACE } from "../../../i18n/config";
 
-//version 2
-// const customersSlice2 = createDataGridSlice("customersList");
-// export const customersReducer2 = customersSlice2.reducer;
-
-
-//version 1
 interface CustomersState extends DataGridState {
 }
 

@@ -4,7 +4,7 @@ import {
   useCreateCustomerMutation,
   useGetCustomerByIdQuery,
   useUpdateCustomerMutation,
-} from "../api/customersApi";
+} from "../api/customersApiV2";
 import {
   Box,
   FormControl,
