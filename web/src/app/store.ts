@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
     key: "root",
     storage,//local storage
-    whitelist: ["user", "navigationPanel", "settingsPanel", "uiSettings"]
+    whitelist: ["user", "navigationPanel", "settingsPanel", "uiSettings", "customersList"]
 };
 
 // Aplikácia persistReducer na kombinovaný rootReducer
