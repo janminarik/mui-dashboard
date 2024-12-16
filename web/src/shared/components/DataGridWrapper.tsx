@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Box, Button, debounce, IconButton, Menu, MenuItem } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { DataGrid as MuiDataGrid, GridColDef, GridColumnVisibilityModel,GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel } from "@mui/x-data-grid";
+import { DataGrid as MuiDataGrid, GridColDef, GridColumnVisibilityModel, GridFilterModel, GridPaginationModel, GridRowModel, GridRowSelectionModel, GridSortModel } from "@mui/x-data-grid";
 
 import { AppDispatch, RootState } from "../../app/store";
 import { DataGridSlice, DataGridState } from "../slices/datagridSlice";
@@ -83,11 +83,12 @@ function DataGridWrapper<TEntity extends { id: string }>({ columns, createEntity
     }
   };
 
-  const debounceDispatch = useCallback(
-    debounce((filters: GridFilterModel) => {
-      dispatch(setFilters(filters));
-    }, 500),
-    [dispatch]
+  const debounceDispatch = useMemo(
+    () =>
+      debounce((filters: GridFilterModel) => {
+        dispatch(setFilters(filters));
+      }, 500),
+    [dispatch, setFilters]
   );
 
   const handleFilterChange = useCallback(
