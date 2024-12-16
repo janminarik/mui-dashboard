@@ -81,7 +81,7 @@ export const createGenericApi =
                         : `/${entityName.toLowerCase()}`),
                     providesTags: (result) => result ? [
                         { type: entityTag, id: "LIST" },
-                        ...result.items.map((customer) => ({ type: `${entityTag}` as const, id: customer.id }))
+                        ...result.items.map((item) => ({ type: `${entityTag}` as const, id: item.id }))
                     ] : []
                 }),
                 getEntityById: builder.query<TEntity, TId>({
