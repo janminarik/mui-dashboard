@@ -3,6 +3,12 @@ import { GridColumnVisibilityModel, GridFilterModel, GridPaginationModel, GridRo
 import { DataGridState } from "../../../shared/slices/datagridSlice";
 import { TRANSLATIONS_DEFAULT_NAMESPACE } from "../../../i18n/config";
 
+//version 2
+// const customersSlice2 = createDataGridSlice("customersList");
+// export const customersReducer2 = customersSlice2.reducer;
+
+
+//version 1
 interface CustomersState extends DataGridState {
 }
 
@@ -56,4 +62,6 @@ export const { setPage: setCustomersPage,
     setSelectedItems: setCustomersSelectedItems,
     setColumnsVisibility: setCustomersColumnsVisibility,
     showAllColumns: showAllCustomersColumns } = customersSlice.actions;
+
+
 export const customersReducer = customersSlice.reducer;

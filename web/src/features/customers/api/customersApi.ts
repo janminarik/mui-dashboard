@@ -24,7 +24,8 @@ export const {
     useUpdateEntityMutation: useUpdateCustomerMutation,
     useDeleteEntityMutation: useDeleteCustomerMutation,
     // useGetExtendedCustomerByIdQuery,
-} = extendedApiCustomers; //apiCustomers;
+} = apiCustomers;
+//} = extendedApiCustomers; //apiCustomers;
 
 /*
 export const apiCustomers = createApi({

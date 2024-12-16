@@ -29,10 +29,24 @@ export const createDataGridSlice = (name: string) => {
             },
             setSelectedItems(state: DataGridState, action: PayloadAction<GridRowSelectionModel>) {
                 state.selectedItems = action.payload;
+            },
+            setColumnsVisibility(state: DataGridState, action: PayloadAction<GridColumnVisibilityModel>) {
+                state.columnsVisbility = { ...state.columnsVisbility, ...action.payload }
+            },
+            showAllColumns(state: DataGridState, action: PayloadAction<boolean>) {
+                for (const field in state.columnsVisbility) {
+                    state.columnsVisbility[field] = action.payload;
+                }
             }
         },
         extraReducers: (builder) => {
         }
     });
+}
 
+export const dataGridActions = (slice: ReturnType<typeof createDataGridSlice>) => slice.actions;
+
+export interface DataGridSlice {
+    name: string;
+    actions: ReturnType<typeof dataGridActions>
 }

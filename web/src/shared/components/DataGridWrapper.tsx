@@ -28,69 +28,58 @@ import ErrorBox from "./ErrorBox";
 import { extractErrorMessage } from "../utils/errorUtils";
 import Loader from "./Loader";
 import React from "react";
+import { DataGridSlice, DataGridState } from "../slices/datagridSlice";
 
-export interface DataGridProps<TEntity> {
+type EntityRoutes = {
+  create: string;
+  edit: string;
+};
+
+type DataGridRowContextMenuConfig = {
+  show?: boolean;
+  showDelete?: boolean;
+  showEdit?: boolean;
+};
+
+export interface DataGridWrapperProps {
   columns: GridColDef[];
-  showContextMenu?: boolean;
-  showDeleteInContextMenu?: boolean;
-  showEditInContexMenu?: boolean;
   createEntityRoute: string;
   editEntityRoute: string;
-
-  pagination: GridPaginationModel;
-  filters?: GridFilterModel;
-  sortOptions?: GridSortModel;
-  selectedItems?: GridRowSelectionModel;
-  columnsVisbility?: GridColumnVisibilityModel;
-
-  setPagination: (pagination: GridPaginationModel) => void;
-  setFilters: (filters: GridFilterModel) => void;
-  setSortOptions: (sortOptions: GridSortModel) => void;
-  setSelectedItems: (selectedItems: GridRowSelectionModel) => void;
-  setColumnsVisibility: (columnsVisibility: GridColumnVisibilityModel) => void;
-  showAllColumns: (visible: boolean) => void;
-  useGetEntities: (params: QueryParams<TEntity>) => {
-    data?: { items: TEntity[]; totalCount: number };
-    isLoading: boolean;
-    isFetching: boolean;
-    isError: boolean;
-    error?: unknown;
-  };
-  useDeleteEntity: any; //todo: fix type
+  slice: DataGridSlice;
+  api: any;
+  rowContextMenu: DataGridRowContextMenuConfig;
 }
 
-function DataGrid<TEntity extends { id: string }>({
+function DataGridWrapper<TEntity extends { id: string }>({
   columns,
-  showContextMenu,
-  showEditInContexMenu,
-  showDeleteInContextMenu,
-  pagination,
-  sortOptions,
-  filters,
-  selectedItems,
-  columnsVisbility,
-  setPagination,
-  setFilters,
-  setSelectedItems,
-  setSortOptions,
-  setColumnsVisibility,
-  showAllColumns,
   createEntityRoute,
   editEntityRoute,
-  useGetEntities,
-  useDeleteEntity,
-}: DataGridProps<TEntity>) {
+  slice,
+  api,
+  rowContextMenu,
+}: DataGridWrapperProps) {
   const navigate = useNavigate();
+
   const dispatch = useDispatch<AppDispatch>();
+
   const [contextMenu, setContextMenu] = useState<HTMLButtonElement | null>(
     null
   );
-  const [selectedItem, setSelectedItem] =
-    useState<GridRowModel<TEntity> | null>(null);
+  const [selectedItem, setSelectedItem] = useState<GridRowModel | null>(null);
+
   const openContexMenu = Boolean(contextMenu);
 
-  // const { pagination, sortOptions, filters, selectedItems, columnsVisbility } =
-  //   useSelector((state: RootState) => state.customersList);
+  const { pagination, filters, sortOptions, selectedItems, columnsVisbility } =
+    useSelector((state: RootState) => state[slice.name] as DataGridState);
+
+  const {
+    setFilters,
+    setPage,
+    setSelectedItems,
+    setSortOptions,
+    setColumnsVisibility,
+    showAllColumns,
+  } = slice.actions;
 
   const queryParams: QueryParams<TEntity> = useMemo(
     () => ({
@@ -104,10 +93,13 @@ function DataGrid<TEntity extends { id: string }>({
     [pagination, sortOptions, filters]
   );
 
-  const customersQuery = useGetEntities(queryParams);
+  const { useGetEntitiesQuery, useDeleteEntityMutation } = api;
+
+  const customersQuery = useGetEntitiesQuery(queryParams);
+
   const { data } = customersQuery;
 
-  const [deleteCustomer, deleteCustomerResult] = useDeleteEntity();
+  const [deleteCustomer, deleteCustomerResult] = useDeleteEntityMutation();
 
   const { isLoading, isError, errors } = aggregateApiRequestState([
     customersQuery,
@@ -116,7 +108,7 @@ function DataGrid<TEntity extends { id: string }>({
 
   const debounceDispatch = useCallback(
     debounce((filters: GridFilterModel) => {
-      setFilters(filters);
+      dispatch(setFilters(filters));
     }, 500),
     [dispatch]
   );
@@ -129,19 +121,19 @@ function DataGrid<TEntity extends { id: string }>({
   );
 
   const handlePaginationChange = (newModel: GridPaginationModel) =>
-    setPagination(newModel);
+    dispatch(setPage(newModel));
 
   const handleSortChange = (newModel: GridSortModel) =>
-    setSortOptions(newModel);
+    dispatch(setSortOptions(newModel));
 
   const handleRowSelectionChange = (newModel: GridRowSelectionModel) =>
-    setSelectedItems(newModel);
+    dispatch(setSelectedItems(newModel));
 
   const handleVisibilityModelChange = (newModel: GridColumnVisibilityModel) => {
     if (Object.keys(newModel).length === 0) {
-      showAllColumns(true);
+      dispatch(showAllColumns(true));
     } else {
-      setColumnsVisibility(newModel);
+      dispatch(setColumnsVisibility(newModel));
     }
   };
 
@@ -198,10 +190,10 @@ function DataGrid<TEntity extends { id: string }>({
           anchorEl={contextMenu}
           onClose={() => setContextMenu(null)}
         >
-          {showEditInContexMenu && (
+          {rowContextMenu.showEdit && (
             <MenuItem onClick={handleEntityEdit}>Edit</MenuItem>
           )}
-          {showDeleteInContextMenu && (
+          {rowContextMenu.showDelete && (
             <MenuItem onClick={handleEntityDelete}>Delete</MenuItem>
           )}
         </Menu>
@@ -242,7 +234,7 @@ function DataGrid<TEntity extends { id: string }>({
             //   },
             // }}
 
-            columns={showContextMenu ? [...columns, contextColumn] : columns}
+            columns={rowContextMenu ? [...columns, contextColumn] : columns}
             rowCount={data?.totalCount ? data.totalCount : 0}
             pageSizeOptions={[5, 10, 20, 100]}
             rows={data.items || []}
@@ -300,4 +292,4 @@ function DataGrid<TEntity extends { id: string }>({
   }
 }
 
-export default DataGrid;
+export default DataGridWrapper;
